@@ -1,0 +1,280 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controlador;
+
+import dao.Persistencia;
+import modelo.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+/**
+ *
+ * @author Rosi-PC
+ */
+public class Controlador {
+
+    private final Persistencia persistencia;
+
+    public Controlador(Persistencia p) {
+        this.persistencia = p;
+    }
+//    ////////   ********** Cliente**********
+
+    public List listarCliente() {
+
+        return this.persistencia.buscarTodosOrdenadosPor(Cliente.class, Cliente_.apellido);
+    }
+
+    public Cliente buscarCliente(Long dni) {
+        return this.persistencia.buscar(Cliente.class, dni);
+    }
+
+    public void agregarCliente(String nombres, String apellidos, String nroTelefono, Direccion direccion, Deposito dep, Picnic pic) {
+        this.persistencia.iniciarTransaccion();
+        //Cliente c= new Cliente(nombres.toUpperCase(),apellidos.toUpperCase(),nroTelefono.toUpperCase(),direccion,dep, pic );
+
+    }
+
+   public void eliminarCliente(Cliente c) {
+        if (c.getPic().isEmpty() && c.getDep().isEmpty()) {
+            this.persistencia.iniciarTransaccion();
+            this.persistencia.eliminar(c);
+            this.persistencia.confirmarTransaccion();
+        }
+
+    }
+
+    public void editarCliente() {
+
+    }
+    
+    public void agregarClientePicnic(Picnic p, Cliente c){
+      this.persistencia.iniciarTransaccion();
+      c.agregarPicnic(p);
+      this.persistencia.modificar(p);
+      this.persistencia.modificar(c);
+      this.persistencia.confirmarTransaccion();
+    
+    
+    }
+//  //   *********** Alimento *************   
+
+    public List listarAlimento() {
+
+        return this.persistencia.buscarTodosOrdenadosPor(Alimento.class, Alimento_.nombre);
+    }
+
+    public Alimento listarAlimento(Long idAlimento) {
+
+        return this.persistencia.buscar(Alimento.class, idAlimento);
+
+    }
+
+    public void agregarAlimento( String nombre, String cantidad, Menu aMenu) {
+        this.persistencia.iniciarTransaccion();
+        Alimento a = new Alimento( nombre.toUpperCase(), cantidad , (Set<Menu>) aMenu);
+        this.persistencia.insertar(a);
+        this.persistencia.confirmarTransaccion();
+
+    }
+
+    public void agregarAlimento(Menu m, Alimento a) {
+        this.persistencia.iniciarTransaccion();
+        m.agregarAlimentoMenu(a);
+        this.persistencia.modificar(a);
+        this.persistencia.modificar(m);
+        this.persistencia.confirmarTransaccion();
+
+    }
+
+    public void eliminarAlimento(Alimento a) {
+        if (a.getMenu().isEmpty()) {
+            this.persistencia.iniciarTransaccion();
+            this.persistencia.eliminar(a);
+            this.persistencia.confirmarTransaccion();
+
+        }
+    }
+
+    public void editarAlimento() {
+
+    }
+    
+    public void quitarAlimentoMenu(Alimento a,Menu m){
+        
+        this.persistencia.iniciarTransaccion();
+        m.quitarAlimento(a);
+        this.persistencia.modificar(m);
+        this.persistencia.modificar(a);
+        this.persistencia.confirmarTransaccion();
+        
+    
+    
+    }
+
+//  ///   *************Suministro *******************       
+    public List listarSuministro() {
+        return this.persistencia.buscarTodosOrdenadosPor(Suministro.class, Suministro_.descripcion);
+    }
+
+    public Suministro listarSuministro(Long idSuministro) {
+
+        return this.persistencia.buscar(Suministro.class, idSuministro);
+
+    }
+
+    public void agregarSuministro(String descripcion, String  cantidad, Menu menu) {
+        this.persistencia.iniciarTransaccion();
+        Suministro s = new Suministro(descripcion.toUpperCase(), cantidad.toUpperCase(), (Set<Menu>) menu);
+        this.persistencia.insertar(s);
+        this.persistencia.confirmarTransaccion();
+    }
+
+    public void agregarSuministroMenu(Menu m, Suministro s) {
+        this.persistencia.iniciarTransaccion();
+        m.agregarSuministro(s);
+        this.persistencia.modificar(s);
+        this.persistencia.modificar(m);
+        this.persistencia.confirmarTransaccion();
+
+    }
+
+    public void eliminarSuministro(Suministro s) {
+        if (s.getcSuministro().isEmpty()) {
+            this.persistencia.iniciarTransaccion();
+            this.persistencia.eliminar(s);
+            this.persistencia.confirmarTransaccion();
+
+        }
+
+    }
+    public void quitarSuministroMenu(Menu m, Suministro sm){
+        this.persistencia.iniciarTransaccion();
+        m.quitarSuministro(sm);
+        this.persistencia.modificar(m);
+        this.persistencia.modificar(sm);
+        this.persistencia.confirmarTransaccion();
+        
+    
+    }
+    
+    
+    
+    public void editarSuministro() {
+
+    }
+///////   ****************  Picnic  **************************************
+
+    public List listarPicnic() {
+        return this.persistencia.buscarTodosOrdenadosPor(Picnic.class, Picnic_.fecha);
+
+    }
+
+    public Picnic listarPicnic(Long idPicnic) {
+
+        return this.persistencia.buscar(Picnic.class, idPicnic);
+
+    }
+
+    public void agregarPicnic(String lugar, String fecha, String hora, double precio, Cliente cli, Deposito de, Menu me) {
+        this.persistencia.iniciarTransaccion();
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+
+            Picnic p = new Picnic(lugar.toUpperCase(), formatoFecha.parse(fecha), hora, precio, cli, de, me);
+            if ((cli != null) && (de != null)) {
+                cli.agregarPicnic(p);
+                this.persistencia.modificar(cli);
+
+            }
+            this.persistencia.insertar(p);
+            this.persistencia.confirmarTransaccion();
+        } catch (ParseException ex) {
+            this.persistencia.descartarTransaccion();
+            System.out.println("Error al capturar fecha");
+        }
+
+    }
+
+    public void eliminarPicnic(Picnic p) {
+        if (p.getDep().isEmpty()) {
+            this.persistencia.iniciarTransaccion();
+            this.persistencia.eliminar(p);
+            this.persistencia.confirmarTransaccion();
+        }
+    }
+
+    public void editarPicnic(Picnic p, String lugar, String fecha, String hora, double precio, Cliente cli, Deposito de, Menu me) {
+
+    }
+
+//    ********************** Menu  ***************************************
+    public List listarMenu() {
+        return this.persistencia.buscarTodosOrdenadosPor(Menu.class, Menu_.descripcion);
+    }
+
+    public Menu listarMenu(Long idMenu) {
+
+        return this.persistencia.buscar(Menu.class, idMenu);
+
+    }
+
+    public void agregarMenuPic(Picnic p, Menu m) {
+        this.persistencia.iniciarTransaccion();
+        m.agregarMenuPicnic(p);
+        this.persistencia.modificar(p);
+        this.persistencia.modificar(m);
+        this.persistencia.confirmarTransaccion();
+
+    }
+
+    public void eliminarMenu(Menu m) {
+        if (m.getPic().isEmpty()) {
+            this.persistencia.iniciarTransaccion();
+
+        }
+
+    }
+    public void quitarMenuPicnic(){}
+    
+    
+    public void editarMenu() {
+
+    }
+
+//   ///// **************** Deposito  ********************
+    public void agregarDeposito(double monto, String fecha, boolean nro ,Picnic pic, Cliente cli) {
+        this.persistencia.iniciarTransaccion();        
+        try{
+        SimpleDateFormat formatoFecha = new SimpleDateFormat();
+        Deposito d = new Deposito(monto,formatoFecha.parse(fecha),nro,pic,cli);
+            
+        this.persistencia.insertar(d);
+        this.persistencia.confirmarTransaccion();
+    
+        }
+        catch(ParseException ex){
+            this.persistencia.descartarTransaccion();
+            System.out.println("Error al capturar fecha");
+        
+        }
+    }
+
+    public void modificarDeposito() {
+
+    }
+    
+   
+
+    public void eliminarDeposito(){}
+
+    public void quitardepoosito(){}
+
+
+}
