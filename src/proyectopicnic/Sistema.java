@@ -9,8 +9,7 @@ package proyectopicnic;
  *
  * @author Rosi-PC
  */
-import Vista.VentanaPrincipal;
-import Vista.VentanaPrincipal;
+import Vista.*;
 import controlador.Controlador;
 import dao.Persistencia;
 import javax.persistence.EntityManagerFactory;
@@ -36,7 +35,7 @@ public class Sistema {
         Controlador c = new Controlador(persistencia);
         
          VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(c);
-       ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventanaPrincipal.setResizable(false);
         ventanaPrincipal.setLocationRelativeTo(null);
         ventanaPrincipal.setVisible(true);

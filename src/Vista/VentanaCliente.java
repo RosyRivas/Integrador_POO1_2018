@@ -83,10 +83,20 @@ public class VentanaCliente extends javax.swing.JFrame {
         jLabel9.setText("Lista de Picnic");
 
         jBAgregarPicnic.setText("Agregar");
+        jBAgregarPicnic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAgregarPicnicActionPerformed(evt);
+            }
+        });
 
         jComPicnic.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         volver.setText("volver");
+        volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelLPicnicLayout = new javax.swing.GroupLayout(PanelLPicnic);
         PanelLPicnic.setLayout(PanelLPicnicLayout);
@@ -220,10 +230,9 @@ public class VentanaCliente extends javax.swing.JFrame {
                     .addGroup(jPanelClienteLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                                .addComponent(jTextNombre)
-                                .addComponent(jTextFieldApellido))
+                            .addComponent(jTextFieldDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                            .addComponent(jTextNombre)
+                            .addComponent(jTextFieldApellido)
                             .addComponent(jTextFieldNroCalle, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                             .addComponent(jTextFieldDiereccion))
                         .addContainerGap())))
@@ -301,7 +310,7 @@ public class VentanaCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+// boton guardar
     private void botonGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarClienteActionPerformed
     /* if (!this.jListCliente.isSelectionEmpty())){
         Cliente c = (Cliente ) this.jListCliente.getSelectedValue();
@@ -312,11 +321,11 @@ public class VentanaCliente extends javax.swing.JFrame {
      }*/
             
     }//GEN-LAST:event_botonGuardarClienteActionPerformed
-
+// boton nuevo cliente
     private void BotonNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonNuevoClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonNuevoClienteActionPerformed
-
+//boton eliminar cliente
     private void BotonEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonEliminarClienteActionPerformed
@@ -337,11 +346,27 @@ public class VentanaCliente extends javax.swing.JFrame {
     private void jTextFieldTelefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTelefActionPerformed
+//boton volver
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
+        
+        
+        dispose();
+      this.previo.setVisible(true);
+    
+        
+        
+        
+        
+    }//GEN-LAST:event_volverActionPerformed
+//boton agregar picnic a cliente
+    private void jBAgregarPicnicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarPicnicActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBAgregarPicnicActionPerformed
 
  
   
 private void limpiar(){
-    /*this.jTextFieldDNI.setText("");
+/*    this.jTextFieldDNI.setText("");
     this.jTextNombre.setText("");
     this.jTextFieldApellido.setText("");
     this.jTextFieldTelef.setText("");

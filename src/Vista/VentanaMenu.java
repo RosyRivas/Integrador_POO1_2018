@@ -405,7 +405,6 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,6 +473,11 @@ public class VentanaMenu extends javax.swing.JFrame {
         );
 
         volver.setText("Volver");
+        volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -564,6 +568,14 @@ public class VentanaMenu extends javax.swing.JFrame {
     private void agregarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAlimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_agregarAlimentoActionPerformed
+
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
+          
+        dispose();
+      this.previo.setVisible(true);
+    
+        
+    }//GEN-LAST:event_volverActionPerformed
 
     /**
      * @param args the command line arguments
