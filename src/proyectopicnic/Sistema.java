@@ -36,10 +36,10 @@ public class Sistema {
         Controlador c = new Controlador(persistencia);
         
          VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(c);
-       // ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       /* ventanaPrincipal.setResizable(false);
+       ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventanaPrincipal.setResizable(false);
         ventanaPrincipal.setLocationRelativeTo(null);
-        ventanaPrincipal.setVisible(true);*/
+        ventanaPrincipal.setVisible(true);
 
     }
     
