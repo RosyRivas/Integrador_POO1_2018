@@ -11,15 +11,14 @@ import controlador.Controlador;
  *
  * @author Rosi-PC
  */
-public class VentanaPrincipal extends javax.swing.JPanel {
-           private final Controlador controlador;
+public class VentanaPrincipal extends javax.swing.JFrame {
+         private final Controlador controlador;
     /**
-     * Creates new form VentanaPrincipal
+     * Creates new form VentanaCliente
      * @param c
      */
-    
     public VentanaPrincipal(Controlador c) {
-         this.controlador = c;
+        this.controlador = c;
         initComponents();
     }
 
@@ -32,67 +31,57 @@ public class VentanaPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar1 = new javax.swing.JToolBar();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
-        jFrame1 = new javax.swing.JFrame();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
+        menu = new javax.swing.JButton();
+        cliente = new javax.swing.JButton();
+        picnic = new javax.swing.JButton();
+        deposito = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
 
-        jToolBar1.setRollover(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setViewportView(jTextPane1);
+        salir.setText("Salir");
 
-        jScrollPane2.setViewportView(jTextPane2);
+        menu.setText("Menu");
+        menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        cliente.setText("Cliente");
+        cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clienteActionPerformed(evt);
+            }
+        });
 
-        setBackground(new java.awt.Color(255, 204, 204));
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setForeground(new java.awt.Color(255, 204, 204));
-        setAutoscrolls(true);
+        picnic.setText("Picnic");
+        picnic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                picnicActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Menu");
-
-        jButton2.setText("Cliente");
-
-        jButton3.setText("Picnic");
-
-        jButton4.setText("Deposito");
+        deposito.setText("Deposito");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/IMG-20180724-WA0012.jpg"))); // NOI18N
         jLabel1.setText("Picnic La Comilona");
 
-        jButton5.setText("Salir");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(125, 125, 125)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(picnic, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(deposito, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                        .addComponent(salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,32 +89,58 @@ public class VentanaPrincipal extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(cliente)
+                .addGap(13, 13, 13)
+                .addComponent(picnic)
+                .addGap(11, 11, 11)
+                .addComponent(menu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(deposito)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addComponent(salir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void picnicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_picnicActionPerformed
+
+        VentanaPicnic vp= new VentanaPicnic(this.controlador, this);
+        this.setVisible(false);
+        vp.setLocationRelativeTo(null);
+        vp.setResizable(false);
+        vp.setVisible(true);
+    }//GEN-LAST:event_picnicActionPerformed
+   //cliente 
+    private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
+       VentanaCliente vc= new VentanaCliente(this.controlador, this);
+       this.setVisible(false);
+       vc.setLocationRelativeTo(null);
+       vc.setResizable(false);
+       vc.setVisible(true);
+    }//GEN-LAST:event_clienteActionPerformed
+    //menu
+    private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
+       VentanaMenu vc= new VentanaMenu(this.controlador, this);
+       this.setVisible(false);
+       vc.setLocationRelativeTo(null);
+       vc.setResizable(false);
+       vc.setVisible(true);
+    }//GEN-LAST:event_menuActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JFrame jFrame1;
+    private javax.swing.JButton cliente;
+    private javax.swing.JButton deposito;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JButton menu;
+    private javax.swing.JButton picnic;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }
