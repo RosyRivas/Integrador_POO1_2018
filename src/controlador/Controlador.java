@@ -41,7 +41,7 @@ public class Controlador {
 
     }
 
-   public void eliminarCliente(Cliente c) {
+    public void eliminarCliente(Cliente c) {
         if (c.getPic().isEmpty() && c.getDep().isEmpty()) {
             this.persistencia.iniciarTransaccion();
             this.persistencia.eliminar(c);
@@ -50,18 +50,29 @@ public class Controlador {
 
     }
 
-    public void editarCliente() {
+    public void editarCliente(Cliente c, String nombre, String apellido, String nroTel, String calle, String nrCalle, String localidad, String direc, Deposito dep, Picnic pic) {
+
+        this.persistencia.iniciarTransaccion();
+        c.setNombres(nombre.toUpperCase());
+        c.setApellido(apellido.toUpperCase());
+        c.setNumeroTelefono(nroTel.toUpperCase());
+        Direccion d = c.getDireccion();
+        d.setCalle(calle.toUpperCase());
+        d.setNumero(nrCalle.toUpperCase());
+        d.setLocalidad(localidad.toUpperCase());
+        c.setDireccion(d);  
+        this.persistencia.modificar(d);
+        this.persistencia.confirmarTransaccion();
 
     }
-    
-    public void agregarClientePicnic(Picnic p, Cliente c){
-      this.persistencia.iniciarTransaccion();
-      c.agregarPicnic(p);
-      this.persistencia.modificar(p);
-      this.persistencia.modificar(c);
-      this.persistencia.confirmarTransaccion();
-    
-    
+
+    public void agregarClientePicnic(Picnic p, Cliente c) {
+        this.persistencia.iniciarTransaccion();
+        c.agregarPicnic(p);
+        this.persistencia.modificar(p);
+        this.persistencia.modificar(c);
+        this.persistencia.confirmarTransaccion();
+
     }
 //  //   *********** Alimento *************   
 
@@ -76,9 +87,9 @@ public class Controlador {
 
     }
 
-    public void agregarAlimento( String nombre, String cantidad, Menu aMenu) {
+    public void agregarAlimento(String nombre, String cantidad, Menu aMenu) {
         this.persistencia.iniciarTransaccion();
-        Alimento a = new Alimento( nombre.toUpperCase(), cantidad , (Set<Menu>) aMenu);
+        Alimento a = new Alimento(nombre.toUpperCase(), cantidad, (Set<Menu>) aMenu);
         this.persistencia.insertar(a);
         this.persistencia.confirmarTransaccion();
 
@@ -102,20 +113,23 @@ public class Controlador {
         }
     }
 
-    public void editarAlimento() {
+    public void editarAlimento(Alimento a, String nombre, String cantidad) {
+        this.persistencia.iniciarTransaccion();
+        a.setNombre(nombre);
+        a.setCantidad(cantidad);
+        this.persistencia.modificar(a);
+        this.persistencia.confirmarTransaccion();
 
     }
-    
-    public void quitarAlimentoMenu(Alimento a,Menu m){
-        
+
+    public void quitarAlimentoMenu(Alimento a, Menu m) {
+
         this.persistencia.iniciarTransaccion();
         m.quitarAlimento(a);
         this.persistencia.modificar(m);
         this.persistencia.modificar(a);
         this.persistencia.confirmarTransaccion();
-        
-    
-    
+
     }
 
 //  ///   *************Suministro *******************       
@@ -129,7 +143,7 @@ public class Controlador {
 
     }
 
-    public void agregarSuministro(String descripcion, String  cantidad, Menu menu) {
+    public void agregarSuministro(String descripcion, String cantidad, Menu menu) {
         this.persistencia.iniciarTransaccion();
         Suministro s = new Suministro(descripcion.toUpperCase(), cantidad.toUpperCase(), (Set<Menu>) menu);
         this.persistencia.insertar(s);
@@ -154,18 +168,16 @@ public class Controlador {
         }
 
     }
-    public void quitarSuministroMenu(Menu m, Suministro sm){
+
+    public void quitarSuministroMenu(Menu m, Suministro sm) {
         this.persistencia.iniciarTransaccion();
         m.quitarSuministro(sm);
         this.persistencia.modificar(m);
         this.persistencia.modificar(sm);
         this.persistencia.confirmarTransaccion();
-        
-    
+
     }
-    
-    
-    
+
     public void editarSuministro() {
 
     }
@@ -185,6 +197,7 @@ public class Controlador {
     public void agregarPicnic(String lugar, String fecha, String hora, double precio, Cliente cli, Deposito de, Menu me) {
         this.persistencia.iniciarTransaccion();
         try {
+
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 
             Picnic p = new Picnic(lugar.toUpperCase(), formatoFecha.parse(fecha), hora, precio, cli, de, me);
@@ -211,6 +224,7 @@ public class Controlador {
     }
 
     public void editarPicnic(Picnic p, String lugar, String fecha, String hora, double precio, Cliente cli, Deposito de, Menu me) {
+        this.persistencia.iniciarTransaccion();
 
     }
 
@@ -241,40 +255,39 @@ public class Controlador {
         }
 
     }
-    public void quitarMenuPicnic(){}
-    
-    
+
+    public void quitarMenuPicnic() {
+    }
+
     public void editarMenu() {
 
     }
 
 //   ///// **************** Deposito  ********************
-    public void agregarDeposito(double monto, String fecha, boolean nro ,Picnic pic, Cliente cli) {
-        this.persistencia.iniciarTransaccion();        
-        try{
-        SimpleDateFormat formatoFecha = new SimpleDateFormat();
-        Deposito d = new Deposito(monto,formatoFecha.parse(fecha),nro,pic,cli);
-            
-        this.persistencia.insertar(d);
-        this.persistencia.confirmarTransaccion();
-    
-        }
-        catch(ParseException ex){
+    public void agregarDeposito(double monto, String fecha, boolean nro, Picnic pic, Cliente cli) {
+        this.persistencia.iniciarTransaccion();
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat();
+            Deposito d = new Deposito(monto, formatoFecha.parse(fecha), nro, pic, cli);
+
+            this.persistencia.insertar(d);
+            this.persistencia.confirmarTransaccion();
+
+        } catch (ParseException ex) {
             this.persistencia.descartarTransaccion();
             System.out.println("Error al capturar fecha");
-        
+
         }
     }
 
     public void modificarDeposito() {
 
     }
-    
-   
 
-    public void eliminarDeposito(){}
+    public void eliminarDeposito() {
+    }
 
-    public void quitardepoosito(){}
-
+    public void quitardepoosito() {
+    }
 
 }

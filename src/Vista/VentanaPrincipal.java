@@ -41,6 +41,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         menu.setText("Menu");
         menu.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +69,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         deposito.setText("Deposito");
+        deposito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/IMG-20180724-WA0012.jpg"))); // NOI18N
 
@@ -129,6 +139,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        vc.setResizable(false);
        vc.setVisible(true);
     }//GEN-LAST:event_menuActionPerformed
+
+    private void depositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositoActionPerformed
+        VentanaDeposito vp= new VentanaDeposito(this.controlador, this);
+       this.setVisible(false);
+       vp.setLocationRelativeTo(null);
+       vp.setResizable(false);
+       vp.setVisible(true);
+    }//GEN-LAST:event_depositoActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+         System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
