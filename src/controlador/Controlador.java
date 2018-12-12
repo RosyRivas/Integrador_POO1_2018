@@ -188,8 +188,12 @@ public class Controlador {
 
     }
 
-    public void editarSuministro() {
-
+    public void editarSuministro(Suministro s, String descripcion, String cantidad) {
+             this.persistencia.iniciarTransaccion();
+             s.setDescripcion(descripcion);
+             s.setcSuministro(cantidad);
+        this.persistencia.modificar(s);
+        this.persistencia.confirmarTransaccion();
     }
 ///////   ****************  Picnic  **************************************
 

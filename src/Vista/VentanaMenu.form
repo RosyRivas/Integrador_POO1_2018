@@ -283,11 +283,11 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jButtonNuevoAlimento1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonNuevoSuministro" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonGuardarAlimento1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonGuardarSuministro" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButtonEliminarAlimento1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonEliminarSuministro" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
@@ -314,9 +314,9 @@
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButtonNuevoAlimento1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonGuardarAlimento1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonEliminarAlimento1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonNuevoSuministro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonGuardarSuministro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonEliminarSuministro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
@@ -348,25 +348,28 @@
         </Component>
         <Component class="javax.swing.JTextField" name="textCantidadSuministro">
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonNuevoAlimento1">
+        <Component class="javax.swing.JButton" name="jButtonNuevoSuministro">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nuevo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNuevoAlimento1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNuevoSuministroActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonGuardarAlimento1">
+        <Component class="javax.swing.JButton" name="jButtonGuardarSuministro">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarSuministroActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonEliminarAlimento1">
+        <Component class="javax.swing.JButton" name="jButtonEliminarSuministro">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminarAlimento1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminarSuministroActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

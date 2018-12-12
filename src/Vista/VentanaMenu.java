@@ -54,9 +54,9 @@ public class VentanaMenu extends javax.swing.JFrame {
         textNombreSumi = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         textCantidadSuministro = new javax.swing.JTextField();
-        jButtonNuevoAlimento1 = new javax.swing.JButton();
-        jButtonGuardarAlimento1 = new javax.swing.JButton();
-        jButtonEliminarAlimento1 = new javax.swing.JButton();
+        jButtonNuevoSuministro = new javax.swing.JButton();
+        jButtonGuardarSuministro = new javax.swing.JButton();
+        jButtonEliminarSuministro = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -172,19 +172,24 @@ public class VentanaMenu extends javax.swing.JFrame {
 
         jLabel17.setText("Cantidad");
 
-        jButtonNuevoAlimento1.setText("Nuevo");
-        jButtonNuevoAlimento1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNuevoSuministro.setText("Nuevo");
+        jButtonNuevoSuministro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNuevoAlimento1ActionPerformed(evt);
+                jButtonNuevoSuministroActionPerformed(evt);
             }
         });
 
-        jButtonGuardarAlimento1.setText("Guardar");
-
-        jButtonEliminarAlimento1.setText("Eliminar");
-        jButtonEliminarAlimento1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGuardarSuministro.setText("Guardar");
+        jButtonGuardarSuministro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEliminarAlimento1ActionPerformed(evt);
+                jButtonGuardarSuministroActionPerformed(evt);
+            }
+        });
+
+        jButtonEliminarSuministro.setText("Eliminar");
+        jButtonEliminarSuministro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarSuministroActionPerformed(evt);
             }
         });
 
@@ -207,11 +212,11 @@ public class VentanaMenu extends javax.swing.JFrame {
                             .addComponent(textNombreSumi, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                             .addComponent(textCantidadSuministro)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButtonNuevoAlimento1)
+                        .addComponent(jButtonNuevoSuministro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonGuardarAlimento1)
+                        .addComponent(jButtonGuardarSuministro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonEliminarAlimento1)))
+                        .addComponent(jButtonEliminarSuministro)))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -231,9 +236,9 @@ public class VentanaMenu extends javax.swing.JFrame {
                     .addComponent(textCantidadSuministro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonNuevoAlimento1)
-                    .addComponent(jButtonGuardarAlimento1)
-                    .addComponent(jButtonEliminarAlimento1))
+                    .addComponent(jButtonNuevoSuministro)
+                    .addComponent(jButtonGuardarSuministro)
+                    .addComponent(jButtonEliminarSuministro))
                 .addGap(28, 28, 28))
         );
 
@@ -564,9 +569,9 @@ public class VentanaMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 //eliminar alimento 
-    private void jButtonEliminarAlimento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAlimento1ActionPerformed
+    private void jButtonEliminarSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarSuministroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEliminarAlimento1ActionPerformed
+    }//GEN-LAST:event_jButtonEliminarSuministroActionPerformed
 
 
 // eliminiar alimento 
@@ -620,9 +625,21 @@ public class VentanaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_agregarSuministroActionPerformed
 // nuevo suministro
-    private void jButtonNuevoAlimento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoAlimento1ActionPerformed
+    private void jButtonNuevoSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoSuministroActionPerformed
         limpiar ();
-    }//GEN-LAST:event_jButtonNuevoAlimento1ActionPerformed
+    }//GEN-LAST:event_jButtonNuevoSuministroActionPerformed
+// guardar suministro
+    private void jButtonGuardarSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarSuministroActionPerformed
+         if (!this.listaSuministro.isSelectionEmpty()){
+            Suministro s = (Suministro ) this.listaSuministro.getSelectedValue();
+            this.controlador.editarSuministro(s,this.textNombreSumi.getText(),this.textCantidadSuministro.getText() );
+        }else{
+            this.controlador.agregarAlimento(this.descripcionAlimento.getText(),this.CantidadAlimento.getText());
+        
+        }
+         limpiar();
+         this.jButtonGuardarSuministro.setEnabled(true);
+    }//GEN-LAST:event_jButtonGuardarSuministroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -639,13 +656,13 @@ public class VentanaMenu extends javax.swing.JFrame {
     private javax.swing.JComboBox comboSuministro;
     private javax.swing.JTextField descripcionAlimento;
     private javax.swing.JButton jButtonEliminarAlimento;
-    private javax.swing.JButton jButtonEliminarAlimento1;
     private javax.swing.JButton jButtonEliminarMenu;
+    private javax.swing.JButton jButtonEliminarSuministro;
     private javax.swing.JButton jButtonGuardarAlimento;
-    private javax.swing.JButton jButtonGuardarAlimento1;
     private javax.swing.JButton jButtonGuardarMenu;
+    private javax.swing.JButton jButtonGuardarSuministro;
     private javax.swing.JButton jButtonNuevoAlimento;
-    private javax.swing.JButton jButtonNuevoAlimento1;
+    private javax.swing.JButton jButtonNuevoSuministro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
