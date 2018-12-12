@@ -47,7 +47,7 @@ public class Alimento implements Serializable  {
        
        }
  
-    public Alimento( String nombre, String cantidad, Set<Menu> menu) {
+    public Alimento( String nombre, String cantidad) {
     
         this.nombre = nombre;
         this.cantidad = cantidad;

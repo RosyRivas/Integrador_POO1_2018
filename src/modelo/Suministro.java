@@ -43,7 +43,7 @@ public class Suministro implements Serializable  {
        this.menu= new HashSet();
     }
 
-    public Suministro(String descripcion, String cSuministro, Set<Menu> menu) {
+    public Suministro(String descripcion, String cSuministro) {
        
         this.descripcion = descripcion;
         this.cSuministro = cSuministro;

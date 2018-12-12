@@ -54,7 +54,7 @@ public class Menu implements Serializable {
         this.pic = new ArrayList();
     }
 
-    public Menu(String descripcion, Double precio, Suministro suministro , Picnic pic, Menu aMenu) {
+    public Menu(String descripcion, Double precio) {
         this.descripcion = descripcion;
         this.precio = precio;
         this.suministro  = new HashSet();

@@ -54,7 +54,7 @@ public class Picnic {
         this.dep= new ArrayList();
     }
 
-    public Picnic( String lugar, Date fecha, String hora, double precio, Cliente cli, Deposito dep, Menu me) {
+    public Picnic( String lugar, Date fecha, String hora, double precio, Cliente cli, Menu me) {
         
         this.lugar = lugar;
         this.fecha = new Date();

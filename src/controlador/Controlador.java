@@ -93,9 +93,9 @@ public class Controlador {
 
     }
 
-    public void agregarAlimento(String nombre, String cantidad, Menu aMenu) {
+    public void agregarAlimento(String nombre, String cantidad) {
         this.persistencia.iniciarTransaccion();
-        Alimento a = new Alimento(nombre.toUpperCase(), cantidad, (Set<Menu>) aMenu);
+        Alimento a = new Alimento(nombre.toUpperCase(), cantidad);
         this.persistencia.insertar(a);
         this.persistencia.confirmarTransaccion();
 
@@ -151,9 +151,9 @@ public class Controlador {
 
     }
 
-    public void agregarSuministro(String descripcion, String cantidad, Menu menu) {
+    public void agregarSuministro(String descripcion, String cantidad) {
         this.persistencia.iniciarTransaccion();
-        Suministro s = new Suministro(descripcion.toUpperCase(), cantidad.toUpperCase(), (Set<Menu>) menu);
+        Suministro s = new Suministro(descripcion.toUpperCase(), cantidad.toUpperCase());
         this.persistencia.insertar(s);
         this.persistencia.confirmarTransaccion();
     }
@@ -204,14 +204,14 @@ public class Controlador {
 
     }
 
-    public void agregarPicnic(String lugar, String fecha, String hora, double precio, Cliente cli, Deposito de, Menu me) {
+    public void agregarPicnic(String lugar, String fecha, String hora, double precio, Cliente cli, Menu me) {
         this.persistencia.iniciarTransaccion();
         try {
 
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 
-            Picnic p = new Picnic(lugar.toUpperCase(), formatoFecha.parse(fecha), hora, precio, cli, de, me);
-            if ((cli != null) && (de != null)) {
+            Picnic p = new Picnic(lugar.toUpperCase(), formatoFecha.parse(fecha), hora, precio, cli, me);
+            if ((cli != null) ) {
                 cli.agregarPicnic(p);
                 this.persistencia.modificar(cli);
 
