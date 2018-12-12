@@ -30,7 +30,7 @@ public class Cliente implements Serializable {
     @Id
     @SequenceGenerator(name="sec_Cliente", initialValue=1, allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sec_cliente")
-    private int dni;
+    private String dni;
     private String nombres;
     private String apellido;
     private String numeroTelefono;
@@ -50,8 +50,8 @@ public class Cliente implements Serializable {
         this.pic=new ArrayList();
     }
 
-    public Cliente( String nombres, String apellido, String numeroTelefono, String calle ,String  numero,String localidad,Direccion direccion, Deposito dep , Picnic pic) {
-    
+    public Cliente( String dni ,String nombres, String apellido, String numeroTelefono, String calle ,String  numero,String localidad) {
+        this.dni= dni;
         this.nombres = nombres;
         this.apellido = apellido;
         this.numeroTelefono = numeroTelefono;
@@ -95,16 +95,18 @@ public class Cliente implements Serializable {
         this.dep = dep;
     }
 
-    
-  
-
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
+
+    
+  
+
+   
 
     public String getNombres() {
         return nombres;

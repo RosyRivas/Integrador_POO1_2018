@@ -35,24 +35,30 @@ public class Controlador {
         return this.persistencia.buscar(Cliente.class, dni);
     }
 
-    public void agregarCliente(String nombres, String apellidos, String nroTelefono, Direccion direccion, Deposito dep, Picnic pic) {
-        this.persistencia.iniciarTransaccion();
-        //Cliente c= new Cliente(nombres.toUpperCase(),apellidos.toUpperCase(),nroTelefono.toUpperCase(),direccion,dep, pic );
-
+    public void agregarCliente( String dni,String nombres, String apellidos, String nroTelefono, String calle ,String  numero,String localidad) {
+        this.persistencia.iniciarTransaccion();      
+       Cliente c= new Cliente(dni.toUpperCase(), nombres.toUpperCase(),apellidos.toUpperCase(),nroTelefono.toUpperCase(),calle.toUpperCase(),numero.toUpperCase(),localidad.toUpperCase());
+       this.persistencia.insertar(c);
+       this.persistencia.confirmarTransaccion();
     }
 
-    public void eliminarCliente(Cliente c) {
+    public int eliminarCliente(Cliente c) {
         if (c.getPic().isEmpty() && c.getDep().isEmpty()) {
             this.persistencia.iniciarTransaccion();
             this.persistencia.eliminar(c);
             this.persistencia.confirmarTransaccion();
+            return 0;
+        }else{
+            return 1;
         }
+        
 
     }
 
-    public void editarCliente(Cliente c, String nombre, String apellido, String nroTel, String calle, String nrCalle, String localidad, String direc, Deposito dep, Picnic pic) {
+    public void editarCliente(Cliente c,String dni, String nombre, String apellido, String nroTel, String calle, String nrCalle, String localidad) {
 
         this.persistencia.iniciarTransaccion();
+        c.setDni(dni.toUpperCase());
         c.setNombres(nombre.toUpperCase());
         c.setApellido(apellido.toUpperCase());
         c.setNumeroTelefono(nroTel.toUpperCase());
@@ -95,7 +101,7 @@ public class Controlador {
 
     }
 
-    public void agregarAlimento(Menu m, Alimento a) {
+    public void agregarAlimentoMenu(Menu m, Alimento a) {
         this.persistencia.iniciarTransaccion();
         m.agregarAlimentoMenu(a);
         this.persistencia.modificar(a);
@@ -104,12 +110,14 @@ public class Controlador {
 
     }
 
-    public void eliminarAlimento(Alimento a) {
+    public int eliminarAlimento(Alimento a) {
         if (a.getMenu().isEmpty()) {
             this.persistencia.iniciarTransaccion();
             this.persistencia.eliminar(a);
             this.persistencia.confirmarTransaccion();
-
+            return 0;
+        }else{
+            return 1;
         }
     }
 
@@ -159,12 +167,14 @@ public class Controlador {
 
     }
 
-    public void eliminarSuministro(Suministro s) {
+    public int eliminarSuministro(Suministro s) {
         if (s.getcSuministro().isEmpty()) {
             this.persistencia.iniciarTransaccion();
             this.persistencia.eliminar(s);
             this.persistencia.confirmarTransaccion();
-
+            return 0;
+        }else {
+            return 1;
         }
 
     }
@@ -215,11 +225,15 @@ public class Controlador {
 
     }
 
-    public void eliminarPicnic(Picnic p) {
+    public int eliminarPicnic(Picnic p) {
         if (p.getDep().isEmpty()) {
             this.persistencia.iniciarTransaccion();
             this.persistencia.eliminar(p);
             this.persistencia.confirmarTransaccion();
+            return 0;
+        }else{
+            return 1;
+        
         }
     }
 
@@ -284,7 +298,8 @@ public class Controlador {
 
     }
 
-    public void eliminarDeposito() {
+    public int eliminarDeposito() {
+        return 0;
     }
 
     public void quitardepoosito() {

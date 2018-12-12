@@ -7,6 +7,8 @@ package Vista;
 
 import controlador.Controlador;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import modelo.*;
 
 /**
  *
@@ -37,14 +39,14 @@ public class VentanaMenu extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList<>();
+        listaSuministro = new javax.swing.JList();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaMenu = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList<>();
+        listaAliemto = new javax.swing.JList();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -59,9 +61,9 @@ public class VentanaMenu extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        descripcionAlimento = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        CantidadAlimento = new javax.swing.JTextField();
         jButtonNuevoAlimento = new javax.swing.JButton();
         jButtonGuardarAlimento = new javax.swing.JButton();
         jButtonEliminarAlimento = new javax.swing.JButton();
@@ -77,15 +79,15 @@ public class VentanaMenu extends javax.swing.JFrame {
         jButtonEliminarMenu = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        listaAlimentoMenu = new javax.swing.JList();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboAlimento = new javax.swing.JComboBox();
         agregarAlimento = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
+        listaSuministroMenu = new javax.swing.JList();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboSuministro = new javax.swing.JComboBox();
         agregarSuministro = new javax.swing.JButton();
         volver = new javax.swing.JButton();
 
@@ -93,12 +95,12 @@ public class VentanaMenu extends javax.swing.JFrame {
 
         jLabel18.setText("Lista Suministro");
 
-        jList5.setModel(new javax.swing.AbstractListModel<String>() {
+        listaSuministro.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane5.setViewportView(jList5);
+        jScrollPane5.setViewportView(listaSuministro);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -120,23 +122,25 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listaMenu.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        listaMenu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(listaMenu);
 
         jLabel1.setText("Lista Menu");
 
         jLabel2.setText("Lista Alimento ");
 
-        jList4.setModel(new javax.swing.AbstractListModel<String>() {
+        listaAliemto.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(jList4);
+        listaAliemto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane4.setViewportView(listaAliemto);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -173,6 +177,11 @@ public class VentanaMenu extends javax.swing.JFrame {
         jTextField6.setText("jTextField2");
 
         jButtonNuevoAlimento1.setText("Nuevo");
+        jButtonNuevoAlimento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuevoAlimento1ActionPerformed(evt);
+            }
+        });
 
         jButtonGuardarAlimento1.setText("Guardar");
 
@@ -238,15 +247,25 @@ public class VentanaMenu extends javax.swing.JFrame {
 
         jLabel12.setText("Descripcion");
 
-        jTextField3.setText("jTextField1");
+        descripcionAlimento.setText("jTextField1");
 
         jLabel13.setText("Cantidad");
 
-        jTextField4.setText("jTextField2");
+        CantidadAlimento.setText("jTextField2");
 
         jButtonNuevoAlimento.setText("Nuevo");
+        jButtonNuevoAlimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuevoAlimentoActionPerformed(evt);
+            }
+        });
 
         jButtonGuardarAlimento.setText("Guardar");
+        jButtonGuardarAlimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarAlimentoActionPerformed(evt);
+            }
+        });
 
         jButtonEliminarAlimento.setText("Eliminar");
         jButtonEliminarAlimento.addActionListener(new java.awt.event.ActionListener() {
@@ -280,8 +299,8 @@ public class VentanaMenu extends javax.swing.JFrame {
                                     .addComponent(jLabel12))
                                 .addGap(16, 16, 16)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                    .addComponent(jTextField4))))))
+                                    .addComponent(descripcionAlimento, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                                    .addComponent(CantidadAlimento))))))
                 .addGap(0, 29, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -294,11 +313,11 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(descripcionAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CantidadAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNuevoAlimento)
@@ -379,16 +398,17 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        listaAlimentoMenu.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList2);
+        listaAlimentoMenu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(listaAlimentoMenu);
 
         jLabel8.setText("Alimento");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboAlimento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         agregarAlimento.setText("Agregar Alimento");
         agregarAlimento.addActionListener(new java.awt.event.ActionListener() {
@@ -408,7 +428,7 @@ public class VentanaMenu extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(agregarAlimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -424,24 +444,30 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(agregarAlimento)))
                 .addContainerGap())
         );
 
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
+        listaSuministroMenu.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList3);
+        listaSuministroMenu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane3.setViewportView(listaSuministroMenu);
 
         jLabel19.setText("Suministro");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboSuministro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         agregarSuministro.setText("Agregar Suministro ");
+        agregarSuministro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarSuministroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -454,7 +480,7 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboSuministro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(agregarSuministro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel7Layout.setVerticalGroup(
@@ -465,7 +491,7 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboSuministro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(agregarSuministro))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -547,19 +573,31 @@ public class VentanaMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//eliminar alimento 
     private void jButtonEliminarAlimento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAlimento1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEliminarAlimento1ActionPerformed
 
-    private void jButtonEliminarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAlimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEliminarAlimentoActionPerformed
 
+// eliminiar alimento 
+    private void jButtonEliminarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAlimentoActionPerformed
+        Alimento a= (Alimento) this.listaAliemto.getSelectedValue();
+        if (a != null ){
+            int i= this.controlador.eliminarAlimento(a);
+            if (i!=0){
+                 JOptionPane.showMessageDialog(null, "No es posible eliminar el empleado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            limpiar();
+        }
+    }//GEN-LAST:event_jButtonEliminarAlimentoActionPerformed
+//eliminar menu
     private void jButtonEliminarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarMenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEliminarMenuActionPerformed
 
+
+
+//agregar alimento al picnic 
     private void agregarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAlimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_agregarAlimentoActionPerformed
@@ -571,15 +609,45 @@ public class VentanaMenu extends javax.swing.JFrame {
     
         
     }//GEN-LAST:event_volverActionPerformed
+// nuevo alimento 
+    private void jButtonNuevoAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoAlimentoActionPerformed
+        limpiar ();
+    }//GEN-LAST:event_jButtonNuevoAlimentoActionPerformed
+// guardar alimento 
+    private void jButtonGuardarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarAlimentoActionPerformed
+        if (!this.listaAliemto.isSelectionEmpty()){
+            Alimento a = (Alimento ) this.listaAliemto.getSelectedValue();
+            this.controlador.editarAlimento(a,this.descripcionAlimento.getText(),this.CantidadAlimento.getText() );
+        }else{
+            this.controlador.agregarAlimento(this.descripcionAlimento.getText(),this.CantidadAlimento.getText(),(Menu) this.comboAlimento.getSelectedItem());
+        
+        }
+        
+        
+    }//GEN-LAST:event_jButtonGuardarAlimentoActionPerformed
+//agregar suministro al menu
+    private void agregarSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarSuministroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarSuministroActionPerformed
+// nuevo suministro
+    private void jButtonNuevoAlimento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoAlimento1ActionPerformed
+        limpiar ();
+    }//GEN-LAST:event_jButtonNuevoAlimento1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    private void limpiar(){
     
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CantidadAlimento;
     private javax.swing.JButton agregarAlimento;
     private javax.swing.JButton agregarSuministro;
+    private javax.swing.JComboBox comboAlimento;
+    private javax.swing.JComboBox comboSuministro;
+    private javax.swing.JTextField descripcionAlimento;
     private javax.swing.JButton jButtonEliminarAlimento;
     private javax.swing.JButton jButtonEliminarAlimento1;
     private javax.swing.JButton jButtonEliminarMenu;
@@ -588,8 +656,6 @@ public class VentanaMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonGuardarMenu;
     private javax.swing.JButton jButtonNuevoAlimento;
     private javax.swing.JButton jButtonNuevoAlimento1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -607,11 +673,6 @@ public class VentanaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
-    private javax.swing.JList<String> jList4;
-    private javax.swing.JList<String> jList5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -626,10 +687,13 @@ public class VentanaMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JList listaAliemto;
+    private javax.swing.JList listaAlimentoMenu;
+    private javax.swing.JList listaMenu;
+    private javax.swing.JList listaSuministro;
+    private javax.swing.JList listaSuministroMenu;
     private javax.swing.JButton nuevoMenu;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
