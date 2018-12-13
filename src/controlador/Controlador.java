@@ -254,7 +254,7 @@ public class Controlador {
         return this.persistencia.buscarTodosOrdenadosPor(Menu.class, Menu_.descripcion);
     }
 
-    public Menu listarMenu(Long idMenu) {
+    public Menu buscarMenu(Long idMenu) {
 
         return this.persistencia.buscar(Menu.class, idMenu);
 
@@ -279,12 +279,22 @@ public class Controlador {
         return 1;
 
     }
+    public void agregarMenu(String descripcion, String precio){
+            this.persistencia.iniciarTransaccion();
+            Menu m= new Menu(descripcion.toUpperCase(),precio.toUpperCase());
+            this.persistencia.insertar(m);
+            this.persistencia.confirmarTransaccion();
+    }
 
     public void quitarMenuPicnic() {
     }
 
-    public void editarMenu() {
-
+    public void editarMenu(Menu m, String descripcion , String precio) {
+            this.persistencia.iniciarTransaccion();
+            m.setDescripcion(descripcion.toUpperCase());
+            m.setPrecio(precio.toUpperCase());
+            this.persistencia.modificar(m);
+            this.persistencia.confirmarTransaccion();
     }
 
 //   ///// **************** Deposito  ********************

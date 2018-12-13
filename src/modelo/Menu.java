@@ -34,7 +34,7 @@ public class Menu implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sec_menu")
     private Long idMenu;
     private String descripcion;
-    private Double precio;
+    private String precio;
 
     
 
@@ -54,7 +54,7 @@ public class Menu implements Serializable {
         this.pic = new ArrayList();
     }
 
-    public Menu(String descripcion, Double precio) {
+    public Menu(String descripcion, String precio) {
         this.descripcion = descripcion;
         this.precio = precio;
         this.suministro  = new HashSet();
@@ -79,11 +79,11 @@ public class Menu implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Double getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 

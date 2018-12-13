@@ -49,7 +49,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         listaAliemto = new javax.swing.JList();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        ideSuministro = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         textNombreSumi = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -59,11 +59,11 @@ public class VentanaMenu extends javax.swing.JFrame {
         jButtonEliminarSuministro = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        ideAlimento = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        descripcionAlimento = new javax.swing.JTextField();
+        texDescripcionAliento = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        CantidadAlimento = new javax.swing.JTextField();
+        textoCantidadAlimento = new javax.swing.JTextField();
         jButtonNuevoAlimento = new javax.swing.JButton();
         jButtonGuardarAlimento = new javax.swing.JButton();
         jButtonEliminarAlimento = new javax.swing.JButton();
@@ -109,24 +109,22 @@ public class VentanaMenu extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        listaMenu.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         listaMenu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(listaMenu);
 
@@ -166,7 +164,7 @@ public class VentanaMenu extends javax.swing.JFrame {
 
         jLabel14.setText("IdMenu");
 
-        jLabel15.setText("Id");
+        ideSuministro.setText("Id");
 
         jLabel16.setText("Nombre");
 
@@ -202,7 +200,7 @@ public class VentanaMenu extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addGap(52, 52, 52)
-                        .addComponent(jLabel15))
+                        .addComponent(ideSuministro))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
@@ -225,7 +223,7 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel15))
+                    .addComponent(ideSuministro))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -242,15 +240,15 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        jLabel10.setText("IdMenu");
+        jLabel10.setText("IdAlimento");
 
-        jLabel11.setText("Id");
+        ideAlimento.setText("Id");
 
         jLabel12.setText("Descripcion");
 
         jLabel13.setText("Cantidad");
 
-        CantidadAlimento.setText("      ");
+        textoCantidadAlimento.setText("      ");
 
         jButtonNuevoAlimento.setText("Nuevo");
         jButtonNuevoAlimento.addActionListener(new java.awt.event.ActionListener() {
@@ -291,15 +289,15 @@ public class VentanaMenu extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addGap(42, 42, 42)
-                                .addComponent(jLabel11))
+                                .addComponent(ideAlimento))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13)
                                     .addComponent(jLabel12))
                                 .addGap(16, 16, 16)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(descripcionAlimento, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                    .addComponent(CantidadAlimento))))))
+                                    .addComponent(texDescripcionAliento, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                                    .addComponent(textoCantidadAlimento))))))
                 .addGap(0, 29, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -308,15 +306,15 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel11))
+                    .addComponent(ideAlimento))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(descripcionAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(texDescripcionAliento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(CantidadAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoCantidadAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNuevoAlimento)
@@ -336,6 +334,11 @@ public class VentanaMenu extends javax.swing.JFrame {
         nuevoMenu.setText("Nuevo");
 
         jButtonGuardarMenu.setText("Guardar");
+        jButtonGuardarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarMenuActionPerformed(evt);
+            }
+        });
 
         jButtonEliminarMenu.setText("Eliminar");
         jButtonEliminarMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -509,18 +512,21 @@ public class VentanaMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addGap(0, 84, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -542,26 +548,24 @@ public class VentanaMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(volver)
                 .addGap(22, 22, 22))
         );
@@ -612,9 +616,9 @@ public class VentanaMenu extends javax.swing.JFrame {
     private void jButtonGuardarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarAlimentoActionPerformed
         if (!this.listaAliemto.isSelectionEmpty()){
             Alimento a = (Alimento ) this.listaAliemto.getSelectedValue();
-            this.controlador.editarAlimento(a,this.descripcionAlimento.getText(),this.CantidadAlimento.getText() );
+            this.controlador.editarAlimento(a,this.texDescripcionAliento.getText(),this.textoCantidadAlimento.getText() );
         }else{
-            this.controlador.agregarAlimento(this.descripcionAlimento.getText(),this.CantidadAlimento.getText());
+            this.controlador.agregarAlimento(this.texDescripcionAliento.getText(),this.textoCantidadAlimento.getText());
         
         }
         
@@ -634,27 +638,50 @@ public class VentanaMenu extends javax.swing.JFrame {
             Suministro s = (Suministro ) this.listaSuministro.getSelectedValue();
             this.controlador.editarSuministro(s,this.textNombreSumi.getText(),this.textCantidadSuministro.getText() );
         }else{
-            this.controlador.agregarAlimento(this.descripcionAlimento.getText(),this.CantidadAlimento.getText());
+            this.controlador.agregarAlimento(this.texDescripcionAliento.getText(),this.textoCantidadAlimento.getText());
         
         }
          limpiar();
          this.jButtonGuardarSuministro.setEnabled(true);
     }//GEN-LAST:event_jButtonGuardarSuministroActionPerformed
 
+    private void jButtonGuardarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarMenuActionPerformed
+        if (!this.listaMenu.isSelectionEmpty()){
+            Menu m= (Menu) this.listaMenu.getSelectedValue();
+            this.controlador.editarMenu(m, this.textDescripcionMenu.getText(),this.textPrecioMenu.getText());
+        }else {
+            this.controlador.agregarMenu(this.textDescripcionMenu.getText(), this.textPrecioMenu.getText());
+        }
+        limpiar();
+    }//GEN-LAST:event_jButtonGuardarMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
     private void limpiar(){
+        //menu
+        this.textDescripcionMenu.setText("");
+        this.textPrecioMenu.setText("");
+        //suministro
+        this.textNombreSumi.setText("");
+        this.textCantidadSuministro.setText("");
+        //alimento
+        this.texDescripcionAliento.setText("");
+        this.textoCantidadAlimento.setText("");
+        
+        this.listaMenu.setListData(this.controlador.listarMenu().toArray());
+    }
+    private void limpiarMenu(){
+    
     
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CantidadAlimento;
     private javax.swing.JButton agregarAlimento;
     private javax.swing.JButton agregarSuministro;
     private javax.swing.JComboBox comboAlimento;
     private javax.swing.JComboBox comboSuministro;
-    private javax.swing.JTextField descripcionAlimento;
+    private javax.swing.JLabel ideAlimento;
+    private javax.swing.JLabel ideSuministro;
     private javax.swing.JButton jButtonEliminarAlimento;
     private javax.swing.JButton jButtonEliminarMenu;
     private javax.swing.JButton jButtonEliminarSuministro;
@@ -665,11 +692,9 @@ public class VentanaMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNuevoAlimento1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -698,10 +723,12 @@ public class VentanaMenu extends javax.swing.JFrame {
     private javax.swing.JList listaSuministro;
     private javax.swing.JList listaSuministroMenu;
     private javax.swing.JButton nuevoMenu;
+    private javax.swing.JTextField texDescripcionAliento;
     private javax.swing.JTextField textCantidadSuministro;
     private javax.swing.JTextField textDescripcionMenu;
     private javax.swing.JTextField textNombreSumi;
     private javax.swing.JTextField textPrecioMenu;
+    private javax.swing.JTextField textoCantidadAlimento;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
