@@ -47,7 +47,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         jListPicnic = new javax.swing.JList();
         jLabel9 = new javax.swing.JLabel();
         jBAgregarPicnic = new javax.swing.JButton();
-        jComPicnic = new javax.swing.JComboBox<>();
+        jComPicnic = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListCliente = new javax.swing.JList();
         jLabel7 = new javax.swing.JLabel();
@@ -75,7 +75,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         jListDeposito = new javax.swing.JList();
         jLabel11 = new javax.swing.JLabel();
         jBAgregarDeposito = new javax.swing.JButton();
-        jComDeposito = new javax.swing.JComboBox<>();
+        jComDeposito = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -96,7 +96,7 @@ public class VentanaCliente extends javax.swing.JFrame {
             }
         });
 
-        jComPicnic.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComPicnic.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout PanelLPicnicLayout = new javax.swing.GroupLayout(PanelLPicnic);
         PanelLPicnic.setLayout(PanelLPicnicLayout);
@@ -291,7 +291,7 @@ public class VentanaCliente extends javax.swing.JFrame {
             }
         });
 
-        jComDeposito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComDeposito.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout PanelLPicnic1Layout = new javax.swing.GroupLayout(PanelLPicnic1);
         PanelLPicnic1.setLayout(PanelLPicnic1Layout);
@@ -313,17 +313,15 @@ public class VentanaCliente extends javax.swing.JFrame {
         PanelLPicnic1Layout.setVerticalGroup(
             PanelLPicnic1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLPicnic1Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelLPicnic1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PanelLPicnic1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelLPicnic1Layout.createSequentialGroup()
                         .addComponent(jComDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBAgregarDeposito)
-                        .addGap(53, 53, 53)))
-                .addContainerGap())
+                        .addGap(18, 18, 18)
+                        .addComponent(jBAgregarDeposito))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -339,9 +337,9 @@ public class VentanaCliente extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85)
+                        .addGap(18, 18, 18)
                         .addComponent(PanelLPicnic1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70))
+                        .addGap(137, 137, 137))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(PanelLPicnic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 567, Short.MAX_VALUE)
@@ -352,13 +350,13 @@ public class VentanaCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PanelLPicnic1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelLPicnic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(PanelLPicnic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,24 +450,28 @@ public class VentanaCliente extends javax.swing.JFrame {
  
   
 private void limpiar(){
-   /*this.jTextFieldDNI.setText("");
+   this.jTextFieldDNI.setText("");
     this.jTextNombre.setText("");
     this.jTextFieldApellido.setText("");
     this.jTextFieldTelef.setText("");
     this.jTextField5Calle.setText("");
     this.jTextFieldNroCalle.setText("");
+    this.jTextFielLocalidad.setText("");
 
-    DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel(this.controlador.listarPicnic().toArray());
-    this.jComPicnic.setModel(modeloCombo);
+    DefaultComboBoxModel modeloComboPic = new DefaultComboBoxModel(this.controlador.listarPicnic().toArray());
+    this.jComPicnic.setModel(modeloComboPic);
     
-    this.jListCliente.setListData((String[]) this.controlador.listarCliente().toArray());
+    DefaultComboBoxModel modeloComboDep = new DefaultComboBoxModel(this.controlador.listarDeposito().toArray());
+    this.jComDeposito.setModel(modeloComboDep);
+    
+    this.jListCliente.setListData( this.controlador.listarCliente().toArray());
     this.jListCliente.clearSelection();
     
     DefaultListModel modeloLista = new DefaultListModel();
     this.jListPicnic.setModel(modeloLista);
     this.jComPicnic.setSelectedIndex(-1);
 
-*/
+
 
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -480,8 +482,8 @@ private void limpiar(){
     private javax.swing.JButton botonGuardarCliente;
     private javax.swing.JButton jBAgregarDeposito;
     private javax.swing.JButton jBAgregarPicnic;
-    private javax.swing.JComboBox<String> jComDeposito;
-    private javax.swing.JComboBox<String> jComPicnic;
+    private javax.swing.JComboBox jComDeposito;
+    private javax.swing.JComboBox jComPicnic;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

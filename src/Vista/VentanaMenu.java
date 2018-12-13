@@ -54,7 +54,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         textNombreSumi = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         textCantidadSuministro = new javax.swing.JTextField();
-        jButtonNuevoSuministro = new javax.swing.JButton();
+        jButtonNuevoAlimento1 = new javax.swing.JButton();
         jButtonGuardarSuministro = new javax.swing.JButton();
         jButtonEliminarSuministro = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -172,10 +172,10 @@ public class VentanaMenu extends javax.swing.JFrame {
 
         jLabel17.setText("Cantidad");
 
-        jButtonNuevoSuministro.setText("Nuevo");
-        jButtonNuevoSuministro.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNuevoAlimento1.setText("Nuevo");
+        jButtonNuevoAlimento1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNuevoSuministroActionPerformed(evt);
+                jButtonNuevoAlimento1ActionPerformed(evt);
             }
         });
 
@@ -212,7 +212,7 @@ public class VentanaMenu extends javax.swing.JFrame {
                             .addComponent(textNombreSumi, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                             .addComponent(textCantidadSuministro)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButtonNuevoSuministro)
+                        .addComponent(jButtonNuevoAlimento1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonGuardarSuministro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -236,7 +236,7 @@ public class VentanaMenu extends javax.swing.JFrame {
                     .addComponent(textCantidadSuministro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonNuevoSuministro)
+                    .addComponent(jButtonNuevoAlimento1)
                     .addComponent(jButtonGuardarSuministro)
                     .addComponent(jButtonEliminarSuministro))
                 .addGap(28, 28, 28))
@@ -625,9 +625,9 @@ public class VentanaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_agregarSuministroActionPerformed
 // nuevo suministro
-    private void jButtonNuevoSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoSuministroActionPerformed
+    private void jButtonNuevoAlimento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoAlimento1ActionPerformed
         limpiar ();
-    }//GEN-LAST:event_jButtonNuevoSuministroActionPerformed
+    }//GEN-LAST:event_jButtonNuevoAlimento1ActionPerformed
 // guardar suministro
     private void jButtonGuardarSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarSuministroActionPerformed
          if (!this.listaSuministro.isSelectionEmpty()){
@@ -662,7 +662,7 @@ public class VentanaMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonGuardarMenu;
     private javax.swing.JButton jButtonGuardarSuministro;
     private javax.swing.JButton jButtonNuevoAlimento;
-    private javax.swing.JButton jButtonNuevoSuministro;
+    private javax.swing.JButton jButtonNuevoAlimento1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

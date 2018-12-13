@@ -243,6 +243,9 @@ public class Controlador {
 
     public void editarPicnic(Picnic p, String lugar, String fecha, String hora, double precio, Cliente cli, Deposito de, Menu me) {
         this.persistencia.iniciarTransaccion();
+        p.setLugar(lugar.toUpperCase());
+        p.setFecha(fecha);
+        
 
     }
 
@@ -266,11 +269,14 @@ public class Controlador {
 
     }
 
-    public void eliminarMenu(Menu m) {
+    public int eliminarMenu(Menu m) {
         if (m.getPic().isEmpty()) {
             this.persistencia.iniciarTransaccion();
-
+            this.persistencia.eliminar(m);
+            this.persistencia.confirmarTransaccion();
+            return 0;
         }
+        return 1;
 
     }
 
@@ -298,15 +304,16 @@ public class Controlador {
         }
     }
 
-    public void modificarDeposito() {
+    
 
-    }
-
-    public int eliminarDeposito() {
-        return 0;
-    }
+   
+        
+    
 
     public void quitardepoosito() {
     }
-
+    public List listarDeposito(){
+        return this.persistencia.buscarTodosOrdenadosPor(Deposito.class, Deposito_.fechaDep);
+    
+    }
 }
