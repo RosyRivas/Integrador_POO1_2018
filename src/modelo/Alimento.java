@@ -91,6 +91,11 @@ public class Alimento implements Serializable  {
   public void quitarMenu (Menu m){
       this.menu.remove(m);
   }
+
+    @Override
+    public String toString() {
+        return "Alimento{" + "idAlimento=" + idAlimento + ", nombre=" + nombre + ", cantidad=" + cantidad + ", menu=" + menu + '}';
+    }
    
     
 

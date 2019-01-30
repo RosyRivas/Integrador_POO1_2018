@@ -53,6 +53,11 @@ public class Direccion implements Serializable {
         this.localidad = localidad;
     }
 
+    @Override
+    public String toString() {
+        return "Direccion{" + "calle=" + calle + ", numero=" + numero + ", localidad=" + localidad + '}';
+    }
+
     
     
     

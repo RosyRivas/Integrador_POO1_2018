@@ -37,6 +37,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         picnic = new javax.swing.JButton();
         deposito = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        alimento = new javax.swing.JButton();
+        Suminstro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,16 +79,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/IMG-20180724-WA0012.jpg"))); // NOI18N
 
+        alimento.setText("Alimento");
+        alimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alimentoActionPerformed(evt);
+            }
+        });
+
+        Suminstro.setText("Suminstro");
+        Suminstro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SuminstroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
+                .addGap(136, 136, 136)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Suminstro, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alimento, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(picnic, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -98,18 +116,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cliente)
-                .addGap(13, 13, 13)
+                .addGap(18, 18, 18)
                 .addComponent(picnic)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deposito)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(deposito)
-                .addGap(18, 18, 18)
+                .addComponent(Suminstro)
+                .addGap(15, 15, 15)
+                .addComponent(alimento)
+                .addGap(27, 27, 27)
                 .addComponent(salir)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,7 +162,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        vc.setResizable(false);
        vc.setVisible(true);
     }//GEN-LAST:event_menuActionPerformed
-
+// deposito
     private void depositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositoActionPerformed
         VentanaDeposito vp= new VentanaDeposito(this.controlador, this);
        this.setVisible(false);
@@ -151,6 +174,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
          System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
+//alimento
+    private void alimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alimentoActionPerformed
+        VentanaAlimento  va= new VentanaAlimento(this.controlador, this);
+       this.setVisible(false);
+       va.setLocationRelativeTo(null);
+       va.setResizable(false);
+       va.setVisible(true);
+    }//GEN-LAST:event_alimentoActionPerformed
+//suministro
+    private void SuminstroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuminstroActionPerformed
+        VentanaSuministro vs= new VentanaSuministro(this.controlador, this);
+       this.setVisible(false);
+       vs.setLocationRelativeTo(null);
+       vs.setResizable(false);
+       vs.setVisible(true);
+    }//GEN-LAST:event_SuminstroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +198,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Suminstro;
+    private javax.swing.JButton alimento;
     private javax.swing.JButton cliente;
     private javax.swing.JButton deposito;
     private javax.swing.JLabel jLabel1;

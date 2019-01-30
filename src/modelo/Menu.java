@@ -103,6 +103,11 @@ public class Menu implements Serializable {
         return suministro;
     }
 
+    @Override
+    public String toString() {
+        return "Menu{" + "idMenu=" + idMenu + ", descripcion=" + descripcion + ", precio=" + precio + ", suministro=" + suministro + ", aMenu=" + aMenu + ", pic=" + pic + '}';
+    }
+
  
     public void setSuministro(Set<Suministro> suministro) {
         this.suministro = suministro;
@@ -115,6 +120,7 @@ public class Menu implements Serializable {
     public void setaMenu(Set<Alimento> aMenu) {
         this.aMenu = aMenu;
     }
+    
      public void agregarAlimentoMenu(Alimento a) {
 
         this.aMenu.add(a);
@@ -125,6 +131,7 @@ public class Menu implements Serializable {
         this.suministro.add(s);
 
     }
+    
  public void agregarMenuPicnic(Picnic p){
     this.pic.add(p);
 
@@ -137,4 +144,7 @@ public class Menu implements Serializable {
      this.aMenu.remove(a);
      a.quitarMenu(this);
  }
+  
+  
+  
 }

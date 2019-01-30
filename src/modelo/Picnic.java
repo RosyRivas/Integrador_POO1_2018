@@ -35,15 +35,17 @@ public class Picnic {
     private String lugar;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
- 
-    private String hora;
-    private double precio;
+    private String cantPersona;
+   
+    private String precio;
 
     @ManyToOne
     private Cliente cli;//cliente
+    
     @OneToMany(mappedBy = "pic")
     @OrderBy ("idDeposito ASC")
     private List<Deposito> dep;//deposito
+    
     @ManyToOne
     private Menu me;//menu
    
@@ -53,16 +55,18 @@ public class Picnic {
         this.dep= new ArrayList();
     }
 
-    public Picnic( String lugar, Date fecha, String hora, double precio, Cliente cli, Menu me) {
+    public Picnic( String lugar,Date fecha,String cantPer, String precio, Cliente cli, Menu me) {
         
         this.lugar = lugar;
         this.fecha = new Date();
-        this.hora = hora;
+        this.cantPersona= cantPer;
         this.precio = precio;
         this.cli = cli;
         this.dep= new ArrayList();
         this.me = me;
     }
+
+    
 
     public long getIdPicnic() {
         return idPicnic;
@@ -70,6 +74,14 @@ public class Picnic {
 
     public void setIdPicnic(long idPicnic) {
         this.idPicnic = idPicnic;
+    }
+
+    public String getCantPersona() {
+        return cantPersona;
+    }
+
+    public void setCantPersona(String cantPersona) {
+        this.cantPersona = cantPersona;
     }
 
     
@@ -96,22 +108,17 @@ public class Picnic {
         this.fecha = fecha;
     }
 
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-
-    public double getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 
+   
+
+   
     public Cliente getCli() {
         return cli;
     }
@@ -140,7 +147,7 @@ public class Picnic {
 
     @Override
     public String toString() {
-        return "Picnic{" + "idPicnic=" + idPicnic + ", lugar=" + lugar + ", fecha=" + fecha + ", hora=" + hora + ", precio=" + precio + ", cli=" + cli + ", dep=" + dep + ", me=" + me + '}';
+        return "Picnic{" + "idPicnic=" + idPicnic + ", lugar=" + lugar + ", fecha=" + fecha + ", precio=" + precio + ", cli=" + cli + ", dep=" + dep + ", me=" + me + '}';
     }
 
    
@@ -149,8 +156,15 @@ public void agregarDeposito(Deposito d ){
     
     }
 
-    public void setFecha(String fecha) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
+
+   public void eliminarMenu(Deposito d){
+       this.dep.remove(d);
+   }
+   
+   public void eliminarDep(Deposito d){
+       this.dep.remove(d);
+   
+   }
 
 }

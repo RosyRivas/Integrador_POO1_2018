@@ -105,7 +105,7 @@ public class Deposito implements Serializable {
         return "Deposito{" + "idDeposito=" + idDeposito + ", monto=" + monto + ", nro=" + nro + ", pic=" + pic + ", cli=" + cli + '}';
     }
 
-    
+   
 
     
     

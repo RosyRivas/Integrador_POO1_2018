@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import static modelo.Cliente_.dep;
 
 /**
  *
@@ -35,11 +36,11 @@ public class Controlador {
         return this.persistencia.buscar(Cliente.class, dni);
     }
 
-    public void agregarCliente( String dni,String nombres, String apellidos, String nroTelefono, String calle ,String  numero,String localidad) {
-        this.persistencia.iniciarTransaccion();      
-       Cliente c= new Cliente(dni.toUpperCase(), nombres.toUpperCase(),apellidos.toUpperCase(),nroTelefono.toUpperCase(),calle.toUpperCase(),numero.toUpperCase(),localidad.toUpperCase());
-       this.persistencia.insertar(c);
-       this.persistencia.confirmarTransaccion();
+    public void agregarCliente(String dni, String nombres, String apellidos, String nroTelefono, String calle, String numero, String localidad/*,Deposito dep ,Picnic pic*/) {
+        this.persistencia.iniciarTransaccion();
+        Cliente c = new Cliente(dni.toUpperCase(), nombres.toUpperCase(), apellidos.toUpperCase(), nroTelefono.toUpperCase(), calle.toUpperCase(), numero.toUpperCase(), localidad.toUpperCase()/*,dep,pic*/);
+        this.persistencia.insertar(c);
+        this.persistencia.confirmarTransaccion();
     }
 
     public int eliminarCliente(Cliente c) {
@@ -48,14 +49,13 @@ public class Controlador {
             this.persistencia.eliminar(c);
             this.persistencia.confirmarTransaccion();
             return 0;
-        }else{
+        } else {
             return 1;
         }
-        
 
     }
 
-    public void editarCliente(Cliente c,String dni, String nombre, String apellido, String nroTel, String calle, String nrCalle, String localidad) {
+    public void editarCliente(Cliente c, String dni, String nombre, String apellido, String nroTel, String calle, String nrCalle, String localidad/*,Deposito dep ,Picnic pic*/) {
 
         this.persistencia.iniciarTransaccion();
         c.setDni(dni.toUpperCase());
@@ -66,8 +66,10 @@ public class Controlador {
         d.setCalle(calle.toUpperCase());
         d.setNumero(nrCalle.toUpperCase());
         d.setLocalidad(localidad.toUpperCase());
-        c.setDireccion(d);  
-        this.persistencia.modificar(d);
+        c.setDireccion(d);
+        
+        
+        this.persistencia.modificar(c);
         this.persistencia.confirmarTransaccion();
 
     }
@@ -116,7 +118,7 @@ public class Controlador {
             this.persistencia.eliminar(a);
             this.persistencia.confirmarTransaccion();
             return 0;
-        }else{
+        } else {
             return 1;
         }
     }
@@ -173,7 +175,7 @@ public class Controlador {
             this.persistencia.eliminar(s);
             this.persistencia.confirmarTransaccion();
             return 0;
-        }else {
+        } else {
             return 1;
         }
 
@@ -189,9 +191,9 @@ public class Controlador {
     }
 
     public void editarSuministro(Suministro s, String descripcion, String cantidad) {
-             this.persistencia.iniciarTransaccion();
-             s.setDescripcion(descripcion);
-             s.setcSuministro(cantidad);
+        this.persistencia.iniciarTransaccion();
+        s.setDescripcion(descripcion);
+        s.setcSuministro(cantidad);
         this.persistencia.modificar(s);
         this.persistencia.confirmarTransaccion();
     }
@@ -208,14 +210,14 @@ public class Controlador {
 
     }
 
-    public void agregarPicnic(String lugar, String fecha, String hora, double precio, Cliente cli, Menu me) {
+    public void agregarPicnic(String lug,String cantPer,String pre, String fech,Cliente cli, Menu me) {
         this.persistencia.iniciarTransaccion();
         try {
 
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy"+ "hh:mm");
 
-            Picnic p = new Picnic(lugar.toUpperCase(), formatoFecha.parse(fecha), hora, precio, cli, me);
-            if ((cli != null) ) {
+            Picnic p = new Picnic(lug.toUpperCase(), formatoFecha.parse(fech), cantPer.toUpperCase(),pre.toUpperCase(), cli, me);
+            if ((cli != null)) {
                 cli.agregarPicnic(p);
                 this.persistencia.modificar(cli);
 
@@ -235,18 +237,30 @@ public class Controlador {
             this.persistencia.eliminar(p);
             this.persistencia.confirmarTransaccion();
             return 0;
-        }else{
+        } else {
             return 1;
-        
+
         }
     }
 
-    public void editarPicnic(Picnic p, String lugar, String fecha, String hora, double precio, Cliente cli, Deposito de, Menu me) {
+    public void editarPicnic(Picnic p, String lugar, String fecha,String cantPers ,String precio, Cliente cli,  Menu me) {
         this.persistencia.iniciarTransaccion();
-        p.setLugar(lugar.toUpperCase());
-        p.setFecha(fecha);
-        
-
+        try {
+            SimpleDateFormat formatofecha = new SimpleDateFormat("dd/mm/yyyy"+"hh:mm");
+            p.setLugar(lugar.toUpperCase());
+            p.setFecha(formatofecha.parse(fecha));
+            p.setPrecio(precio);
+            p.setCantPersona(cantPers);
+            p.setCli(cli);
+            p.setMe(me);
+           
+           
+            this.persistencia.modificar(p);
+          //  this.persistencia.modificar();
+            this.persistencia.confirmarTransaccion();
+        } catch (ParseException ex) {
+            this.persistencia.descartarTransaccion();
+        }
     }
 
 //    ********************** Menu  ***************************************
@@ -279,22 +293,23 @@ public class Controlador {
         return 1;
 
     }
-    public void agregarMenu(String descripcion, String precio){
-            this.persistencia.iniciarTransaccion();
-            Menu m= new Menu(descripcion.toUpperCase(),precio.toUpperCase());
-            this.persistencia.insertar(m);
-            this.persistencia.confirmarTransaccion();
+
+    public void agregarMenu(String descripcion, String precio) {
+        this.persistencia.iniciarTransaccion();
+        Menu m = new Menu(descripcion.toUpperCase(), precio.toUpperCase());
+        this.persistencia.insertar(m);
+        this.persistencia.confirmarTransaccion();
     }
 
     public void quitarMenuPicnic() {
     }
 
-    public void editarMenu(Menu m, String descripcion , String precio) {
-            this.persistencia.iniciarTransaccion();
-            m.setDescripcion(descripcion.toUpperCase());
-            m.setPrecio(precio.toUpperCase());
-            this.persistencia.modificar(m);
-            this.persistencia.confirmarTransaccion();
+    public void editarMenu(Menu m, String descripcion, String precio) {
+        this.persistencia.iniciarTransaccion();
+        m.setDescripcion(descripcion.toUpperCase());
+        m.setPrecio(precio.toUpperCase());
+        this.persistencia.modificar(m);
+        this.persistencia.confirmarTransaccion();
     }
 
 //   ///// **************** Deposito  ********************
@@ -314,16 +329,11 @@ public class Controlador {
         }
     }
 
-    
-
-   
-        
-    
-
     public void quitardepoosito() {
     }
-    public List listarDeposito(){
+
+    public List listarDeposito() {
         return this.persistencia.buscarTodosOrdenadosPor(Deposito.class, Deposito_.fechaDep);
-    
+
     }
 }

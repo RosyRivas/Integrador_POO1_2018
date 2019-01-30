@@ -36,9 +36,11 @@ public class Cliente implements Serializable {
     private String numeroTelefono;
      @Embedded
     private Direccion direccion;
-    @OneToMany(mappedBy ="cli")
+    
+     @OneToMany(mappedBy ="cli")
     @OrderBy( "idPicnic ASC")
     private List<Picnic> pic;
+    
     @OneToMany(mappedBy ="cli")
     @OrderBy("idDeposito ASC")
     private List<Deposito> dep;
@@ -50,7 +52,7 @@ public class Cliente implements Serializable {
         this.pic=new ArrayList();
     }
 
-    public Cliente( String dni ,String nombres, String apellido, String numeroTelefono, String calle ,String  numero,String localidad) {
+    public Cliente( String dni ,String nombres, String apellido, String numeroTelefono, String calle ,String  numero,String localidad/*, Deposito dep, Picnic pic*/) {
         this.dni= dni;
         this.nombres = nombres;
         this.apellido = apellido;
@@ -124,19 +126,25 @@ public class Cliente implements Serializable {
         this.numeroTelefono = numeroTelefono;
     }
 
-   
-
-   
-
     @Override
     public String toString() {
-        return "Cliente{" + "dni=" + dni + ", nombres=" + nombres + ", apellido=" + apellido + ", numeroTelefono=" + numeroTelefono + ", direccion=" + direccion + ", pic=" + pic + ", dep=" + dep + '}';
+        return "Cliente{" + "dni=" + dni + ", nombres=" + nombres + ", apellido=" + apellido + ", numeroTelefono=" + numeroTelefono + ", direccion=" + direccion + '}';
     }
+
+   
+
+   
+
+    
     
    public void agregarPicnic(Picnic pic){
         this.pic.add(pic);
    
    }
+   public void eliminarPicnic(Picnic pic){
+   
+       this.pic.remove(pic);
+   } 
     
  
 }
