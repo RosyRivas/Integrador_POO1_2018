@@ -94,9 +94,10 @@ public class Alimento implements Serializable  {
 
     @Override
     public String toString() {
-        return "Alimento{" + "idAlimento=" + idAlimento + ", nombre=" + nombre + ", cantidad=" + cantidad + ", menu=" + menu + '}';
+        return "Alimento{" + "idAlimento=" + idAlimento + ", nombre=" + nombre + ", cantidad=" + cantidad + '}';
     }
-   
+
+    
     
 
    

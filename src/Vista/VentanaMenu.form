@@ -163,6 +163,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="descripcionMenu">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descripcionMenuActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -170,6 +173,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="precioMenu">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="precioMenuActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="nuevoMenu">
           <Properties>

@@ -56,21 +56,20 @@ public class Controlador {
     }
 
     public void editarCliente(Cliente c, String dni, String nombre, String apellido, String nroTel, String calle, String nrCalle, String localidad/*,Deposito dep ,Picnic pic*/) {
-
-        this.persistencia.iniciarTransaccion();
-        c.setDni(dni.toUpperCase());
-        c.setNombres(nombre.toUpperCase());
-        c.setApellido(apellido.toUpperCase());
-        c.setNumeroTelefono(nroTel.toUpperCase());
-        Direccion d = c.getDireccion();
-        d.setCalle(calle.toUpperCase());
-        d.setNumero(nrCalle.toUpperCase());
-        d.setLocalidad(localidad.toUpperCase());
-        c.setDireccion(d);
-        
-        
-        this.persistencia.modificar(c);
-        this.persistencia.confirmarTransaccion();
+        if (c != null) {
+            this.persistencia.iniciarTransaccion();
+            c.setDni(dni.toUpperCase());
+            c.setNombres(nombre.toUpperCase());
+            c.setApellido(apellido.toUpperCase());
+            c.setNumeroTelefono(nroTel.toUpperCase());
+            Direccion d = c.getDireccion();
+            d.setCalle(calle.toUpperCase());
+            d.setNumero(nrCalle.toUpperCase());
+            d.setLocalidad(localidad.toUpperCase());
+            c.setDireccion(d);
+            this.persistencia.modificar(c);
+            this.persistencia.confirmarTransaccion();
+        }
 
     }
 
@@ -210,13 +209,13 @@ public class Controlador {
 
     }
 
-    public void agregarPicnic(String lug,String cantPer,String pre, String fech,Cliente cli, Menu me) {
+    public void agregarPicnic(String lug, String cantPer, String pre, String fech, Cliente cli, Menu me) {
         this.persistencia.iniciarTransaccion();
         try {
 
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy"+ "hh:mm");
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy" + "hh:mm");
 
-            Picnic p = new Picnic(lug.toUpperCase(), formatoFecha.parse(fech), cantPer.toUpperCase(),pre.toUpperCase(), cli, me);
+            Picnic p = new Picnic(lug.toUpperCase(), formatoFecha.parse(fech), cantPer.toUpperCase(), pre.toUpperCase(), cli, me);
             if ((cli != null)) {
                 cli.agregarPicnic(p);
                 this.persistencia.modificar(cli);
@@ -243,20 +242,19 @@ public class Controlador {
         }
     }
 
-    public void editarPicnic(Picnic p, String lugar, String fecha,String cantPers ,String precio, Cliente cli,  Menu me) {
+    public void editarPicnic(Picnic p, String lugar, String fecha, String cantPers, String precio, Cliente cli, Menu me) {
         this.persistencia.iniciarTransaccion();
         try {
-            SimpleDateFormat formatofecha = new SimpleDateFormat("dd/mm/yyyy"+"hh:mm");
+            SimpleDateFormat formatofecha = new SimpleDateFormat("dd/mm/yyyy" + "hh:mm");
             p.setLugar(lugar.toUpperCase());
             p.setFecha(formatofecha.parse(fecha));
             p.setPrecio(precio);
             p.setCantPersona(cantPers);
             p.setCli(cli);
             p.setMe(me);
-           
-           
+
             this.persistencia.modificar(p);
-          //  this.persistencia.modificar();
+            //  this.persistencia.modificar();
             this.persistencia.confirmarTransaccion();
         } catch (ParseException ex) {
             this.persistencia.descartarTransaccion();

@@ -75,7 +75,19 @@ public class VentanaMenu extends javax.swing.JFrame {
 
         jLabel5.setText("Descripcion");
 
+        descripcionMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descripcionMenuActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Precio");
+
+        precioMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioMenuActionPerformed(evt);
+            }
+        });
 
         nuevoMenu.setText("Nuevo");
         nuevoMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -333,6 +345,14 @@ public class VentanaMenu extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_none
+
+    private void descripcionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descripcionMenuActionPerformed
+
+    private void precioMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioMenuActionPerformed
 
     /**
      * @param args the command line arguments

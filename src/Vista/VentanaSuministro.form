@@ -200,6 +200,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nombreSumi">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombreSumiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
@@ -207,6 +210,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="cantidadSuministro">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantidadSuministroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonNuevoAlimento1">
           <Properties>

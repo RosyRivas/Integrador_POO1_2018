@@ -27,37 +27,63 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="225" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="225" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jPanelCliente" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane3" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jPanelCliente" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="137" pref="149" max="32767" attributes="0"/>
+              <EmptySpace min="92" pref="258" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="volver" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="254" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jPanelCliente" min="-2" pref="371" max="-2" attributes="0"/>
+                  <Component id="jPanelCliente" alignment="0" min="-2" pref="321" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="84" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="jScrollPane3" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="189" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="volver" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -107,28 +133,32 @@
                               <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="BotonNuevoCliente" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextFieldDNI" pref="71" max="32767" attributes="0"/>
-                              <Component id="jTextNombre" max="32767" attributes="0"/>
-                              <Component id="jTextFieldTelef" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField5Calle" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextFieldApellido" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextFieldNroCalle" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextFielLocalidad" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTextFieldDNI" pref="71" max="32767" attributes="0"/>
+                                      <Component id="jTextNombre" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldTelef" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField5Calle" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldApellido" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldNroCalle" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFielLocalidad" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="botonGuardarCliente" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="BotonEliminarCliente" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="BotonNuevoCliente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="botonGuardarCliente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="BotonEliminarCliente" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -166,25 +196,22 @@
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="jTextFieldNroCalle" max="32767" attributes="0"/>
-                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jTextFieldNroCalle" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFielLocalidad" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFielLocalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="BotonEliminarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotonNuevoCliente" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="botonGuardarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BotonEliminarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="283" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -226,6 +253,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextNombre">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextNombreActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -238,6 +268,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldNroCalle">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNroCalleActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -255,6 +288,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField5Calle">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField5CalleActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -267,6 +303,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFielLocalidad">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFielLocalidadActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -282,6 +321,62 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="volverActionPerformed"/>
       </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="listaDeposito">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="0"/>
+            </Property>
+            <Property name="selectionMode" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listaDepositoValueChanged"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="listaPicnic">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="0"/>
+            </Property>
+            <Property name="selectionMode" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listaPicnicValueChanged"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lista de Depositos asociados al cliente  "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lista de Picnic asociado al cliente"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

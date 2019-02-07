@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import modelo.Cliente;
 import modelo.Menu;
 import modelo.Picnic;
-import modelo.*;
 
 /**
  *
@@ -440,7 +439,7 @@ public class VentanaPicnic extends javax.swing.JFrame {
     private void listPicnicValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listPicnicValueChanged
         if (!this.listPicnic.isSelectionEmpty()) {
             Picnic picnic = (Picnic) this.listPicnic.getSelectedValue();
-           this.idPicnic.setText(picnic.getLugar().toString());
+           this.idPicnic.setText(picnic.getLugar());
             this.lugar.setText(picnic.getLugar());
             this.precio.setText(picnic.getPrecio());
             this.cantidadPersona.setText(picnic.getCantPersona());

@@ -91,7 +91,19 @@ public class VentanaSuministro extends javax.swing.JFrame {
 
         jLabel16.setText("Nombre");
 
+        nombreSumi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreSumiActionPerformed(evt);
+            }
+        });
+
         jLabel17.setText("Cantidad");
+
+        cantidadSuministro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadSuministroActionPerformed(evt);
+            }
+        });
 
         jButtonNuevoAlimento1.setText("Nuevo");
         jButtonNuevoAlimento1.addActionListener(new java.awt.event.ActionListener() {
@@ -203,6 +215,8 @@ public class VentanaSuministro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
 //eliminar suministro 
     private void jButtonEliminarSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarSuministroActionPerformed
       Suministro s= (Suministro) this.listaSuministro.getSelectedValue() ;
@@ -230,6 +244,8 @@ public class VentanaSuministro extends javax.swing.JFrame {
     private void jButtonNuevoAlimento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoAlimento1ActionPerformed
         limpiar ();
     }//GEN-LAST:event_jButtonNuevoAlimento1ActionPerformed
+
+
 // guardar suministro
     private void jButtonGuardarSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarSuministroActionPerformed
          if (!this.listaSuministro.isSelectionEmpty()){
@@ -258,6 +274,17 @@ public class VentanaSuministro extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_listaSuministroValueChanged
+
+    private void nombreSumiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreSumiActionPerformed
+      
+        
+        
+        
+    }//GEN-LAST:event_nombreSumiActionPerformed
+
+    private void cantidadSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadSuministroActionPerformed
+       
+    }//GEN-LAST:event_cantidadSuministroActionPerformed
 
     /**
      * @param args the command line arguments

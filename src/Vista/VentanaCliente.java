@@ -11,6 +11,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.*;
+
 /**
  *
  * @author Rosi-PC
@@ -64,6 +65,12 @@ public class VentanaCliente extends javax.swing.JFrame {
         jTextFielLocalidad = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         volver = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listaDeposito = new javax.swing.JList();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaPicnic = new javax.swing.JList();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -112,11 +119,23 @@ public class VentanaCliente extends javax.swing.JFrame {
 
         jLabel6.setText("Calle");
 
+        jTextNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextNombreActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("DNI");
 
         jTextFieldApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldApellidoActionPerformed(evt);
+            }
+        });
+
+        jTextFieldNroCalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNroCalleActionPerformed(evt);
             }
         });
 
@@ -130,9 +149,21 @@ public class VentanaCliente extends javax.swing.JFrame {
 
         jLabel3.setText("Apellido");
 
+        jTextField5Calle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5CalleActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Nro de Telefono");
 
         jLabel5.setText("Nro");
+
+        jTextFielLocalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFielLocalidadActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Localidad");
 
@@ -143,31 +174,34 @@ public class VentanaCliente extends javax.swing.JFrame {
             .addGroup(jPanelClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanelClienteLayout.createSequentialGroup()
-                        .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel8))
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                            .addComponent(jTextNombre)
-                            .addComponent(jTextFieldTelef)
-                            .addComponent(jTextField5Calle)
-                            .addComponent(jTextFieldApellido)
-                            .addComponent(jTextFieldNroCalle)
-                            .addComponent(jTextFielLocalidad)))
-                    .addGroup(jPanelClienteLayout.createSequentialGroup()
-                        .addComponent(BotonNuevoCliente)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonGuardarCliente)
-                        .addGap(18, 18, 18)
-                        .addComponent(BotonEliminarCliente)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addGroup(jPanelClienteLayout.createSequentialGroup()
+                            .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel5)
+                                .addComponent(BotonNuevoCliente))
+                            .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelClienteLayout.createSequentialGroup()
+                                    .addGap(40, 40, 40)
+                                    .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextFieldDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                                        .addComponent(jTextNombre)
+                                        .addComponent(jTextFieldTelef)
+                                        .addComponent(jTextField5Calle)
+                                        .addComponent(jTextFieldApellido)
+                                        .addComponent(jTextFieldNroCalle)
+                                        .addComponent(jTextFielLocalidad)))
+                                .addGroup(jPanelClienteLayout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(botonGuardarCliente)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(BotonEliminarCliente)))))
+                    .addComponent(jLabel8))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanelClienteLayout.setVerticalGroup(
             jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,21 +230,19 @@ public class VentanaCliente extends javax.swing.JFrame {
                     .addComponent(jTextField5Calle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5)
-                    .addGroup(jPanelClienteLayout.createSequentialGroup()
-                        .addComponent(jTextFieldNroCalle)
-                        .addGap(1, 1, 1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFielLocalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextFieldNroCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextFielLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonEliminarCliente)
                     .addComponent(BotonNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonGuardarCliente)
-                    .addComponent(BotonEliminarCliente))
-                .addGap(155, 155, 155))
+                    .addComponent(botonGuardarCliente))
+                .addGap(283, 283, 283))
         );
 
         volver.setText("volver");
@@ -220,36 +252,77 @@ public class VentanaCliente extends javax.swing.JFrame {
             }
         });
 
+        listaDeposito.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaDeposito.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaDepositoValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(listaDeposito);
+
+        listaPicnic.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaPicnic.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaPicnicValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(listaPicnic);
+
+        jLabel9.setText("Lista de Depositos asociados al cliente  ");
+
+        jLabel10.setText("Lista de Picnic asociado al cliente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(137, 149, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(141, 141, 141)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(69, 69, 69))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(92, 258, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(volver)
-                .addGap(64, 64, 64))
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                    .addComponent(jPanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addComponent(volver)
-                .addGap(45, 45, 45))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -259,13 +332,13 @@ public class VentanaCliente extends javax.swing.JFrame {
 // boton guardar
     private void botonGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarClienteActionPerformed
     if (! this.listaCliente.isSelectionEmpty()){
-         Cliente c =(Cliente )this.listaCliente.getSelectedValuesList();
+         Cliente c =(Cliente )this.listaCliente.getSelectedValue();
          this.controlador.editarCliente(c,this.jTextFieldDNI.getText(), this.jTextNombre.getText(),this.jTextFieldApellido.getText(),this.jTextFieldTelef.getText(),this.jTextField5Calle.getText(),this.jTextFieldNroCalle.getText(),this.jTextFielLocalidad.getText()/*,(Deposito )this.jComDeposito.getSelectedItem(),(Picnic)this.jComPicnic.getSelectedItem()*/);
      }else{ 
         this.controlador.agregarCliente(this.jTextFieldDNI.getText(),this.jTextNombre.getText(),this.jTextFieldApellido.getText(),this.jTextFieldTelef.getText(),this.jTextField5Calle.getText(),this.jTextFieldNroCalle.getText(),this.jTextFielLocalidad.getText()/*,(Deposito )this.jComDeposito.getSelectedItem(),(Picnic)this.jComPicnic.getSelectedItem()*/);
      }
      limpiar();
-   //  this.botonGuardarCliente.setEnabled(true);
+    this.botonGuardarCliente.setEnabled(true);
     }//GEN-LAST:event_botonGuardarClienteActionPerformed
 
 
@@ -337,7 +410,8 @@ public class VentanaCliente extends javax.swing.JFrame {
               this.jTextFieldNroCalle.setText(d.getNumero());
               this.jTextFielLocalidad.setText(d.getLocalidad());
           }
-         
+         this.listaDeposito.setListData(c.getDep().toArray());
+         this.listaPicnic.setListData(c.getPic().toArray());
       }
         
         
@@ -350,6 +424,30 @@ public class VentanaCliente extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_listaClienteValueChanged
+
+    private void jTextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextNombreActionPerformed
+
+    private void jTextField5CalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5CalleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5CalleActionPerformed
+
+    private void jTextFieldNroCalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNroCalleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNroCalleActionPerformed
+
+    private void jTextFielLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielLocalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFielLocalidadActionPerformed
+
+    private void listaPicnicValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPicnicValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaPicnicValueChanged
+
+    private void listaDepositoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaDepositoValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaDepositoValueChanged
 
 
  
@@ -376,6 +474,7 @@ private void limpiar(){
     private javax.swing.JButton BotonNuevoCliente;
     private javax.swing.JButton botonGuardarCliente;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -383,8 +482,11 @@ private void limpiar(){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanelCliente;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextFielLocalidad;
     private javax.swing.JTextField jTextField5Calle;
     private javax.swing.JTextField jTextFieldApellido;
@@ -393,6 +495,8 @@ private void limpiar(){
     private javax.swing.JTextField jTextFieldTelef;
     private javax.swing.JTextField jTextNombre;
     private javax.swing.JList listaCliente;
+    private javax.swing.JList listaDeposito;
+    private javax.swing.JList listaPicnic;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
