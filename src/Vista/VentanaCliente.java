@@ -8,6 +8,7 @@ package Vista;
 import controlador.Controlador;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.*;
@@ -17,18 +18,18 @@ import modelo.*;
  * @author Rosi-PC
  */
 public class VentanaCliente extends javax.swing.JFrame {
+
     private final Controlador controlador;
     private final JFrame previo;
-    
+
     /**
      * Creates new form Empleados
+     *
      * @param c : controlador
      * @param p : previo JFrame
      */
-    
-    
     public VentanaCliente(Controlador c, JFrame p) {
-         this.controlador = c;
+        this.controlador = c;
         this.previo = p;
         initComponents();
         limpiar();
@@ -174,32 +175,31 @@ public class VentanaCliente extends javax.swing.JFrame {
             .addGroup(jPanelClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addGroup(jPanelClienteLayout.createSequentialGroup()
-                            .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel5)
-                                .addComponent(BotonNuevoCliente))
-                            .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanelClienteLayout.createSequentialGroup()
-                                    .addGap(40, 40, 40)
-                                    .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextFieldDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                                        .addComponent(jTextNombre)
-                                        .addComponent(jTextFieldTelef)
-                                        .addComponent(jTextField5Calle)
-                                        .addComponent(jTextFieldApellido)
-                                        .addComponent(jTextFieldNroCalle)
-                                        .addComponent(jTextFielLocalidad)))
-                                .addGroup(jPanelClienteLayout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(botonGuardarCliente)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(BotonEliminarCliente)))))
+                    .addComponent(jLabel1)
+                    .addGroup(jPanelClienteLayout.createSequentialGroup()
+                        .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(BotonNuevoCliente))
+                        .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelClienteLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addGroup(jPanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFielLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldNroCalle)
+                                    .addComponent(jTextField5Calle)
+                                    .addComponent(jTextFieldTelef)
+                                    .addComponent(jTextFieldApellido)
+                                    .addComponent(jTextNombre)
+                                    .addComponent(jTextFieldDNI)))
+                            .addGroup(jPanelClienteLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(botonGuardarCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BotonEliminarCliente))))
                     .addComponent(jLabel8))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -292,9 +292,7 @@ public class VentanaCliente extends javax.swing.JFrame {
                             .addComponent(jLabel9))
                         .addGap(141, 141, 141)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(69, 69, 69))
+                            .addComponent(jLabel10)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(92, 258, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -328,43 +326,41 @@ public class VentanaCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
 // boton guardar
     private void botonGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarClienteActionPerformed
-    if (! this.listaCliente.isSelectionEmpty()){
-         Cliente c =(Cliente )this.listaCliente.getSelectedValue();
-         this.controlador.editarCliente(c,this.jTextFieldDNI.getText(), this.jTextNombre.getText(),this.jTextFieldApellido.getText(),this.jTextFieldTelef.getText(),this.jTextField5Calle.getText(),this.jTextFieldNroCalle.getText(),this.jTextFielLocalidad.getText()/*,(Deposito )this.jComDeposito.getSelectedItem(),(Picnic)this.jComPicnic.getSelectedItem()*/);
-     }else{ 
-        this.controlador.agregarCliente(this.jTextFieldDNI.getText(),this.jTextNombre.getText(),this.jTextFieldApellido.getText(),this.jTextFieldTelef.getText(),this.jTextField5Calle.getText(),this.jTextFieldNroCalle.getText(),this.jTextFielLocalidad.getText()/*,(Deposito )this.jComDeposito.getSelectedItem(),(Picnic)this.jComPicnic.getSelectedItem()*/);
-     }
-     limpiar();
-    this.botonGuardarCliente.setEnabled(true);
+        if (!this.listaCliente.isSelectionEmpty()) {
+            Cliente c = (Cliente) this.listaCliente.getSelectedValue();
+            this.controlador.editarCliente(c, this.jTextFieldDNI.getText(), this.jTextNombre.getText(), this.jTextFieldApellido.getText(), this.jTextFieldTelef.getText(), this.jTextField5Calle.getText(), this.jTextFieldNroCalle.getText(), this.jTextFielLocalidad.getText()/*,(Deposito )this.jComDeposito.getSelectedItem(),(Picnic)this.jComPicnic.getSelectedItem()*/);
+        } else {
+            this.controlador.agregarCliente(this.jTextFieldDNI.getText(), this.jTextNombre.getText(), this.jTextFieldApellido.getText(), this.jTextFieldTelef.getText(), this.jTextField5Calle.getText(), this.jTextFieldNroCalle.getText(), this.jTextFielLocalidad.getText()/*,(Deposito )this.jComDeposito.getSelectedItem(),(Picnic)this.jComPicnic.getSelectedItem()*/);
+        }
+        limpiar();
+       // this.botonGuardarCliente.setEnabled(true);
     }//GEN-LAST:event_botonGuardarClienteActionPerformed
-
 
 // boton nuevo cliente
     private void BotonNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonNuevoClienteActionPerformed
         limpiar();
-     
-    }//GEN-LAST:event_BotonNuevoClienteActionPerformed
 
+    }//GEN-LAST:event_BotonNuevoClienteActionPerformed
 
 //boton eliminar cliente
     private void BotonEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarClienteActionPerformed
-        Cliente c= (Cliente ) this.listaCliente.getSelectedValue();
-        if (c!=null){
+        Cliente c = (Cliente) this.listaCliente.getSelectedValue();
+        if (c != null) {
             int i = this.controlador.eliminarCliente(c);
-            if (i !=0 ){
-                JOptionPane.showMessageDialog(null, "No es posible eliminar el empleado", "Error", JOptionPane.ERROR_MESSAGE);
-            
+            if (i != 0) {
+                JOptionPane.showMessageDialog(null, "No es posible eliminar el Cliente", "Error", JOptionPane.ERROR_MESSAGE);
+
             }
-           limpiar(); 
+            limpiar();
         }
-        
+
     }//GEN-LAST:event_BotonEliminarClienteActionPerformed
 
     private void jTextFieldDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDNIActionPerformed
-        // TODO add your handling code here:
+        JFormattedTextField j = new JFormattedTextField();
+      //  jTextFieldDNI.setValue(new Integer());
     }//GEN-LAST:event_jTextFieldDNIActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -372,57 +368,43 @@ public class VentanaCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
-    
+
     private void jTextFieldApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldApellidoActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_jTextFieldApellidoActionPerformed
 
     private void jTextFieldTelefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTelefActionPerformed
 
-
-
 //boton volver
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
-        
-        
+
         dispose();
-      this.previo.setVisible(true);
-    
-        
-              
+        this.previo.setVisible(true);
+
+
     }//GEN-LAST:event_volverActionPerformed
-
-
 
 // lista clientes
     private void listaClienteValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaClienteValueChanged
-      if(!this.listaCliente.isSelectionEmpty()){
-          Cliente c = (Cliente) this.listaCliente.getSelectedValue();
-          this.jTextFieldDNI.setText(c.getDni());
-          this.jTextNombre.setText(c.getNombres());
-          this.jTextFieldApellido.setText(c.getApellido());
-          this.jTextFieldTelef.setText(c.getNumeroTelefono());
-          Direccion d= c.getDireccion();
-          if (d != null){
-              this.jTextField5Calle.setText(d.getCalle());
-              this.jTextFieldNroCalle.setText(d.getNumero());
-              this.jTextFielLocalidad.setText(d.getLocalidad());
-          }
-         this.listaDeposito.setListData(c.getDep().toArray());
-         this.listaPicnic.setListData(c.getPic().toArray());
-      }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        if (!this.listaCliente.isSelectionEmpty()) {
+            Cliente c = (Cliente) this.listaCliente.getSelectedValue();
+            this.jTextFieldDNI.setText(c.getDni());
+            this.jTextNombre.setText(c.getNombres());
+            this.jTextFieldApellido.setText(c.getApellido());
+            this.jTextFieldTelef.setText(c.getNumeroTelefono());
+            Direccion d = c.getDireccion();
+            if (d != null) {
+                this.jTextField5Calle.setText(d.getCalle());
+                this.jTextFieldNroCalle.setText(d.getNumero());
+                this.jTextFielLocalidad.setText(d.getLocalidad());
+            }
+            this.listaDeposito.setListData(c.getDep().toArray());
+            this.listaPicnic.setListData(c.getPic().toArray());
+        }
+
+
     }//GEN-LAST:event_listaClienteValueChanged
 
     private void jTextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreActionPerformed
@@ -449,26 +431,19 @@ public class VentanaCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_listaDepositoValueChanged
 
+    private void limpiar() {
+        this.jTextFieldDNI.setText("");
+        this.jTextNombre.setText("");
+        this.jTextFieldApellido.setText("");
+        this.jTextFieldTelef.setText("");
+        this.jTextField5Calle.setText("");
+        this.jTextFieldNroCalle.setText("");
+        this.jTextFielLocalidad.setText("");
 
- 
-  
-private void limpiar(){
-   this.jTextFieldDNI.setText("");
-    this.jTextNombre.setText("");
-    this.jTextFieldApellido.setText("");
-    this.jTextFieldTelef.setText("");
-    this.jTextField5Calle.setText("");
-    this.jTextFieldNroCalle.setText("");
-    this.jTextFielLocalidad.setText("");
+        this.listaCliente.setListData(this.controlador.listarCliente().toArray());
+        this.listaCliente.clearSelection();
 
-   
-    
-    this.listaCliente.setListData( this.controlador.listarCliente().toArray());
-    this.listaCliente.clearSelection();
-    
-   
-
-}
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminarCliente;
     private javax.swing.JButton BotonNuevoCliente;

@@ -15,11 +15,15 @@ import modelo.*;
  * @author Rosi-PC
  */
 public class VentanaSuministro extends javax.swing.JFrame {
+
     private final Controlador controlador;
     private final JFrame previo;
-    
+
     /**
      * Creates new form VentanaMen
+     *
+     * @param c
+     * @param p
      */
     public VentanaSuministro(Controlador c, JFrame p) {
         this.controlador = c;
@@ -57,6 +61,7 @@ public class VentanaSuministro extends javax.swing.JFrame {
         jLabel18.setText("Lista Suministro");
 
         listaSuministro.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaSuministro.setToolTipText("n");
         listaSuministro.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listaSuministroValueChanged(evt);
@@ -216,89 +221,78 @@ public class VentanaSuministro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
 //eliminar suministro 
     private void jButtonEliminarSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarSuministroActionPerformed
-      Suministro s= (Suministro) this.listaSuministro.getSelectedValue() ;
-        if (s != null){
+        Suministro s = (Suministro) this.listaSuministro.getSelectedValue();
+        if (s != null) {
             int i = this.controlador.eliminarSuministro(s);
-            if (i != 0){
-                  JOptionPane.showMessageDialog(null, "No es posible eliminar el empleado", "Error", JOptionPane.ERROR_MESSAGE);
+            if (i != 0) {
+                JOptionPane.showMessageDialog(null, "No es posible eliminar el ", "Error", JOptionPane.ERROR_MESSAGE);
+
             }
-            limpiar(); 
-      }
-      
+        }
     }//GEN-LAST:event_jButtonEliminarSuministroActionPerformed
-
-
 
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         dispose();
-      this.previo.setVisible(true);
-    
-        
+        this.previo.setVisible(true);
+
+
     }//GEN-LAST:event_volverActionPerformed
 
 
     private void jButtonNuevoAlimento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoAlimento1ActionPerformed
-        limpiar ();
+        limpiar();
     }//GEN-LAST:event_jButtonNuevoAlimento1ActionPerformed
-
 
 // guardar suministro
     private void jButtonGuardarSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarSuministroActionPerformed
-         if (!this.listaSuministro.isSelectionEmpty()){
-            Suministro s = (Suministro ) this.listaSuministro.getSelectedValue();
-            this.controlador.editarSuministro(s,this.nombreSumi.getText(),this.cantidadSuministro.getText() );
-        }else{
-            this.controlador.agregarSuministro(this.nombreSumi.getText(),this.cantidadSuministro.getText());
-        
+        if (!this.listaSuministro.isSelectionEmpty()) {
+            Suministro s = (Suministro) this.listaSuministro.getSelectedValue();
+            this.controlador.editarSuministro(s, this.nombreSumi.getText(), this.cantidadSuministro.getText());
+        } else {
+            this.controlador.agregarSuministro(this.nombreSumi.getText(), this.cantidadSuministro.getText());
+
         }
-         limpiar();
-         
+        limpiar();
+
     }//GEN-LAST:event_jButtonGuardarSuministroActionPerformed
 
     private void listaSuministroValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaSuministroValueChanged
-       if (!this.listaSuministro.isSelectionEmpty()){
-       
-            Suministro s= (Suministro) this.listaSuministro.getSelectedValue();
+        if (!this.listaSuministro.isSelectionEmpty()) {
+
+            Suministro s = (Suministro) this.listaSuministro.getSelectedValue();
             this.ideSuministro.setText(s.getIdSuministro().toString());
-            this.cantidadSuministro.setText(s.getDescripcion());
+            this.nombreSumi.setText(s.getDescripcion());
             this.cantidadSuministro.setText(s.getcSuministro());
-    
-            
-       }
-      
-        
-        
-        
+
+        }
+
+
     }//GEN-LAST:event_listaSuministroValueChanged
 
     private void nombreSumiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreSumiActionPerformed
-      
-        
-        
-        
+
+
     }//GEN-LAST:event_nombreSumiActionPerformed
 
     private void cantidadSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadSuministroActionPerformed
-       
+
     }//GEN-LAST:event_cantidadSuministroActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    private void limpiar(){
-       
-        //suministro
+    private void limpiar() {
         this.ideSuministro.setText("");
         this.nombreSumi.setText("");
         this.cantidadSuministro.setText("");
-       
-       this.listaSuministro.setListData(this.controlador.listarMenu().toArray());
+
+        this.listaSuministro.setListData(this.controlador.listarSuministro().toArray());
+        this.listaSuministro.clearSelection();
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cantidadSuministro;
     private javax.swing.JLabel ideSuministro;

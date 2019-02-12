@@ -23,11 +23,13 @@ public class VentanaAlimento extends javax.swing.JFrame {
      * Creates new form VentanaMen
      *
      * @param c
+     * @param p
      */
     public VentanaAlimento(Controlador c, JFrame p) {
         this.controlador = c;
         this.previo = p;
         initComponents();
+        limpiar();
     }
 
     /**
@@ -226,11 +228,11 @@ public class VentanaAlimento extends javax.swing.JFrame {
 
 // eliminiar alimento 
     private void jButtonEliminarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAlimentoActionPerformed
-        Alimento a = (Alimento) this.listaAlimento.getSelectedValue();
+          Alimento a = (Alimento) this.listaAlimento.getSelectedValue();
         if (a != null) {
             int i = this.controlador.eliminarAlimento(a);
             if (i != 0) {
-                JOptionPane.showMessageDialog(null, "No es posible eliminar el empleado", "Error", JOptionPane.ERROR_MESSAGE);
+                
             }
             limpiar();
         }
@@ -249,25 +251,26 @@ public class VentanaAlimento extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNuevoAlimentoActionPerformed
 // guardar alimento 
     private void jButtonGuardarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarAlimentoActionPerformed
-        if (!this.listaAlimento.isSelectionEmpty()) {
+        if(!this.listaAlimento.isSelectionEmpty()){
             Alimento a = (Alimento) this.listaAlimento.getSelectedValue();
-            this.controlador.editarAlimento(a, this.texDescripcionAliento.getText(), this.textoCantidadAlimento.getText());
-        } else {
-            this.controlador.agregarAlimento(this.texDescripcionAliento.getText(), this.textoCantidadAlimento.getText());
-
+            this.controlador.editarAlimento(a, this.texDescripcionAliento.getText(),this.textoCantidadAlimento.getText());
+        
+        }else{
+            this.controlador.agregarAlimento(this.texDescripcionAliento.getText(),this.textoCantidadAlimento.getText());
+        
         }
         limpiar();
 
     }//GEN-LAST:event_jButtonGuardarAlimentoActionPerformed
 
     private void listaAlimentoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAlimentoValueChanged
-        // TODO add your handling code here:
-        if (!this.listaAlimento.isSelectionEmpty()) {
-            Alimento a= (Alimento) this.listaAlimento.getSelectedValue();
-            this.ideAlimento.setText(a.getIdAlimento().toString());
-            this.texDescripcionAliento.setText(a.getNombre());
-            this.textoCantidadAlimento.setText(a.getCantidad());
-        }
+      if(!this.listaAlimento.isSelectionEmpty()){
+          Alimento a=(Alimento)this.listaAlimento.getSelectedValue();
+          this.ideAlimento.setText(a.getIdAlimento().toString());
+          this.texDescripcionAliento.setText(a.getNombre());
+          this.textoCantidadAlimento.setText(a.getCantidad());
+      }
+        
     }//GEN-LAST:event_listaAlimentoValueChanged
 
     private void texDescripcionAlientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texDescripcionAlientoActionPerformed
@@ -287,8 +290,11 @@ public class VentanaAlimento extends javax.swing.JFrame {
         this.ideAlimento.setText("");
         this.texDescripcionAliento.setText("");
         this.textoCantidadAlimento.setText("");
-
+         this.listaAlimento.setListData(this.controlador.listarAlimento().toArray());
+       this.listaAlimento.clearSelection();
     }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ideAlimento;
     private javax.swing.JButton jButtonEliminarAlimento;

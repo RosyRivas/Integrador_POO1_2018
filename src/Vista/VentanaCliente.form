@@ -139,13 +139,13 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextFieldDNI" pref="71" max="32767" attributes="0"/>
-                                      <Component id="jTextNombre" max="32767" attributes="0"/>
-                                      <Component id="jTextFieldTelef" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField5Calle" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextFieldApellido" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFielLocalidad" pref="97" max="32767" attributes="0"/>
                                       <Component id="jTextFieldNroCalle" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextFielLocalidad" max="32767" attributes="0"/>
+                                      <Component id="jTextField5Calle" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldTelef" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldApellido" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextNombre" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldDNI" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
