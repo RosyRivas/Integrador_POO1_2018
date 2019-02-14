@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import static modelo.Cliente_.dep;
+import com.toedter.calendar.JCalendar;
 
 /**
  *
@@ -209,13 +210,10 @@ public class Controlador {
 
     }
 
-    public void agregarPicnic(String lug, String cantPer, String pre, String fech, Cliente cli, Menu me) {
-        this.persistencia.iniciarTransaccion();
-        try {
-
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy" + "hh:mm");
-
-            Picnic p = new Picnic(lug.toUpperCase(), formatoFecha.parse(fech), cantPer.toUpperCase(), pre.toUpperCase(), cli, me);
+    public void agregarPicnic(String lug, String cantPer, String pre, Date fecha, Cliente cli, Menu me) {
+        this.persistencia.iniciarTransaccion();      
+          
+            Picnic p = new Picnic(lug.toUpperCase(),fecha,cantPer.toUpperCase(), pre.toUpperCase(), cli, me);
             if ((cli != null)) {
                 cli.agregarPicnic(p);
                 this.persistencia.modificar(cli);
@@ -223,10 +221,8 @@ public class Controlador {
             }
             this.persistencia.insertar(p);
             this.persistencia.confirmarTransaccion();
-        } catch (ParseException ex) {
-            this.persistencia.descartarTransaccion();
-            System.out.println("Error al capturar fecha");
-        }
+      
+           
 
     }
 
@@ -242,23 +238,22 @@ public class Controlador {
         }
     }
 
-    public void editarPicnic(Picnic p, String lugar, String fecha, String cantPers, String precio, Cliente cli, Menu me) {
+    public void editarPicnic(Picnic p, String lugar, String cantPers, String precio, Date fecha, Cliente cli, Menu me) {
         this.persistencia.iniciarTransaccion();
-        try {
-            SimpleDateFormat formatofecha = new SimpleDateFormat("dd/mm/yyyy" + "hh:mm");
+       
+            
             p.setLugar(lugar.toUpperCase());
-            p.setFecha(formatofecha.parse(fecha));
+            p.setFecha(fecha);
+           
             p.setPrecio(precio);
             p.setCantPersona(cantPers);
             p.setCli(cli);
             p.setMe(me);
 
             this.persistencia.modificar(p);
-            //  this.persistencia.modificar();
+             //this.persistencia.modificar();
             this.persistencia.confirmarTransaccion();
-        } catch (ParseException ex) {
-            this.persistencia.descartarTransaccion();
-        }
+        
     }
 
 //    ********************** Menu  ***************************************
@@ -311,20 +306,15 @@ public class Controlador {
     }
 
 //   ///// **************** Deposito  ********************
-    public void agregarDeposito(double monto, String fecha, boolean nro, Picnic pic, Cliente cli) {
+    public void agregarDeposito(double monto, Date fecha, boolean nro, Picnic pic, Cliente cli) {
         this.persistencia.iniciarTransaccion();
-        try {
-            SimpleDateFormat formatoFecha = new SimpleDateFormat();
-            Deposito d = new Deposito(monto, formatoFecha.parse(fecha), nro, pic, cli);
+     
+            Deposito d = new Deposito(monto, fecha, nro, pic, cli);
 
             this.persistencia.insertar(d);
             this.persistencia.confirmarTransaccion();
 
-        } catch (ParseException ex) {
-            this.persistencia.descartarTransaccion();
-            System.out.println("Error al capturar fecha");
-
-        }
+        
     }
 
     public void quitardepoosito() {

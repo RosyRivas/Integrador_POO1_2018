@@ -36,7 +36,7 @@ public class Picnic {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
     private String cantPersona;
-   
+  //  private Date hora;
     private String precio;
 
     @ManyToOne
@@ -52,13 +52,15 @@ public class Picnic {
 
     public Picnic() {
         this.fecha= new Date();
+      //  this.hora= new Date();
         this.dep= new ArrayList();
     }
 
-    public Picnic( String lugar,Date fecha,String cantPer, String precio, Cliente cli, Menu me) {
+    public Picnic( String lugar,Date fecha/*Date hora*/,String cantPer, String precio, Cliente cli, Menu me) {
         
         this.lugar = lugar;
         this.fecha = new Date();
+      //  this.hora= new Date();
         this.cantPersona= cantPer;
         this.precio = precio;
         this.cli = cli;

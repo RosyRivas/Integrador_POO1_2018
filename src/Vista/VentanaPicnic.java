@@ -5,7 +5,9 @@
  */
 package Vista;
 
+import com.toedter.calendar.JDateChooser;
 import controlador.Controlador;
+import java.text.SimpleDateFormat;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -55,8 +57,8 @@ public class VentanaPicnic extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         lugar = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        fecha = new com.toedter.calendar.JDateChooser();
+        jFecha = new com.toedter.calendar.JDateChooser();
+        fech = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -104,46 +106,48 @@ public class VentanaPicnic extends javax.swing.JFrame {
 
         jLabel7.setText("Cantidad de Personas");
 
+        lugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lugarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(lugar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lugar, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(lugar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jLabel4.setText("Fecha");
+        jFecha.setDateFormatString("dd/mm/yyyy");
+        jFecha.setMaxSelectableDate(new java.util.Date(2524622503000L));
+        jFecha.setMinSelectableDate(new java.util.Date(946699303000L));
 
-        fecha.setDateFormatString("dd/mm/yyyy, hh:mm");
-        fecha.setMaxSelectableDate(new java.util.Date(253370779303000L));
-        fecha.setMinSelectableDate(new java.util.Date(-62135755097000L));
+        fech.setText("Fecha");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(fech)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(jFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fech))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -155,8 +159,8 @@ public class VentanaPicnic extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -168,6 +172,8 @@ public class VentanaPicnic extends javax.swing.JFrame {
                     .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3))
         );
+
+        precio.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -196,48 +202,48 @@ public class VentanaPicnic extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                                .addComponent(jLabel2)
+                                .addGap(87, 87, 87)
+                                .addComponent(idPicnic)
+                                .addContainerGap(311, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addGap(87, 87, 87)
-                                                .addComponent(idPicnic))
-                                            .addComponent(jLabel3))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 311, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                                        .addComponent(jLabel3)
+                                        .addGap(96, 96, 96)
+                                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(9, 9, 9)
+                            .addComponent(jLabel7)
+                            .addGap(18, 18, 18)
+                            .addComponent(cantidadPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel11)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(nuevoPic)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(guardarPicnic)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(eliminarPic))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cantidadPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGap(122, 122, 122)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(comboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(nuevoPic)
+                                    .addGap(34, 34, 34)
+                                    .addComponent(guardarPicnic)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(eliminarPic)))
+                            .addGap(6, 6, 6)))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,19 +252,19 @@ public class VentanaPicnic extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idPicnic)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cantidadPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(comboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -266,12 +272,12 @@ public class VentanaPicnic extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(comboMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nuevoPic)
                     .addComponent(guardarPicnic)
                     .addComponent(eliminarPic))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         listPicnic.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -366,14 +372,16 @@ public class VentanaPicnic extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(67, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton5)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                        .addGap(50, 50, 50))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,26 +392,31 @@ public class VentanaPicnic extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jButton5)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addGap(68, 68, 68))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//nuevo
     private void nuevoPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoPicActionPerformed
         limpiar();
     }//GEN-LAST:event_nuevoPicActionPerformed
 //guardar picnic 
     private void guardarPicnicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPicnicActionPerformed
+        
+        
         if (!this.listPicnic.isSelectionEmpty()) {
             Picnic p = (Picnic) this.listPicnic.getSelectedValue();
-            this.controlador.editarPicnic(p, this.lugar.getText(), this.fecha.getDateFormatString(), this.cantidadPersona.getText(), this.precio.getText(), (Cliente) this.comboCliente.getSelectedItem(), (Menu) this.comboMenu.getSelectedItem());
+            this.controlador.editarPicnic(p, this.lugar.getText(), this.cantidadPersona.getText(), this.precio.getText(), this.jFecha.getDate(), (Cliente) this.comboCliente.getSelectedItem(), (Menu) this.comboMenu.getSelectedItem());
         } else {
-            this.controlador.agregarPicnic(this.lugar.getText(), this.fecha.getDateFormatString(), this.cantidadPersona.getText(), this.precio.getText(), (Cliente) this.comboCliente.getSelectedItem(), (Menu) this.comboMenu.getSelectedItem());
+            this.controlador.agregarPicnic(this.lugar.getText(), this.cantidadPersona.getText(), this.precio.getText(), this.jFecha.getDate(), (Cliente) this.comboCliente.getSelectedItem(), (Menu) this.comboMenu.getSelectedItem());
         }
         limpiar();
 
@@ -418,18 +431,27 @@ public class VentanaPicnic extends javax.swing.JFrame {
         
         DefaultComboBoxModel modeloCliente = new DefaultComboBoxModel();
         this.comboCliente.setModel(modeloCliente);
+        this.comboCliente.setSelectedIndex(-1);
+        
         DefaultComboBoxModel modeloMenu = new DefaultComboBoxModel();
         this.comboMenu.setModel(modeloMenu);
-        DefaultComboBoxModel modeloDe = new DefaultComboBoxModel();
+        this.comboMenu.setSelectedIndex(-1);
+        
+        JDateChooser dateChooser = new JDateChooser();
+         dateChooser.setCalendar(null);
+       
+         DefaultComboBoxModel modeloDe = new DefaultComboBoxModel();
         this.comboDeposito.setModel(modeloDe);
         this.comboDeposito.setSelectedIndex(-1);
         this.listaDeposito.setEnabled(false);
+       
         DefaultListModel modeloLista = new DefaultListModel();
         this.listaDeposito.setModel(modeloLista);
+        
         this.listPicnic.setListData(this.controlador.listarPicnic().toArray());
         this.listPicnic.clearSelection();
-        this.comboCliente.setSelectedIndex(-1);
-        this.comboMenu.setSelectedIndex(-1);
+        
+        
 
     }
 
@@ -449,6 +471,10 @@ public class VentanaPicnic extends javax.swing.JFrame {
             this.lugar.setText(picnic.getLugar());
             this.precio.setText(picnic.getPrecio());
             this.cantidadPersona.setText(picnic.getCantPersona());
+            if (picnic.getFecha()!= null){
+                
+                          
+            }
             if (picnic.getMe() != null) {
                 this.comboMenu.setSelectedItem(picnic.getMe());
             } else {
@@ -472,6 +498,10 @@ public class VentanaPicnic extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_QuitarDepositoActionPerformed
 
+    private void lugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lugarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lugarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -484,16 +514,16 @@ public class VentanaPicnic extends javax.swing.JFrame {
     private javax.swing.JComboBox comboDeposito;
     private javax.swing.JComboBox comboMenu;
     private javax.swing.JButton eliminarPic;
-    private com.toedter.calendar.JDateChooser fecha;
+    private javax.swing.JLabel fech;
     private javax.swing.JButton guardarPicnic;
     private javax.swing.JLabel idPicnic;
     private javax.swing.JButton jButton5;
+    private com.toedter.calendar.JDateChooser jFecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
