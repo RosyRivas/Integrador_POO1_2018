@@ -35,8 +35,10 @@ public class Picnic {
     private String lugar;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
+   
+     private String hora;
     private String cantPersona;
-  //  private Date hora;
+   
     private String precio;
 
     @ManyToOne
@@ -52,15 +54,15 @@ public class Picnic {
 
     public Picnic() {
         this.fecha= new Date();
-      //  this.hora= new Date();
+        
         this.dep= new ArrayList();
     }
 
-    public Picnic( String lugar,Date fecha/*Date hora*/,String cantPer, String precio, Cliente cli, Menu me) {
+    public Picnic( String lugar,Date fecha,String hora,String cantPer, String precio, Cliente cli, Menu me) {
         
         this.lugar = lugar;
         this.fecha = new Date();
-      //  this.hora= new Date();
+        this.hora= hora;
         this.cantPersona= cantPer;
         this.precio = precio;
         this.cli = cli;
@@ -68,7 +70,15 @@ public class Picnic {
         this.me = me;
     }
 
-    
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+  
 
     public long getIdPicnic() {
         return idPicnic;
@@ -149,9 +159,11 @@ public class Picnic {
 
     @Override
     public String toString() {
-        return "Picnic{" + "idPicnic=" + idPicnic + ", lugar=" + lugar + ", fecha=" + fecha + ", precio=" + precio + ", cli=" + cli + ", dep=" + dep + ", me=" + me + '}';
+        return "Picnic{" + "idPicnic=" + idPicnic + ", lugar=" + lugar + ", fecha=" + fecha + ", hora=" + hora + ", cantPersona=" + cantPersona + ", precio=" + precio + ", cli=" + cli + ", dep=" + dep + ", me=" + me + '}';
     }
 
+  
+  
    
 public void agregarDeposito(Deposito d ){
         this.dep.add(d);
@@ -168,5 +180,5 @@ public void agregarDeposito(Deposito d ){
        this.dep.remove(d);
    
    }
-
+   
 }

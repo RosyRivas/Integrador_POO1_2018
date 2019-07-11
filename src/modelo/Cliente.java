@@ -52,7 +52,7 @@ public class Cliente implements Serializable {
         this.pic=new ArrayList();
     }
 
-    public Cliente( String dni ,String nombres, String apellido, String numeroTelefono, String calle ,String  numero,String localidad/*, Deposito dep, Picnic pic*/) {
+    public Cliente( String dni ,String nombres, String apellido, String numeroTelefono, String calle ,String  numero,String localidad) {
         this.dni= dni;
         this.nombres = nombres;
         this.apellido = apellido;
@@ -146,5 +146,21 @@ public class Cliente implements Serializable {
        this.pic.remove(pic);
    } 
     
- 
+ public void agregarDeposito(Deposito d){
+   
+       this.dep.add(d);
+   } 
+ public void eliminarDeposito(Deposito d){
+   
+       this.dep.remove(d);
+       
+   } 
+    public void quitarDeposito (Deposito d){
+     this.dep.remove(d);
+     d.eliminarCliente(this);
+ }
+    public void quitarPicnic(Picnic p ){
+        this.pic.remove(p);
+      
+    }
 }

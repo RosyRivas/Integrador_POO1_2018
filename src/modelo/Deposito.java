@@ -29,11 +29,11 @@ public class Deposito implements Serializable {
     @Id
     @SequenceGenerator(name="sec_deposito", initialValue=1, allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sec_deposito")
-    private Long idDeposito;
-    private double monto;
+    private Long idDeposito; 
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaDep;
-    private boolean nro;
+    private String monto;
+    private String tipoDeposito;
     @ManyToOne
     private Picnic pic ;
     @ManyToOne
@@ -41,23 +41,26 @@ public class Deposito implements Serializable {
    
     
     public Deposito() {
+        this.fechaDep= new Date();
     }
 
-    public Deposito(double monto, Date fechaDep, boolean nro, Picnic pic, Cliente cli) {
-        this.monto = monto;
-        this.fechaDep = fechaDep;
-        this.nro = nro;
+    public Deposito(Date fechaDep,String monto,  String tipoDep, Picnic pic, Cliente cli) {
+         this.fechaDep = new Date();
+        this.monto = monto;   
+        this.tipoDeposito = tipoDep;
         this.pic = pic;
         this.cli = cli;
     }
 
-    public double getMonto() {
+    public String getMonto() {
         return monto;
     }
 
-    public void setMonto(double monto) {
+    public void setMonto(String monto) {
         this.monto = monto;
     }
+
+    
 
     public Date getFechaDep() {
         return fechaDep;
@@ -67,13 +70,17 @@ public class Deposito implements Serializable {
         this.fechaDep = fechaDep;
     }
 
-    public boolean isNro() {
-        return nro;
+    public String getTipoDeposito() {
+        return tipoDeposito;
     }
 
-    public void setNro(boolean nro) {
-        this.nro = nro;
+    public void setTipoDeposito(String tipoDeposito) {
+        this.tipoDeposito = tipoDeposito;
     }
+
+   
+
+   
 
    
     public Long getIdDeposito() {
@@ -102,11 +109,20 @@ public class Deposito implements Serializable {
 
     @Override
     public String toString() {
-        return "Deposito{" + "idDeposito=" + idDeposito + ", monto=" + monto + ", nro=" + nro + ", pic=" + pic + ", cli=" + cli + '}';
+        return "Deposito{" + "idDeposito=" + idDeposito + ", fechaDep=" + fechaDep + ", monto=" + monto + ", tipoDeposito=" + tipoDeposito + ", pic=" + pic + ", cli=" + cli + '}';
     }
 
-   
+    
 
+ //public void agregarDeposito(Deposito d ){
+   //0     this.pi;
+    
+   // }
+    public void eliminarCliente(Cliente c){
+   
+      
+       
+   } 
     
     
 }
