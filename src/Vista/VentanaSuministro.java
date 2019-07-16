@@ -230,6 +230,7 @@ public class VentanaSuministro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "No es posible eliminar el ", "Error", JOptionPane.ERROR_MESSAGE);
 
             }
+            limpiar();
         }
     }//GEN-LAST:event_jButtonEliminarSuministroActionPerformed
 

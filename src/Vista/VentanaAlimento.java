@@ -230,7 +230,7 @@ public class VentanaAlimento extends javax.swing.JFrame {
         if (a != null) {
             int i = this.controlador.eliminarAlimento(a);
             if (i != 0) {
-                
+                 JOptionPane.showMessageDialog(null, "No es posible eliminar el Alimento", "Error", JOptionPane.ERROR_MESSAGE);
             }
             limpiar();
         }

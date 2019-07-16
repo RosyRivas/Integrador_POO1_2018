@@ -132,6 +132,7 @@ public class Cliente implements Serializable {
     }
 
    
+   
 
    
 
@@ -157,7 +158,7 @@ public class Cliente implements Serializable {
    } 
     public void quitarDeposito (Deposito d){
      this.dep.remove(d);
-     d.eliminarCliente(this);
+    // d.eliminarCliente(this);
  }
     public void quitarPicnic(Picnic p ){
         this.pic.remove(p);

@@ -114,12 +114,9 @@ public class Deposito implements Serializable {
 
     
 
- //public void agregarDeposito(Deposito d ){
-   //0     this.pi;
-    
-   // }
+
     public void eliminarCliente(Cliente c){
-   
+        
       
        
    } 

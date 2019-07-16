@@ -8,7 +8,7 @@ import modelo.Deposito;
 import modelo.Direccion;
 import modelo.Picnic;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-07-11T17:43:04")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-07-13T12:27:12")
 @StaticMetamodel(Cliente.class)
 public class Cliente_ { 
 

@@ -222,6 +222,7 @@ public class VentanaMenu extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de Alimentos"));
 
+        comboAlimento.setMaximumSize(new java.awt.Dimension(3276, 3276));
         comboAlimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboAlimentoActionPerformed(evt);
@@ -350,7 +351,14 @@ public class VentanaMenu extends javax.swing.JFrame {
 
 //eliminar menu
     private void jButtonEliminarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarMenuActionPerformed
-      
+       Menu m= (Menu)this.listaMenu.getSelectedValue();
+       if(m != null){
+           int i = this.controlador.eliminarMenu(m) ;
+           if(i !=0){
+                JOptionPane.showMessageDialog(null, "No es posible eliminar el Menu", "Error", JOptionPane.ERROR_MESSAGE);
+           }
+       }
+       limpiar();
     }//GEN-LAST:event_jButtonEliminarMenuActionPerformed
 
 
@@ -392,6 +400,7 @@ public class VentanaMenu extends javax.swing.JFrame {
             this.ideMenu.setText(m.getIdMenu().toString());
             this.descripcionMenu.setText(m.getDescripcion());
             this.precioMenu.setText(m.getPrecio());
+           
             if (m.getSuministro()!= null){
                 this.comboSuministro.setSelectedItem(m.getSuministro());
             }else{
@@ -417,7 +426,9 @@ public class VentanaMenu extends javax.swing.JFrame {
              this.listaAlimento.setListData(m.getaMenu().toArray());
         
         
-        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un Menu.", "Error", JOptionPane.ERROR_MESSAGE);
+         }
     }//GEN-LAST:event_agregarAlimentoActionPerformed
 //agregar suministro a menu
     private void agregarSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarSuministroActionPerformed
@@ -426,6 +437,8 @@ public class VentanaMenu extends javax.swing.JFrame {
              Menu m=(Menu ) this.listaMenu.getSelectedValue();
              this.controlador.agregarSuministroMenu(m, s);
              this.listaSuministro.setListData(m.getSuministro().toArray());
+       }else{
+           JOptionPane.showMessageDialog(null, "Por favor seleccione un Menu.", "Error", JOptionPane.ERROR_MESSAGE);
        }
     }//GEN-LAST:event_agregarSuministroActionPerformed
 //quitar suministro
@@ -468,20 +481,20 @@ public class VentanaMenu extends javax.swing.JFrame {
         DefaultComboBoxModel comboA = new DefaultComboBoxModel(this.controlador.listarAlimento().toArray());
         this.comboAlimento.setModel(comboA);
         
-        DefaultComboBoxModel comboS = new DefaultComboBoxModel(this.controlador.listarSuministro().toArray());
+        DefaultComboBoxModel comboS = new DefaultComboBoxModel(this.controlador.listarSuministro() .toArray());
         this.comboSuministro.setModel(comboS);
-        
+        // completo la lista menu
         this.listaMenu.setListData(this.controlador.listarMenu().toArray());
-       this.listaMenu.clearSelection();
+       this.listaMenu.clearSelection();// deselecciono la lista
         
-         DefaultListModel modeloListAli = new DefaultListModel();
+         DefaultListModel modeloListAli = new DefaultListModel();//lista  alimento
         this.listaSuministro.setModel(modeloListAli);
       
-        DefaultListModel modeloListSumi = new DefaultListModel();
+        DefaultListModel modeloListSumi = new DefaultListModel();//lista suministro
         this.listaSuministro.setModel(modeloListSumi);
         
-        this.comboAlimento.setSelectedIndex(-1);
-        this.comboSuministro.setSelectedIndex(-1);
+        this.comboAlimento.setSelectedIndex(-1);// deselecciono combo alimento
+        this.comboSuministro.setSelectedIndex(-1);//deselecciono combo suministro
         
     }
     

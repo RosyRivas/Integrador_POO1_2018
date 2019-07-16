@@ -15,6 +15,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.*;
 import modelo.Picnic;
@@ -327,8 +328,8 @@ public class VentanaPicnic extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,7 +339,7 @@ public class VentanaPicnic extends javax.swing.JFrame {
                             .addComponent(agregarDeposito, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                             .addComponent(QuitarDeposito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel9))
-                .addGap(0, 38, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,30 +400,35 @@ public class VentanaPicnic extends javax.swing.JFrame {
         this.precio.setText("");
         this.hora.setText("");
         this.cantidadPersona.setText("");
+       JDateChooser dateChooser = new JDateChooser();
+         dateChooser.setCalendar(null); 
+         
         
-        DefaultComboBoxModel modeloCliente = new DefaultComboBoxModel();
+       //combo cliente
+        DefaultComboBoxModel modeloCliente = new DefaultComboBoxModel(this.controlador.listarCliente().toArray());
         this.comboCliente.setModel(modeloCliente);
-        this.comboCliente.setSelectedIndex(-1);
-        
-        DefaultComboBoxModel modeloMenu = new DefaultComboBoxModel();
+       
+        //combo menu
+        DefaultComboBoxModel modeloMenu = new DefaultComboBoxModel(this.controlador.listarMenu().toArray());
         this.comboMenu.setModel(modeloMenu);
-        this.comboMenu.setSelectedIndex(-1);
         
-        JDateChooser dateChooser = new JDateChooser();
-         dateChooser.setCalendar(null);
-       
-         DefaultComboBoxModel modeloDe = new DefaultComboBoxModel();
-        this.comboDeposito.setModel(modeloDe);
-        this.comboDeposito.setSelectedIndex(-1);
-        this.listaDeposito.setEnabled(false);
-       
-        DefaultListModel modeloLista = new DefaultListModel();
-        this.listaDeposito.setModel(modeloLista);
-        
+      //lista picnic
         this.listPicnic.setListData(this.controlador.listarPicnic().toArray());
         this.listPicnic.clearSelection();
         
         
+       //combo deposito
+         DefaultComboBoxModel modeloDe = new DefaultComboBoxModel(this.controlador.listarDeposito().toArray());
+        this.comboDeposito.setModel(modeloDe);
+     
+     
+       //modelo lista deposito
+        DefaultListModel modeloLista = new DefaultListModel();
+        this.listaDeposito.setModel(modeloLista);
+        
+        this.comboMenu.setSelectedIndex(-1);
+          this.comboDeposito.setSelectedIndex(-1);
+         this.comboCliente.setSelectedIndex(-1);
 
     }
 
@@ -438,11 +444,11 @@ public class VentanaPicnic extends javax.swing.JFrame {
     private void listPicnicValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listPicnicValueChanged
         if (!this.listPicnic.isSelectionEmpty()) {
             Picnic p = (Picnic) this.listPicnic.getSelectedValue();
-         // this.idPicnic.setText(p.getIdPicnic().toString());
+        //  this.idPicnic.setText(p.getIdPicnic().toString());
             this.lugar.setText(p.getLugar());
             this.precio.setText(p.getPrecio());
             this.cantidadPersona.setText(p.getCantPersona());
-            
+
             if (p.getMe() != null) {
                 this.comboMenu.setSelectedItem(p.getMe());
             } else {
@@ -455,7 +461,7 @@ public class VentanaPicnic extends javax.swing.JFrame {
                 this.comboCliente.setSelectedItem(null);
             }
             this.listaDeposito.setListData(p.getDep().toArray());
-          
+       
         }
 
 
@@ -464,9 +470,9 @@ public class VentanaPicnic extends javax.swing.JFrame {
     private void QuitarDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarDepositoActionPerformed
        if (this.listPicnic.getSelectedValue() !=null){
            Picnic p = (Picnic) this.listPicnic.getSelectedValue();
-           Deposito d= (Deposito) this.listaDeposito.getSelectedValue();
+           Deposito d= (Deposito) this.comboDeposito.getSelectedItem();
            this.controlador.quitarDepositoPicnic(p, d);
-           this.listPicnic.setListData(p.getDep().toArray());
+           this.listaDeposito.setListData(p.getDep().toArray());
        }
     }//GEN-LAST:event_QuitarDepositoActionPerformed
 
@@ -484,8 +490,8 @@ public class VentanaPicnic extends javax.swing.JFrame {
         if (!this.listPicnic.isSelectionEmpty()) {
             Picnic p = (Picnic) this.listPicnic.getSelectedValue();
             jFecha.getJCalendar().setMinSelectableDate(new Date());
-            jFecha.getDateEditor().setEnabled(false);
-            // String lugar,Date fecha,String hora,String cantPer, String precio, Cliente cli, Menu me ;
+           // jFecha.getDateEditor().setEnabled(false);
+           
              this.controlador.editarPicnic(p, this.lugar.getText(),this.jFecha.getDate(),this.hora.getText(), this.cantidadPersona.getText(), this.precio.getText() , (Cliente) this.comboCliente.getSelectedItem(), (Menu) this.comboMenu.getSelectedItem());
         } else {
 
@@ -514,16 +520,23 @@ public class VentanaPicnic extends javax.swing.JFrame {
    
     
     if (this.listPicnic.getSelectedValue()!= null && this.listaDeposito.getSelectedValue()!= null){
-        Deposito d = (Deposito) this.listaDeposito.getSelectedValue();
+        Deposito d = (Deposito) this.comboDeposito.getSelectedItem();
         Picnic p= (Picnic) this.listPicnic.getSelectedValue();
-        this.controlador.quitarDepositoPicnic(p, d);
-        this.listPicnic.setListData(p.getDep().toArray());
+        this.controlador.agregarPicnicaDeposito(p, d);
+        this.listaDeposito.setListData(p.getDep().toArray());
     
     }
     }//GEN-LAST:event_agregarDepositoActionPerformed
 
     private void eliminarPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPicActionPerformed
-        // TODO add your handling code here:
+       Picnic p=(Picnic) this.listPicnic.getSelectedValue();
+       if (p != null){
+           int i =this.controlador.eliminarPicnic(p);
+           if(i !=0){
+                JOptionPane.showMessageDialog(null, "No es posible eliminar el Picnic", "Error", JOptionPane.ERROR_MESSAGE);
+           }
+           limpiar();
+       }
     }//GEN-LAST:event_eliminarPicActionPerformed
 
     private void listaDepositoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaDepositoValueChanged

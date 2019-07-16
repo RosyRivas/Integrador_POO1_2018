@@ -162,6 +162,9 @@ public class Picnic {
         return "Picnic{" + "idPicnic=" + idPicnic + ", lugar=" + lugar + ", fecha=" + fecha + ", hora=" + hora + ", cantPersona=" + cantPersona + ", precio=" + precio + ", cli=" + cli + ", dep=" + dep + ", me=" + me + '}';
     }
 
+   
+
+   
   
   
    

@@ -16,6 +16,7 @@ import static modelo.Cliente_.dep;
 import com.toedter.calendar.JCalendar;
 import java.sql.Time;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,9 +43,12 @@ public class Controlador {
     public void agregarCliente(String dni, String nombres, String apellidos, String nroTelefono, String calle, String numero, String localidad) {
         this.persistencia.iniciarTransaccion();
         Cliente c = new Cliente(dni.toUpperCase(), nombres.toUpperCase(), apellidos.toUpperCase(), nroTelefono.toUpperCase(), calle.toUpperCase(), numero.toUpperCase(), localidad.toUpperCase());
-       
-        
-        this.persistencia.insertar(c);
+        if (dni.toUpperCase().equals(c.getDni())){
+                this.persistencia.insertar(c);    
+       }else{
+            JOptionPane.showMessageDialog(null, "El Cliente ya existe.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.persistencia.descartarTransaccion();
+       }
         this.persistencia.confirmarTransaccion();
     }
 //      ELIMINAR CLIENTE
@@ -221,11 +225,11 @@ public class Controlador {
 
         Picnic p = new Picnic(lugar.toUpperCase(), fecha, hora, cantPersona.toUpperCase(), precio.toUpperCase(), cli, me);
 
-        if ((cli != null)) {
+        if (cli != null) {
             cli.agregarPicnic(p);
             this.persistencia.modificar(cli);
         }
-        
+       
 
         this.persistencia.insertar(p);
         this.persistencia.confirmarTransaccion();
@@ -280,7 +284,7 @@ public class Controlador {
         this.persistencia.confirmarTransaccion();
 
     }
-//                      ELIMINAR MENU
+//                      ELIMINAR MENU del pic
     public int eliminarMenu(Menu m) {
         if (m.getPic().isEmpty()) {
             this.persistencia.iniciarTransaccion();
@@ -298,9 +302,7 @@ public class Controlador {
         this.persistencia.insertar(m);
         this.persistencia.confirmarTransaccion();
     }
-//              QUITAR MENU DEL PICNIC
-    public void quitarMenuPicnic() {
-    }
+
 //          EDITAR MENU
     public void editarMenu(Menu m, String descripcion, String precio) {
         this.persistencia.iniciarTransaccion();
@@ -332,6 +334,8 @@ public class Controlador {
         
     
     }
+    
+    
     
     //      editar deposito
     public void editarDeposito(Deposito d,  Date fecha,String monto, String tipoDeposito, Picnic pic, Cliente cli) {
