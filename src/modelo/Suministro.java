@@ -102,7 +102,7 @@ public class Suministro implements Serializable  {
 
     @Override
     public String toString() {
-        return "Suministro{" + "idSuministro=" + idSuministro + ", descripcion=" + descripcion + ", cSuministro=" + cSuministro + ", menu=" + menu + '}';
+        return "Suministro{" + "idSuministro=" + idSuministro + ", descripcion=" + descripcion + ", cSuministro=" + cSuministro + '}';
     }
 
    

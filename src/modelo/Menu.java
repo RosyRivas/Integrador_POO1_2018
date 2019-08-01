@@ -45,6 +45,7 @@ public class Menu implements Serializable {
     private Set<Alimento>aMenu;
 
     @OneToMany(mappedBy = "me") 
+    @OrderBy( "idPicnic ASC")
     private List<Picnic> pic;
 
    
@@ -54,7 +55,7 @@ public class Menu implements Serializable {
         this.pic = new ArrayList();
     }
 
-    public Menu(String descripcion, String precio) {
+    public Menu(String descripcion, String precio,Picnic pic,Suministro suministro, Alimento aMenu) {
         this.descripcion = descripcion;
         this.precio = precio;
         this.suministro  = new HashSet();
@@ -105,8 +106,12 @@ public class Menu implements Serializable {
 
     @Override
     public String toString() {
-        return "Menu{" + "idMenu=" + idMenu + ", descripcion=" + descripcion + ", precio=" + precio + ", suministro=" + suministro + ", aMenu=" + aMenu + ", pic=" + pic + '}';
+        return "Menu{" + "idMenu=" + idMenu + ", descripcion=" + descripcion + ", precio=" + precio + '}';
     }
+
+    
+    
+   
 
  
     public void setSuministro(Set<Suministro> suministro) {
@@ -124,18 +129,22 @@ public class Menu implements Serializable {
      public void agregarAlimentoMenu(Alimento a) {
 
         this.aMenu.add(a);
-
+        a.agregarMenu(this);
     }
 
     public void agregarSuministro(Suministro s) {
         this.suministro.add(s);
-
+        s.agregarMenu(this);
     }
     
- public void agregarMenuPicnic(Picnic p){
+ public void agregarPicnicMenu(Picnic p){
     this.pic.add(p);
-
-}
+ }
+ public void quitarPicnicMenu(Picnic p){
+    this.pic.remove(p);
+ }
+ 
+ 
  public void quitarSuministro (Suministro s){
      this.suministro.remove(s);
      s.quitarMenu(this);

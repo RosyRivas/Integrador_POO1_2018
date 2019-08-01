@@ -5,8 +5,9 @@
  */
 package Vista;
 
-import com.toedter.calendar.JDateChooser;
 import controlador.Controlador;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import modelo.*;
@@ -16,12 +17,13 @@ import modelo.*;
  * @author Rosi-PC
  */
 public class VentanaDeposito extends javax.swing.JFrame {
-    
+
     private final Controlador controlador;
     private final JFrame previo;
 
     /**
      * Creates new form VentanaDeposit
+     *
      * @param c
      * @param p
      */
@@ -29,6 +31,8 @@ public class VentanaDeposito extends javax.swing.JFrame {
         this.controlador = c;
         this.previo = p;
         initComponents();
+      this.setResizable(false);
+        limpiar();
     }
 
     /**
@@ -44,6 +48,8 @@ public class VentanaDeposito extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         jRadioButton1 = new javax.swing.JRadioButton();
         buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaDeposito = new javax.swing.JList();
@@ -57,12 +63,12 @@ public class VentanaDeposito extends javax.swing.JFrame {
         botonGuardar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         fechaDeposito = new com.toedter.calendar.JDateChooser();
-        radioCredito = new javax.swing.JRadioButton();
-        radioDebito = new javax.swing.JRadioButton();
         comboCliente = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         comboPicnic = new javax.swing.JComboBox<>();
+        radioCredito = new javax.swing.JRadioButton();
+        radioDebito = new javax.swing.JRadioButton();
         jButton6 = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
@@ -83,17 +89,16 @@ public class VentanaDeposito extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(21, 21, 21))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Deposito"));
@@ -109,6 +114,11 @@ public class VentanaDeposito extends javax.swing.JFrame {
         jTextMonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextMontoActionPerformed(evt);
+            }
+        });
+        jTextMonto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextMontoKeyTyped(evt);
             }
         });
 
@@ -128,22 +138,24 @@ public class VentanaDeposito extends javax.swing.JFrame {
 
         jLabel9.setText("Fecha");
 
-        fechaDeposito.setDateFormatString("dd/mm/yyyy, hh:mm");
         fechaDeposito.setMaxSelectableDate(new java.util.Date(253370779303000L));
         fechaDeposito.setMinSelectableDate(new java.util.Date(-62135755097000L));
 
-        radioCredito.setText("Credito");
-        radioCredito.addActionListener(new java.awt.event.ActionListener() {
+        comboCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioCreditoActionPerformed(evt);
+                comboClienteActionPerformed(evt);
             }
         });
-
-        radioDebito.setText("Debito");
 
         jLabel6.setText("Cliente");
 
         jLabel7.setText("Picnic");
+
+        buttonGroup1.add(radioCredito);
+        radioCredito.setText("Credito");
+
+        buttonGroup1.add(radioDebito);
+        radioDebito.setText("Debito");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -151,30 +163,31 @@ public class VentanaDeposito extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(botonNuevo)
+                .addGap(18, 18, 18)
+                .addComponent(botonGuardar)
+                .addContainerGap(289, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ideDepo)
+                    .addComponent(comboPicnic, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(botonNuevo)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonGuardar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ideDepo)
-                            .addComponent(fechaDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(radioCredito)
-                            .addComponent(radioDebito)
-                            .addComponent(comboPicnic, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                            .addComponent(radioDebito))
+                        .addGap(57, 57, 57)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,12 +201,11 @@ public class VentanaDeposito extends javax.swing.JFrame {
                     .addComponent(jTextMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(radioCredito)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioDebito)))
+                    .addComponent(radioCredito))
+                .addGap(7, 7, 7)
+                .addComponent(radioDebito)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fechaDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,7 +218,7 @@ public class VentanaDeposito extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(comboPicnic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonNuevo)
                     .addComponent(botonGuardar))
@@ -227,40 +239,40 @@ public class VentanaDeposito extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(28, 28, 28)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addGap(28, 28, 28)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
+                        .addGap(298, 298, 298)
                         .addComponent(jButton6)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jButton6)
-                .addGap(34, 34, 34))
+                .addGap(36, 36, 36))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 //boton nuevo
     private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
-        // TODO add your handling code here:
+      limpiar();
     }//GEN-LAST:event_botonNuevoActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-          
+
         dispose();
-      this.previo.setVisible(true);
-    
-        
+        this.previo.setVisible(true);
+
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTextMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextMontoActionPerformed
@@ -268,68 +280,113 @@ public class VentanaDeposito extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextMontoActionPerformed
 //guardar
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-      if (!this.listaDeposito.isSelectionEmpty()){
-          Deposito d = (Deposito) this.listaDeposito.getSelectedValue();
-          this.controlador.editarDeposito(d,this.fechaDeposito.getDate(),this.jTextMonto.getText(),this.radioCredito.getText() ,(Picnic)this.comboPicnic.getSelectedItem(),(Cliente)this.comboCliente.getSelectedItem());
-      }else{
-          
-           this.controlador.agregarDeposito(this.fechaDeposito.getDate(),this.jTextMonto.getText(),this.radioCredito.getText(),(Picnic)this.comboPicnic.getSelectedItem(),(Cliente)this.comboCliente.getSelectedItem());
+        
       
-      }
-      limpiar();
+         SimpleDateFormat fechita= new  SimpleDateFormat("dd/mm/yyyy");
+         fechita.getCalendar();      
+        if (!this.listaDeposito.isSelectionEmpty()) {      
+                
+             Deposito d = (Deposito) this.listaDeposito.getSelectedValue(); 
+            if (this.radioCredito.isSelected()) {// si queda asi edita deposito pero no agrega credito
+                    System.out.print("credito 1");
+                                     
+                        this.controlador.editarDeposito(d,fechita.format(this.fechaDeposito.getDate()), this.jTextMonto.getText(), this.radioCredito.getText(), (Picnic) this.comboPicnic.getSelectedItem(), (Cliente) this.comboCliente.getSelectedItem());                               
+                } else if (this.radioDebito.isSelected()){                
+                    //if {
+                       // Deposito d = (Deposito) this.listaDeposito.getSelectedValue();
+                        this.controlador.editarDeposito(d,  fechita.format(this.fechaDeposito.getDate()), this.jTextMonto.getText(), this.radioDebito.getText(), (Picnic) this.comboPicnic.getSelectedItem(), (Cliente) this.comboCliente.getSelectedItem());
+                    System.out.print("debito 1");
+                    //}   
+                }          
+        }else{
+            if (this.radioCredito.isSelected()) {      // si queda asi pasa a agregar deposito      
+                this.controlador.agregarDeposito(fechita.format(this.fechaDeposito.getDate()) , this.jTextMonto.getText(), this.radioCredito.getText(), (Picnic) this.comboPicnic.getSelectedItem(), (Cliente) this.comboCliente.getSelectedItem());               
+                System.out.print("credito 2");
+            } else if(this.radioDebito.isSelected()){
+                //if{
+                   this.controlador.agregarDeposito(fechita.format(this.fechaDeposito.getDate()), this.jTextMonto.getText(), this.radioDebito.getText(), (Picnic) this.comboPicnic.getSelectedItem(), (Cliente) this.comboCliente.getSelectedItem());
+                   System.out.print("debito 2");
+            //    }   
+            }
+        }
+        
+ 
+        
+        
+        limpiar();
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void listaDepositoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaDepositoValueChanged
-        if(!this.listaDeposito.isSelectionEmpty()){
-            Deposito d= (Deposito) this.listaDeposito.getSelectedValue();
+          
+        if (!this.listaDeposito.isSelectionEmpty()) {
+            Deposito d = (Deposito) this.listaDeposito.getSelectedValue();
             this.ideDepo.setText(d.getIdDeposito().toString());
-            this.jTextMonto.setText(d.getMonto());
-           // ver la fecha y el radio
-           
-           if (d.getCli()!= null){
+            this.jTextMonto.setText(d.getMonto());            
+            this.fechaDeposito.setDate(d.getFechaDep());
+         
+          
+            if (d.getCli() != null) {
                 this.comboCliente.setSelectedItem(d.getCli());
-            }else{
+            } else {
                 this.comboCliente.setSelectedItem(null);
-            
+
             }
-           
-           if (d.getPic()!= null){
+            
+            if (d.getPic() != null) {
                 this.comboPicnic.setSelectedItem(d.getPic());
-            }else{
+            } else {
                 this.comboPicnic.setSelectedItem(null);
-            
+
             }
-           
+
         }
     }//GEN-LAST:event_listaDepositoValueChanged
 
-    private void radioCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCreditoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioCreditoActionPerformed
-    private void limpiar(){
+    private void comboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboClienteActionPerformed
+        
+    }//GEN-LAST:event_comboClienteActionPerformed
+
+    private void jTextMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextMontoKeyTyped
+        char letra = evt.getKeyChar();
+        if (!Character.isDigit(letra)){
+                evt.consume();
+               // JOptionPane.showMessageDialog(rootPane, "Ingrese un monto");
+        
+        }
+    }//GEN-LAST:event_jTextMontoKeyTyped
+    private void limpiar() {
+          Date fechita=new Date();
+        
+         
         this.ideDepo.setText("");
         this.jTextMonto.setText("");
-        // el tipo de deposito fijarme
-        JDateChooser dateChooser = new JDateChooser();
-         dateChooser.setCalendar(null);
-        //COMPLETO LISTA DEPOSITO
-         this.listaDeposito.setListData(this.controlador.listarDeposito().toArray());
+                   
+         //COMPLETO LISTA DEPOSITO
+        this.listaDeposito.setListData(this.controlador.listarDeposito().toArray());
          this.listaDeposito.clearSelection();
-        //COMBO CLIENTE
-         DefaultComboBoxModel modeloCliente = new DefaultComboBoxModel(this.controlador.listarCliente().toArray());
-         this.comboCliente.setModel(modeloCliente);
-         this.comboCliente.setSelectedIndex(-1);
+         this.buttonGroup1.clearSelection();
          
-        
+//COMBO CLIENTE
+        this.fechaDeposito.getJCalendar().setMinSelectableDate(fechita);
+           this.fechaDeposito.getMinSelectableDate().toString();
+            this.fechaDeposito.getCalendarButton().enableInputMethods(false);
+          this.fechaDeposito.setCalendar(null);
+        DefaultComboBoxModel modeloCliente = new DefaultComboBoxModel(this.controlador.listarCliente().toArray());
+        this.comboCliente.setModel(modeloCliente);
+        this.comboCliente.setSelectedIndex(-1);
+      
         //COMBO PICNIC
-         DefaultComboBoxModel modeloPicnic = new DefaultComboBoxModel(this.controlador.listarPicnic().toArray());
-         this.comboPicnic.setModel(modeloPicnic);
-       this.comboPicnic.setSelectedIndex(-1);
+        DefaultComboBoxModel modeloPicnic = new DefaultComboBoxModel(this.controlador.listarPicnic().toArray());
+        this.comboPicnic.setModel(modeloPicnic);
+        this.comboPicnic.setSelectedIndex(-1);
+       
+       
+        
     }
     /**
      * @param args the command line arguments
      */
-  
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGuardar;
@@ -337,6 +394,8 @@ public class VentanaDeposito extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.JComboBox<String> comboCliente;
     private javax.swing.JComboBox<String> comboPicnic;
     private com.toedter.calendar.JDateChooser fechaDeposito;

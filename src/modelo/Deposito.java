@@ -109,17 +109,13 @@ public class Deposito implements Serializable {
 
     @Override
     public String toString() {
-        return "Deposito{" + "idDeposito=" + idDeposito + ", fechaDep=" + fechaDep + ", monto=" + monto + ", tipoDeposito=" + tipoDeposito + ", pic=" + pic + ", cli=" + cli + '}';
+        return "Deposito{" + "fechaDep=" + fechaDep + ", monto=" + monto + ", tipoDeposito=" + tipoDeposito + '}';
     }
 
+   
     
 
 
-    public void eliminarCliente(Cliente c){
-        
-      
-       
-   } 
     
     
 }

@@ -94,10 +94,15 @@ public class Alimento implements Serializable  {
 
     @Override
     public String toString() {
-        return "Alimento{" + "idAlimento=" + idAlimento + ", nombre=" + nombre + ", cantidad=" + cantidad + '}';
+        return "Alimento{" + "nombre=" + nombre + ", cantidad=" + cantidad + '}';
     }
 
+   
     
+     public void agregarMenu (Menu m){
+      this.menu.add(m);
+  }
+
     
 
    

@@ -15,8 +15,8 @@ import java.util.Set;
 import static modelo.Cliente_.dep;
 import com.toedter.calendar.JCalendar;
 import java.sql.Time;
-import java.util.Locale;
 import javax.swing.JOptionPane;
+import static org.eclipse.persistence.jpa.rs.util.JPARSLogger.exception;
 
 /**
  *
@@ -33,25 +33,32 @@ public class Controlador {
 
     public List listarCliente() {
 
-        return this.persistencia.buscarTodosOrdenadosPor(Cliente.class, Cliente_.apellido);
+        return this.persistencia.buscarTodosOrdenadosPor(Cliente.class, Cliente_.dni);
     }
 //      BUSCAR CLIENTE
+
     public Cliente buscarCliente(Long dni) {
         return this.persistencia.buscar(Cliente.class, dni);
     }
 //      AGREGAR CLIENTE
+
     public void agregarCliente(String dni, String nombres, String apellidos, String nroTelefono, String calle, String numero, String localidad) {
         this.persistencia.iniciarTransaccion();
-        Cliente c = new Cliente(dni.toUpperCase(), nombres.toUpperCase(), apellidos.toUpperCase(), nroTelefono.toUpperCase(), calle.toUpperCase(), numero.toUpperCase(), localidad.toUpperCase());
-        if (dni.toUpperCase().equals(c.getDni())){
-                this.persistencia.insertar(c);    
-       }else{
-            JOptionPane.showMessageDialog(null, "El Cliente ya existe.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (dni != "") {
+            if (Long.parseLong(dni) > 0) {
+                Cliente c = new Cliente(Long.parseLong(dni), nombres.toUpperCase(), apellidos.toUpperCase(), nroTelefono.toUpperCase(), calle.toUpperCase(), numero.toUpperCase(), localidad.toUpperCase());
+                this.persistencia.insertar(c);
+            }
+
+        } else {
+
             this.persistencia.descartarTransaccion();
-       }
+        }
+
         this.persistencia.confirmarTransaccion();
     }
 //      ELIMINAR CLIENTE
+
     public int eliminarCliente(Cliente c) {
         if (c.getPic().isEmpty() && c.getDep().isEmpty()) {
             this.persistencia.iniciarTransaccion();
@@ -64,10 +71,11 @@ public class Controlador {
 
     }
 //      EDITAR CLIENTE
+
     public void editarCliente(Cliente c, String dni, String nombre, String apellido, String nroTel, String calle, String nrCalle, String localidad) {
         if (c != null) {
             this.persistencia.iniciarTransaccion();
-            c.setDni(dni.toUpperCase());
+            c.setDni(Long.parseLong(dni));
             c.setNombres(nombre.toUpperCase());
             c.setApellido(apellido.toUpperCase());
             c.setNumeroTelefono(nroTel.toUpperCase());
@@ -76,13 +84,14 @@ public class Controlador {
             d.setNumero(nrCalle.toUpperCase());
             d.setLocalidad(localidad.toUpperCase());
             c.setDireccion(d);
-     
+
             this.persistencia.modificar(c);
             this.persistencia.confirmarTransaccion();
         }
 
     }
 //      AGREGAR PICNIC A CLIENTE
+
     public void agregarClientePicnic(Picnic p, Cliente c) {
         this.persistencia.iniciarTransaccion();
         c.agregarPicnic(p);
@@ -93,17 +102,20 @@ public class Controlador {
     }
 //  //   *********** Alimento *************   
 //      LISTAR ALIMENTO
+
     public List listarAlimento() {
 
         return this.persistencia.buscarTodosOrdenadosPor(Alimento.class, Alimento_.nombre);
     }
 //LISTAR ALIMENTO
+
     public Alimento listarAlimento(Long idAlimento) {
 
         return this.persistencia.buscar(Alimento.class, idAlimento);
 
     }
 //      AGREGAR ALIMENTO
+
     public void agregarAlimento(String nombre, String cantidad) {
         this.persistencia.iniciarTransaccion();
         Alimento a = new Alimento(nombre.toUpperCase(), cantidad);
@@ -112,6 +124,7 @@ public class Controlador {
 
     }
 //      AGREGAR ALIMENTO AL MENU
+
     public void agregarAlimentoMenu(Menu m, Alimento a) {
         this.persistencia.iniciarTransaccion();
         m.agregarAlimentoMenu(a);
@@ -121,6 +134,7 @@ public class Controlador {
 
     }
 //      ELIMINAR ALIMENTO
+
     public int eliminarAlimento(Alimento a) {
         if (a.getMenu().isEmpty()) {
             this.persistencia.iniciarTransaccion();
@@ -132,6 +146,7 @@ public class Controlador {
         }
     }
 //      EDITAR ALIMENTO 
+
     public void editarAlimento(Alimento a, String nombre, String cantidad) {
         this.persistencia.iniciarTransaccion();
         a.setNombre(nombre);
@@ -141,6 +156,7 @@ public class Controlador {
 
     }
 //      QUITAR ALIMENTO DEL MENU
+
     public void quitarAlimentoMenu(Alimento a, Menu m) {
 
         this.persistencia.iniciarTransaccion();
@@ -162,6 +178,7 @@ public class Controlador {
 
     }
 //agregar suministro
+
     public void agregarSuministro(String descripcion, String cantidad) {
         this.persistencia.iniciarTransaccion();
         Suministro s = new Suministro(descripcion.toUpperCase(), cantidad.toUpperCase());
@@ -169,6 +186,7 @@ public class Controlador {
         this.persistencia.confirmarTransaccion();
     }
 //agregar suministro a menu
+
     public void agregarSuministroMenu(Menu m, Suministro s) {
         this.persistencia.iniciarTransaccion();
         m.agregarSuministro(s);
@@ -178,6 +196,7 @@ public class Controlador {
 
     }
 //eliminar suministro
+
     public int eliminarSuministro(Suministro s) {
         if (s.getcSuministro().isEmpty()) {
             this.persistencia.iniciarTransaccion();
@@ -190,6 +209,7 @@ public class Controlador {
 
     }
 //quitar suministro menu
+
     public void quitarSuministroMenu(Menu m, Suministro sm) {
         this.persistencia.iniciarTransaccion();
         m.quitarSuministro(sm);
@@ -199,6 +219,7 @@ public class Controlador {
 
     }
 //editar suministro
+
     public void editarSuministro(Suministro s, String descripcion, String cantidad) {
         this.persistencia.iniciarTransaccion();
         s.setDescripcion(descripcion);
@@ -220,21 +241,40 @@ public class Controlador {
     }
 // agregar picnic
 
-    public void agregarPicnic(String lugar, Date fecha, String hora, String cantPersona, String precio, Cliente cli, Menu me) {
+    public void agregarPicnic(String lugar, String fecha, String hora, String cantPersona, String precio, Cliente cli, Menu me) {
         this.persistencia.iniciarTransaccion();
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/mm/yyyy");
+            Picnic p = new Picnic(lugar.toUpperCase(), formatoFecha.parse(fecha), hora, cantPersona.toUpperCase(), precio.toUpperCase(), cli, me);
+            if (!hora.isEmpty()) {
+                if (cli.getPic() != null) {
+                    cli.agregarPicnic(p);
+                    this.persistencia.modificar(cli);
 
-        Picnic p = new Picnic(lugar.toUpperCase(), fecha, hora, cantPersona.toUpperCase(), precio.toUpperCase(), cli, me);
+                }
+                if (me.getPic() != null) {
+                    me.agregarPicnicMenu(p);
+                    this.persistencia.modificar(me);
+                }
+                this.persistencia.insertar(p);
+                this.persistencia.confirmarTransaccion();
 
-        if (cli != null) {
-            cli.agregarPicnic(p);
-            this.persistencia.modificar(cli);
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Por favor ingrese la hora.", "Error", JOptionPane.ERROR_MESSAGE);
+                this.persistencia.eliminar(p);
+                this.persistencia.descartarTransaccion();
+
+            }
+
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Por favor ingrese los campos faltantes.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.persistencia.descartarTransaccion();
+
         }
-       
-
-        this.persistencia.insertar(p);
-        this.persistencia.confirmarTransaccion();
 
     }
+
 //eliminar picnic
     public int eliminarPicnic(Picnic p) {
         if (p.getDep().isEmpty()) {
@@ -247,25 +287,49 @@ public class Controlador {
 
         }
     }
+
 //editar picnic
-    public void editarPicnic(Picnic p, String lugar, Date fecha, String hora, String cantPersona, String precio, Cliente cli, Menu me) {
+    public void editarPicnic(Picnic p, String lugar, String fecha, String hora, String cantPersona, String precio, Cliente cli, Menu me) {
         this.persistencia.iniciarTransaccion();
+        if (p != null) {
 
-        p.setLugar(lugar.toUpperCase());
-        p.setFecha(fecha);
-        p.setHora(hora);
-        p.setPrecio(precio);
-        p.setCantPersona(cantPersona);
-        p.setCli(cli);
-        p.setMe(me);
+            try {
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/mm/yyyy");
+                if (!hora.isEmpty()) {
+                    p.setLugar(lugar.toUpperCase());
+                    p.setFecha(formatoFecha.parse(fecha));
+                    p.setHora(hora);
+                    p.setPrecio(precio);
+                    p.setCantPersona(cantPersona);
+                    if (p.getCli() != null) {
+                        Cliente cliViejo = p.getCli();
+                        cliViejo.quitarPicnic(p);
+                        this.persistencia.modificar(p);
+                    }
+                    if (p.getMe() != null) {
+                        Menu menuViejo = p.getMe();
+                        menuViejo.quitarPicnicMenu(p);
+                        this.persistencia.modificar(p);
+                    }
 
-        this.persistencia.modificar(p);
+                    p.setCli(cli);
+                    p.setMe(me);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Por favor ingrese la hora.", "Error", JOptionPane.ERROR_MESSAGE);
+                    this.persistencia.eliminar(p);
+                    this.persistencia.descartarTransaccion();
+                }
 
-        this.persistencia.confirmarTransaccion();
+            } catch (ParseException ex) {
+                this.persistencia.modificar(p);
 
+                
+            }
+            this.persistencia.confirmarTransaccion();
+        }
     }
+    //    ********************** Menu  ***************************************
 
-//    ********************** Menu  ***************************************
     public List listarMenu() {
         return this.persistencia.buscarTodosOrdenadosPor(Menu.class, Menu_.descripcion);
     }
@@ -276,15 +340,17 @@ public class Controlador {
 
     }
 //agregar menu a picnic
+
     public void agregarMenuPic(Picnic p, Menu m) {
         this.persistencia.iniciarTransaccion();
-        m.agregarMenuPicnic(p);
+        m.agregarPicnicMenu(p);
         this.persistencia.modificar(p);
         this.persistencia.modificar(m);
         this.persistencia.confirmarTransaccion();
 
     }
 //                      ELIMINAR MENU del pic
+
     public int eliminarMenu(Menu m) {
         if (m.getPic().isEmpty()) {
             this.persistencia.iniciarTransaccion();
@@ -296,61 +362,106 @@ public class Controlador {
 
     }
 //          AGREGAR MENU
-    public void agregarMenu(String descripcion, String precio) {
+
+    public void agregarMenu(String descripcion, String precio, Picnic pic, Suministro sumi, Alimento alim) {
         this.persistencia.iniciarTransaccion();
-        Menu m = new Menu(descripcion.toUpperCase(), precio.toUpperCase());
-        this.persistencia.insertar(m);
-        this.persistencia.confirmarTransaccion();
+        try {
+
+            Menu m = new Menu(descripcion.toUpperCase(), precio.toUpperCase(), pic, sumi, alim);
+            if (pic == null) {
+
+            }
+            this.persistencia.insertar(m);
+            this.persistencia.confirmarTransaccion();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Por favor complete los datos", "Error", JOptionPane.ERROR_MESSAGE);
+            this.persistencia.descartarTransaccion();
+
+        }
+
     }
 
 //          EDITAR MENU
-    public void editarMenu(Menu m, String descripcion, String precio) {
+    public void editarMenu(Menu m, String descripcion, String precio, Picnic pic, Suministro sumi, Alimento alim) {
         this.persistencia.iniciarTransaccion();
         m.setDescripcion(descripcion.toUpperCase());
         m.setPrecio(precio.toUpperCase());
+        m.setPic((List<Picnic>) pic);
+        m.setSuministro((Set<Suministro>) sumi);
+        m.setaMenu((Set<Alimento>) alim);
+
         this.persistencia.modificar(m);
         this.persistencia.confirmarTransaccion();
     }
 
 //   ///// **************** Deposito  ********************
- 
     //          AGREGAR DEPOSITO
-    public void agregarDeposito(Date fecha,String monto, String tipoDeposito,Picnic pic, Cliente cli ){// agregar Deposito
-    
+    public void agregarDeposito(String fecha, String monto, String tipoDeposito, Picnic pic, Cliente cli) {// agregar Deposito
         this.persistencia.iniciarTransaccion();
-        Deposito d = new Deposito (fecha,monto.toUpperCase(), tipoDeposito.toUpperCase(), pic, cli);
-       
-        if ((cli != null)) {
-            cli.agregarDeposito(d);
-            this.persistencia.modificar(cli);
+      
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/mm/yyyy");
+            Deposito d = new Deposito(formatoFecha.parse(fecha), monto.toUpperCase(), tipoDeposito.toUpperCase(), pic, cli);
+
+            if ((pic.getDep() != null)) {
+                pic.agregarDeposito(d);
+                this.persistencia.modificar(pic);
+
+            }
+            if ((cli.getDep() != null)) {
+
+                cli.agregarDeposito(d);
+                this.persistencia.modificar(cli);
+
+            }
+            this.persistencia.insertar(d);
+            this.persistencia.confirmarTransaccion();
+
+        } catch (ParseException e) {
+
+            JOptionPane.showMessageDialog(null, "Por favor complete los datos", "Error", JOptionPane.ERROR_MESSAGE);
+            this.persistencia.descartarTransaccion();
         }
-        if ((pic != null)) {
-            pic.agregarDeposito(d);
-            this.persistencia.modificar(pic);
-        }
-        
-        this.persistencia.insertar(d);
-        this.persistencia.confirmarTransaccion();
-        
-    
     }
-    
-    
-    
+
     //      editar deposito
-    public void editarDeposito(Deposito d,  Date fecha,String monto, String tipoDeposito, Picnic pic, Cliente cli) {
+    public void editarDeposito(Deposito d, String fecha, String monto, String tipoDeposito, Picnic pic, Cliente cli) {
 
-        this.persistencia.iniciarTransaccion();
-       
-        d.setFechaDep(fecha);
-         d.setMonto(monto);
-        d.setTipoDeposito(tipoDeposito);
-        d.setPic(pic);
-        d.setCli(cli);
-        this.persistencia.modificar(d);
-        this.persistencia.confirmarTransaccion();
+        if (d != null) {
+            this.persistencia.iniciarTransaccion();
+            try {
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/mm/yyyy");
 
+                d.setMonto(monto);
+                d.setFechaDep(formatoFecha.parse(fecha));
+                d.setTipoDeposito(tipoDeposito);
+                if (d.getPic() != null) {
+                    Picnic picViejo = d.getPic();
+                    picViejo.eliminarDep(d);
+                    this.persistencia.modificar(d);
+                }
+                if (d.getCli() != null) {
+                    Cliente cliViejo = d.getCli();
+                    cliViejo.quitarDeposito(d);
+                    this.persistencia.modificar(d);
+                }
+                d.setCli(cli);
+                d.setPic(pic);
+                pic.agregarDeposito(d);
+                cli.agregarDeposito(d);
+                this.persistencia.modificar(d);
+                this.persistencia.confirmarTransaccion();
+
+            } catch (ParseException ex) {
+                this.persistencia.descartarTransaccion();
+                System.out.println("Error al capturar fecha");
+
+            }
+
+        }
     }
+
 //                  agregar picnic al DEPOSITO
     public void agregarPicnicaDeposito(Picnic p, Deposito d) {
         this.persistencia.iniciarTransaccion();
@@ -360,6 +471,7 @@ public class Controlador {
         this.persistencia.confirmarTransaccion();
     }
 //              AGREGAR DEPOSITO AL CLIENTE
+
     public void agregarDepositoaCliente(Cliente c, Deposito d) {
         this.persistencia.iniciarTransaccion();
         c.agregarDeposito(d);
@@ -373,33 +485,34 @@ public class Controlador {
         return this.persistencia.buscarTodosOrdenadosPor(Deposito.class, Deposito_.fechaDep);
 
     }
-  //        QUITAR DEPOSITO AL CLIENTE  
-    public void quitarDepositoCliente(Cliente c, Deposito d){
-    this.persistencia.iniciarTransaccion();
-    c.quitarDeposito(d);
-    this.persistencia.modificar(d);
-    this.persistencia.modificar(c);
-    this.persistencia.confirmarTransaccion();
+    //        QUITAR DEPOSITO AL CLIENTE  
+
+    public void quitarDepositoCliente(Cliente c, Deposito d) {
+        this.persistencia.iniciarTransaccion();
+        c.quitarDeposito(d);
+        this.persistencia.modificar(d);
+        this.persistencia.modificar(c);
+        this.persistencia.confirmarTransaccion();
     }
 //          QUITAR PICNIC AL CLIEMTE
-public void quitarPicnicCliente(Picnic p, Cliente c){
-    this.persistencia.iniciarTransaccion();
-    c.quitarPicnic(p);
-    this.persistencia.modificar(c);
-    this.persistencia.modificar(p);
-    this.persistencia.confirmarTransaccion();
 
-}
+    public void quitarPicnicCliente(Picnic p, Cliente c) {
+        this.persistencia.iniciarTransaccion();
+        c.quitarPicnic(p);
+        this.persistencia.modificar(c);
+        this.persistencia.modificar(p);
+        this.persistencia.confirmarTransaccion();
+
+    }
 
 //          QUITAR DEPOSITO AL PICNIC
-public void quitarDepositoPicnic(Picnic p, Deposito d){
-    this.persistencia.iniciarTransaccion();
-    p.eliminarDep(d);
-    this.persistencia.modificar(d);
-    this.persistencia.modificar(p);
-    this.persistencia.confirmarTransaccion();
+    public void quitarDepositoPicnic(Picnic p, Deposito d) {
+        this.persistencia.iniciarTransaccion();
+        p.eliminarDep(d);
+        this.persistencia.modificar(d);
+        this.persistencia.modificar(p);
+        this.persistencia.confirmarTransaccion();
 
-}
-
+    }
 
 }

@@ -32,6 +32,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         this.controlador = c;
         this.previo = p;
         initComponents();
+        this.setResizable(false);
         limpiar();
     }
 
@@ -67,18 +68,14 @@ public class VentanaCliente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         listaDeposito = new javax.swing.JList();
-        agregarDepositoaCli = new javax.swing.JButton();
         quitarDepositoaCli = new javax.swing.JButton();
-        comboDeposito = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaCliente = new javax.swing.JList();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaPicnic = new javax.swing.JList();
-        agregarPicnicaCli = new javax.swing.JButton();
-        QuitarPicnicaCli = new javax.swing.JButton();
-        comboPicnic = new javax.swing.JComboBox();
+        quitarPicnic = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -94,12 +91,22 @@ public class VentanaCliente extends javax.swing.JFrame {
                 jTextFieldDNIActionPerformed(evt);
             }
         });
+        jTextFieldDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDNIKeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("Calle");
 
         jTextNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextNombreActionPerformed(evt);
+            }
+        });
+        jTextNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextNombreKeyTyped(evt);
             }
         });
 
@@ -110,10 +117,20 @@ public class VentanaCliente extends javax.swing.JFrame {
                 jTextFieldApellidoActionPerformed(evt);
             }
         });
+        jTextFieldApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldApellidoKeyTyped(evt);
+            }
+        });
 
         jTextFieldNroCalle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNroCalleActionPerformed(evt);
+            }
+        });
+        jTextFieldNroCalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNroCalleKeyTyped(evt);
             }
         });
 
@@ -122,6 +139,11 @@ public class VentanaCliente extends javax.swing.JFrame {
         jTextFieldTelef.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTelefActionPerformed(evt);
+            }
+        });
+        jTextFieldTelef.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTelefKeyTyped(evt);
             }
         });
 
@@ -140,6 +162,11 @@ public class VentanaCliente extends javax.swing.JFrame {
         jTextFielLocalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFielLocalidadActionPerformed(evt);
+            }
+        });
+        jTextFielLocalidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFielLocalidadKeyTyped(evt);
             }
         });
 
@@ -283,13 +310,6 @@ public class VentanaCliente extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(listaDeposito);
 
-        agregarDepositoaCli.setText("Agregar");
-        agregarDepositoaCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarDepositoaCliActionPerformed(evt);
-            }
-        });
-
         quitarDepositoaCli.setText("Quitar");
         quitarDepositoaCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,41 +317,25 @@ public class VentanaCliente extends javax.swing.JFrame {
             }
         });
 
-        comboDeposito.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "item" }));
-        comboDeposito.setMaximumSize(new java.awt.Dimension(2, 2));
-        comboDeposito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboDepositoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(quitarDepositoaCli)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(agregarDepositoaCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(quitarDepositoaCli, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                    .addComponent(comboDeposito, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(comboDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(agregarDepositoaCli)
-                        .addGap(18, 18, 18)
-                        .addComponent(quitarDepositoaCli))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(quitarDepositoaCli))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de Clientes"));
@@ -370,49 +374,33 @@ public class VentanaCliente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(listaPicnic);
 
-        agregarPicnicaCli.setText("Agregar");
-        agregarPicnicaCli.addActionListener(new java.awt.event.ActionListener() {
+        quitarPicnic.setText("Quitar");
+        quitarPicnic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarPicnicaCliActionPerformed(evt);
+                quitarPicnicActionPerformed(evt);
             }
         });
-
-        QuitarPicnicaCli.setText("Quitar");
-        QuitarPicnicaCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QuitarPicnicaCliActionPerformed(evt);
-            }
-        });
-
-        comboPicnic.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "item" }));
-        comboPicnic.setMaximumSize(new java.awt.Dimension(100, 100));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(agregarPicnicaCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(QuitarPicnicaCli, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                    .addComponent(comboPicnic, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(quitarPicnic)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(comboPicnic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(agregarPicnicaCli)
-                        .addGap(18, 18, 18)
-                        .addComponent(QuitarPicnicaCli))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(quitarPicnic)
+                .addGap(5, 5, 5))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -420,20 +408,21 @@ public class VentanaCliente extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(jPanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(447, 447, 447)
-                        .addComponent(volver)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(103, 103, 103))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(435, 435, 435)
+                .addComponent(volver)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,13 +431,13 @@ public class VentanaCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(volver)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -456,25 +445,22 @@ public class VentanaCliente extends javax.swing.JFrame {
 
 // boton guardar
     private void botonGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarClienteActionPerformed
-        if (!this.listaCliente.isSelectionEmpty()) {
-            Cliente c = (Cliente) this.listaCliente.getSelectedValue();
-              
-                this.controlador.editarCliente(c, this.jTextFieldDNI.getText(), this.jTextNombre.getText(), this.jTextFieldApellido.getText(), this.jTextFieldTelef.getText(), this.jTextField5Calle.getText(), this.jTextFieldNroCalle.getText(), this.jTextFielLocalidad.getText());
-             // this.jTextFieldDNI.setEditable(false);
-            
-            
+
+        if (this.listaCliente.isSelectionEmpty()) {
+            if (this.controlador.buscarCliente(Long.parseLong(this.jTextFieldDNI.getText())) == null) {
+                this.controlador.agregarCliente(this.jTextFieldDNI.getText(), this.jTextNombre.getText(), this.jTextFieldApellido.getText(), this.jTextFieldTelef.getText(), this.jTextField5Calle.getText(), this.jTextFieldNroCalle.getText(), this.jTextFielLocalidad.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "el cliente ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
         } else {
-            this.controlador.agregarCliente(this.jTextFieldDNI.getText(), this.jTextNombre.getText(), this.jTextFieldApellido.getText(), this.jTextFieldTelef.getText(), this.jTextField5Calle.getText(), this.jTextFieldNroCalle.getText(), this.jTextFielLocalidad.getText());
-          /*if( this.listaCliente.getSelectedValue().equals(this.jTextFieldDNI.toString())){
-               JOptionPane.showMessageDialog(null, "ya existe el Cliente", "Error", JOptionPane.ERROR_MESSAGE);
-          }else{  
-        }*/
-            
-           
-        
+            Cliente c = (Cliente) this.listaCliente.getSelectedValue();
+            this.controlador.editarCliente(c, this.jTextFieldDNI.getText(), this.jTextNombre.getText(), this.jTextFieldApellido.getText(), this.jTextFieldTelef.getText(), this.jTextField5Calle.getText(), this.jTextFieldNroCalle.getText(), this.jTextFielLocalidad.getText());
+
         }
+
         limpiar();
-       
+
     }//GEN-LAST:event_botonGuardarClienteActionPerformed
 
 // boton nuevo cliente
@@ -499,7 +485,7 @@ public class VentanaCliente extends javax.swing.JFrame {
 
     private void jTextFieldDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDNIActionPerformed
         JFormattedTextField j = new JFormattedTextField();
-      // jTextFieldDNI.setValue(new Integer());
+        // jTextFieldDNI.setValue(new Integer());
     }//GEN-LAST:event_jTextFieldDNIActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -509,7 +495,7 @@ public class VentanaCliente extends javax.swing.JFrame {
 
 
     private void jTextFieldApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldApellidoActionPerformed
-      
+
     }//GEN-LAST:event_jTextFieldApellidoActionPerformed
 
     private void jTextFieldTelefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefActionPerformed
@@ -529,7 +515,7 @@ public class VentanaCliente extends javax.swing.JFrame {
     private void listaClienteValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaClienteValueChanged
         if (!this.listaCliente.isSelectionEmpty()) {
             Cliente c = (Cliente) this.listaCliente.getSelectedValue();
-            this.jTextFieldDNI.setText(c.getDni());
+            this.jTextFieldDNI.setText(c.getDni().toString());
             this.jTextFieldDNI.setEditable(false);
             this.jTextNombre.setText(c.getNombres());
             this.jTextFieldApellido.setText(c.getApellido());
@@ -539,18 +525,6 @@ public class VentanaCliente extends javax.swing.JFrame {
                 this.jTextField5Calle.setText(d.getCalle());
                 this.jTextFieldNroCalle.setText(d.getNumero());
                 this.jTextFielLocalidad.setText(d.getLocalidad());
-            }
-            if (c.getPic()!= null){
-                this.comboPicnic.setSelectedItem(c.getPic());
-            }else{
-                this.comboPicnic.setSelectedItem(null);
-            }
-            
-            if(c.getDep()!=null){
-                this.comboDeposito.setSelectedItem(c.getDep());
-            }else{
-                this.comboDeposito.setSelectedItem(null);
-            
             }
             this.listaDeposito.setListData(c.getDep().toArray());
             this.listaPicnic.setListData(c.getPic().toArray());
@@ -584,50 +558,79 @@ public class VentanaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_listaDepositoValueChanged
 //              QUITAR DEPOSITO
     private void quitarDepositoaCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarDepositoaCliActionPerformed
-       if (this.listaCliente.getSelectedValue()!= null && this.listaDeposito.getSelectedValue()!= null){
-            Deposito d= (Deposito) this.listaDeposito.getSelectedValue();
-            Cliente c= (Cliente )this.listaCliente.getSelectedValue();
+        if (this.listaCliente.getSelectedValue() != null && this.listaDeposito.getSelectedValue() != null) {
+            Deposito d = (Deposito) this.listaDeposito.getSelectedValue();
+            Cliente c = (Cliente) this.listaCliente.getSelectedValue();
             this.controlador.quitarDepositoCliente(c, d);
             this.listaDeposito.setListData(c.getDep().toArray());
-       }
-    }//GEN-LAST:event_quitarDepositoaCliActionPerformed
-//               BOTON   QUITAR PICNIC
-    private void QuitarPicnicaCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarPicnicaCliActionPerformed
-       if (this.listaCliente.getSelectedValue()!= null && this.listaPicnic.getSelectedValue()!= null){
-            Picnic p = (Picnic) this.listaPicnic.getSelectedValue();
-            Cliente c= (Cliente )this.listaCliente.getSelectedValue();
-            this.controlador.quitarPicnicCliente(p, c);
-            this.listaPicnic.setListData(c.getDep().toArray());
-       }
-    }//GEN-LAST:event_QuitarPicnicaCliActionPerformed
-//                 BOTON  AGREGAR DEPOSITO AL CLIENTE
-    private void agregarDepositoaCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDepositoaCliActionPerformed
-       if (this.listaCliente.getSelectedValue()!= null && this.comboDeposito.getSelectedItem()!= null){
-           Deposito d = (Deposito) this.comboDeposito.getSelectedItem();
-           Cliente c = (Cliente) this.listaCliente.getSelectedValue();
-           this.controlador.agregarDepositoaCliente(c, d);
-           this.listaDeposito.setListData(c.getDep().toArray());
-       
-       }else{
-           JOptionPane.showMessageDialog(null, "Por favor seleccione un Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
-       }
-    }//GEN-LAST:event_agregarDepositoaCliActionPerformed
-//                BOTON  AGREGAR PICNIC AL CLIENTE
-    private void agregarPicnicaCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPicnicaCliActionPerformed
-        if (this.listaCliente.getSelectedValue()!= null && this.comboPicnic.getSelectedItem()!= null){
-           Picnic p= (Picnic) this.comboPicnic.getSelectedItem();
-           Cliente c = (Cliente) this.listaCliente.getSelectedValue();
-           this.controlador.agregarClientePicnic(p, c);
-           this.listaPicnic.setListData(c.getPic().toArray());
-       
-       }else{
-        JOptionPane.showMessageDialog(null, "Por favor seleccione un Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_agregarPicnicaCliActionPerformed
+    }//GEN-LAST:event_quitarDepositoaCliActionPerformed
 
-    private void comboDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDepositoActionPerformed
-       
-    }//GEN-LAST:event_comboDepositoActionPerformed
+    private void quitarPicnicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarPicnicActionPerformed
+        if (this.listaCliente.getSelectedValue() != null && this.listaPicnic.getSelectedValue() != null) {
+            Picnic p = (Picnic) this.listaPicnic.getSelectedValue();
+            Cliente c = (Cliente) this.listaCliente.getSelectedValue();
+            this.controlador.quitarPicnicCliente(p, c);
+            this.listaPicnic.setListData(c.getPic().toArray());
+
+        }
+
+    }//GEN-LAST:event_quitarPicnicActionPerformed
+
+    private void jTextFieldDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDNIKeyTyped
+      char letra = evt.getKeyChar();
+        if (!Character.isDigit(letra)){
+                evt.consume();
+                JOptionPane.showMessageDialog(rootPane, "Ingrese DNI");
+        
+        }
+    }//GEN-LAST:event_jTextFieldDNIKeyTyped
+
+    private void jTextFieldTelefKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefKeyTyped
+       char letra = evt.getKeyChar();
+        if (!Character.isDigit(letra)){
+                evt.consume();
+                JOptionPane.showMessageDialog(rootPane, "Ingrese Nro telefonico");
+        
+        }
+    }//GEN-LAST:event_jTextFieldTelefKeyTyped
+
+    private void jTextFieldNroCalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNroCalleKeyTyped
+       char letra = evt.getKeyChar();
+        if (!Character.isDigit(letra)){
+                evt.consume();
+                JOptionPane.showMessageDialog(rootPane, "Ingrese Nro de Calle");
+        
+        }
+    }//GEN-LAST:event_jTextFieldNroCalleKeyTyped
+
+    private void jTextFielLocalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFielLocalidadKeyTyped
+       char letra = evt.getKeyChar();
+        if (Character.isDigit(letra)){
+                evt.consume();
+                JOptionPane.showMessageDialog(rootPane, "Ingrese Localidad");
+        
+        }
+    }//GEN-LAST:event_jTextFielLocalidadKeyTyped
+
+    private void jTextFieldApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellidoKeyTyped
+       char letra = evt.getKeyChar();
+        if (Character.isDigit(letra)){
+                evt.consume();
+                JOptionPane.showMessageDialog(rootPane, "Ingrese Apellido");
+        
+        }
+    }//GEN-LAST:event_jTextFieldApellidoKeyTyped
+
+    private void jTextNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNombreKeyTyped
+       char letra = evt.getKeyChar();
+        if (Character.isDigit(letra)){
+                evt.consume();
+                JOptionPane.showMessageDialog(rootPane, "Ingrese  Nombre");
+        
+        }
+    }//GEN-LAST:event_jTextNombreKeyTyped
+
 //         BOTON  LIMPIAR CAMPOS
     private void limpiar() {
         this.jTextFieldDNI.setText("");
@@ -641,34 +644,20 @@ public class VentanaCliente extends javax.swing.JFrame {
         //lista cliente
         this.listaCliente.setListData(this.controlador.listarCliente().toArray());
         this.listaCliente.clearSelection();
-        //combo picnic
-         DefaultComboBoxModel comboPic = new DefaultComboBoxModel(this.controlador.listarPicnic().toArray());
-        this.comboPicnic.setModel(comboPic);
 
-        //combo deposito
-         DefaultComboBoxModel comboDep = new DefaultComboBoxModel(this.controlador.listarDeposito().toArray());
-        this.comboDeposito.setModel(comboDep);
         //lista picnic
-         DefaultListModel modeloListPic = new DefaultListModel();
+        DefaultListModel modeloListPic = new DefaultListModel();
         this.listaPicnic.setModel(modeloListPic);
 
         //lista deposito
-         DefaultListModel modeloListDep = new DefaultListModel();
-         this.listaDeposito.setModel(modeloListDep);
-         
-         this.comboDeposito.setSelectedIndex(-1);
-         this.comboPicnic.setSelectedIndex(-1);
-      
+        DefaultListModel modeloListDep = new DefaultListModel();
+        this.listaDeposito.setModel(modeloListDep);
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminarCliente;
     private javax.swing.JButton BotonNuevoCliente;
-    private javax.swing.JButton QuitarPicnicaCli;
-    private javax.swing.JButton agregarDepositoaCli;
-    private javax.swing.JButton agregarPicnicaCli;
     private javax.swing.JButton botonGuardarCliente;
-    private javax.swing.JComboBox comboDeposito;
-    private javax.swing.JComboBox comboPicnic;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -695,6 +684,7 @@ public class VentanaCliente extends javax.swing.JFrame {
     private javax.swing.JList listaDeposito;
     private javax.swing.JList listaPicnic;
     private javax.swing.JButton quitarDepositoaCli;
+    private javax.swing.JButton quitarPicnic;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,6 +29,8 @@ public class VentanaSuministro extends javax.swing.JFrame {
         this.controlador = c;
         this.previo = p;
         initComponents();
+        this.setResizable(false);
+        limpiar();
     }
 
     /**
@@ -97,12 +99,22 @@ public class VentanaSuministro extends javax.swing.JFrame {
                 nombreSumiActionPerformed(evt);
             }
         });
+        nombreSumi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreSumiKeyTyped(evt);
+            }
+        });
 
         jLabel17.setText("Cantidad");
 
         cantidadSuministro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cantidadSuministroActionPerformed(evt);
+            }
+        });
+        cantidadSuministro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cantidadSuministroKeyTyped(evt);
             }
         });
 
@@ -281,6 +293,24 @@ public class VentanaSuministro extends javax.swing.JFrame {
     private void cantidadSuministroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadSuministroActionPerformed
 
     }//GEN-LAST:event_cantidadSuministroActionPerformed
+
+    private void cantidadSuministroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidadSuministroKeyTyped
+       char letra = evt.getKeyChar();
+        if (!Character.isDigit(letra)){
+                evt.consume();
+                //JOptionPane.showMessageDialog(rootPane, "Ingrese cantidad ");
+        
+        }
+    }//GEN-LAST:event_cantidadSuministroKeyTyped
+
+    private void nombreSumiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreSumiKeyTyped
+       char letra = evt.getKeyChar();
+        if (Character.isDigit(letra)){
+                evt.consume();
+                //JOptionPane.showMessageDialog(rootPane, "Ingrese Suministro");
+        
+        }
+    }//GEN-LAST:event_nombreSumiKeyTyped
 
     /**
      * @param args the command line arguments

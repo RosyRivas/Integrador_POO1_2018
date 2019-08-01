@@ -8,6 +8,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Cliente implements Serializable {
     @Id
     @SequenceGenerator(name="sec_Cliente", initialValue=1, allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sec_cliente")
-    private String dni;
+    private Long dni;
     private String nombres;
     private String apellido;
     private String numeroTelefono;
@@ -52,7 +53,7 @@ public class Cliente implements Serializable {
         this.pic=new ArrayList();
     }
 
-    public Cliente( String dni ,String nombres, String apellido, String numeroTelefono, String calle ,String  numero,String localidad) {
+    public Cliente( Long dni ,String nombres, String apellido, String numeroTelefono, String calle ,String  numero,String localidad) {
         this.dni= dni;
         this.nombres = nombres;
         this.apellido = apellido;
@@ -97,13 +98,15 @@ public class Cliente implements Serializable {
         this.dep = dep;
     }
 
-    public String getDni() {
+    public Long getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(Long dni) {
         this.dni = dni;
     }
+
+    
 
     
   
@@ -128,7 +131,33 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "Cliente{" + "dni=" + dni + ", nombres=" + nombres + ", apellido=" + apellido + ", numeroTelefono=" + numeroTelefono + ", direccion=" + direccion + '}';
+        return "Cliente{" + "dni=" + dni + ", nombres=" + nombres + ", apellido=" + apellido + '}';
+    }
+
+   
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.dni);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (!Objects.equals(this.dni, other.dni)) {
+            return false;
+        }
+        return true;
     }
 
    
@@ -142,20 +171,13 @@ public class Cliente implements Serializable {
         this.pic.add(pic);
    
    }
-   public void eliminarPicnic(Picnic pic){
-   
-       this.pic.remove(pic);
-   } 
     
  public void agregarDeposito(Deposito d){
    
        this.dep.add(d);
    } 
- public void eliminarDeposito(Deposito d){
-   
-       this.dep.remove(d);
-       
-   } 
+
+   //} 
     public void quitarDeposito (Deposito d){
      this.dep.remove(d);
     // d.eliminarCliente(this);

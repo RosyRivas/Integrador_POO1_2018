@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +27,7 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name = "Picnic")
 
-public class Picnic {
+public class Picnic implements Serializable {
 
     @Id
     @SequenceGenerator(name = "sec_picnic", initialValue = 1, allocationSize = 1)
@@ -159,22 +160,18 @@ public class Picnic {
 
     @Override
     public String toString() {
-        return "Picnic{" + "idPicnic=" + idPicnic + ", lugar=" + lugar + ", fecha=" + fecha + ", hora=" + hora + ", cantPersona=" + cantPersona + ", precio=" + precio + ", cli=" + cli + ", dep=" + dep + ", me=" + me + '}';
+        return "Picnic{" + "lugar=" + lugar + ", fecha=" + fecha + ", hora=" + hora + ", precio=" + precio + '}';
     }
 
    
+    
 
-   
-  
-  
-   
 public void agregarDeposito(Deposito d ){
         this.dep.add(d);
     
     }
 
   
-
    public void eliminarMenu(Deposito d){
        this.dep.remove(d);
    }

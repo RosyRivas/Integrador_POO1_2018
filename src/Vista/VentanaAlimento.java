@@ -29,6 +29,7 @@ public class VentanaAlimento extends javax.swing.JFrame {
         this.controlador = c;
         this.previo = p;
         initComponents();
+        this.setResizable(false);
         limpiar();
     }
 
@@ -94,9 +95,21 @@ public class VentanaAlimento extends javax.swing.JFrame {
 
         jLabel12.setText("Descripcion");
 
+        texDescripcionAliento.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                texDescripcionAlientoInputMethodTextChanged(evt);
+            }
+        });
         texDescripcionAliento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 texDescripcionAlientoActionPerformed(evt);
+            }
+        });
+        texDescripcionAliento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                texDescripcionAlientoKeyTyped(evt);
             }
         });
 
@@ -106,6 +119,11 @@ public class VentanaAlimento extends javax.swing.JFrame {
         textoCantidadAlimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoCantidadAlimentoActionPerformed(evt);
+            }
+        });
+        textoCantidadAlimento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoCantidadAlimentoKeyTyped(evt);
             }
         });
 
@@ -278,6 +296,28 @@ public class VentanaAlimento extends javax.swing.JFrame {
     private void textoCantidadAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCantidadAlimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoCantidadAlimentoActionPerformed
+
+    private void texDescripcionAlientoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_texDescripcionAlientoInputMethodTextChanged
+        
+    }//GEN-LAST:event_texDescripcionAlientoInputMethodTextChanged
+
+    private void texDescripcionAlientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_texDescripcionAlientoKeyTyped
+       char letra = evt.getKeyChar();
+        if (Character.isDigit(letra)){
+                evt.consume();
+                JOptionPane.showMessageDialog(rootPane, "Ingrese una Descripcion");
+        
+        }
+    }//GEN-LAST:event_texDescripcionAlientoKeyTyped
+
+    private void textoCantidadAlimentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoCantidadAlimentoKeyTyped
+       char letra = evt.getKeyChar();
+        if (!Character.isDigit(letra)){
+                evt.consume();
+                JOptionPane.showMessageDialog(rootPane, "Ingrese cantidad");
+        
+        }
+    }//GEN-LAST:event_textoCantidadAlimentoKeyTyped
 
     /**
      * @param args the command line arguments

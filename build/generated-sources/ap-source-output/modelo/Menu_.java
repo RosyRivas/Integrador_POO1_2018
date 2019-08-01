@@ -9,7 +9,7 @@ import modelo.Alimento;
 import modelo.Picnic;
 import modelo.Suministro;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-07-13T12:27:12")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-08-01T08:35:50")
 @StaticMetamodel(Menu.class)
 public class Menu_ { 
 

@@ -19,6 +19,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal(Controlador c) {
         this.controlador = c;
+        this.setResizable(false);
         initComponents();
     }
 

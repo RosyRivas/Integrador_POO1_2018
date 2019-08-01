@@ -212,6 +212,7 @@
         <Component class="javax.swing.JTextField" name="nombreSumi">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombreSumiActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombreSumiKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
@@ -222,6 +223,7 @@
         <Component class="javax.swing.JTextField" name="cantidadSuministro">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantidadSuministroActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cantidadSuministroKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonNuevoAlimento1">
