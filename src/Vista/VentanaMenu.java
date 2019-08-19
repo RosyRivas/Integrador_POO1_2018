@@ -36,7 +36,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         limpiar();
-       
+       this.comboPicnic.setVisible(false);
     }
 
     /**
@@ -76,7 +76,6 @@ public class VentanaMenu extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         listaPicnic = new javax.swing.JList();
-        agregarAlimento1 = new javax.swing.JButton();
         quitarAlimento1 = new javax.swing.JButton();
         comboPicnic = new javax.swing.JComboBox();
         volver = new javax.swing.JButton();
@@ -333,13 +332,6 @@ public class VentanaMenu extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(listaPicnic);
 
-        agregarAlimento1.setText("Agregar Picnic");
-        agregarAlimento1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarAlimento1ActionPerformed(evt);
-            }
-        });
-
         quitarAlimento1.setText("Quitar");
         quitarAlimento1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,10 +356,7 @@ public class VentanaMenu extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comboPicnic, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(agregarAlimento1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(quitarAlimento1)))
+                    .addComponent(quitarAlimento1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -378,9 +367,7 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(agregarAlimento1)
-                    .addComponent(quitarAlimento1))
+                .addComponent(quitarAlimento1)
                 .addContainerGap())
         );
 
@@ -446,7 +433,7 @@ public class VentanaMenu extends javax.swing.JFrame {
        if(m != null){
            int i = this.controlador.eliminarMenu(m) ;
            if(i !=0){
-                JOptionPane.showMessageDialog(null, "No es posible eliminar el Menu", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No es posible eliminar el Menu, existen elementos asociados", "Error", JOptionPane.ERROR_MESSAGE);
            }
        }
        limpiar();
@@ -505,12 +492,7 @@ public class VentanaMenu extends javax.swing.JFrame {
             }else{
                 this.comboAlimento.setSelectedItem(null);
             }
-           /* if(m.getPic()!= null){
-                this.comboPicnic.setSelectedItem(m.getPic().toArray());
-            }else{
-                this.comboPicnic.setSelectedItem(null);
-            }
-            */
+           
             this.listaSuministro.setListData(m.getSuministro().toArray() );
             this.listaAlimento.setListData(m.getaMenu().toArray());
          this.listaPicnic.setListData(m.getPic().toArray());
@@ -575,7 +557,12 @@ public class VentanaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_listaPicnicValueChanged
 
     private void quitarAlimento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarAlimento1ActionPerformed
-      
+            if (this.listaPicnic.getSelectedValue() != null) {
+            Picnic p = (Picnic) this.listaPicnic.getSelectedValue();
+            Menu m = (Menu) this.listaMenu.getSelectedValue();
+            this.controlador.quitarPicnicMenu(m, p);
+            this.listaPicnic.setListData(m.getPic().toArray());
+        }
         
         
     }//GEN-LAST:event_quitarAlimento1ActionPerformed
@@ -592,18 +579,6 @@ public class VentanaMenu extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_precioMenuKeyTyped
-
-    private void agregarAlimento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAlimento1ActionPerformed
-        if (this.listaMenu.getSelectedValue()!=null && this.comboPicnic.getSelectedItem()!=null){
-
-            Picnic p=(Picnic) this.comboPicnic.getSelectedItem();
-            Menu m=(Menu ) this.listaMenu.getSelectedValue();
-            this.controlador.agregarMenuPic(p, m);
-            this.listaPicnic.setListData(m.getPic().toArray());
-        }else{
-            JOptionPane.showMessageDialog(null, "Por favor seleccione el menu.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_agregarAlimento1ActionPerformed
 
     private void comboPicnicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPicnicActionPerformed
         // TODO add your handling code here:
@@ -650,7 +625,6 @@ public class VentanaMenu extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarAlimento;
-    private javax.swing.JButton agregarAlimento1;
     private javax.swing.JButton agregarSuministro;
     private javax.swing.JComboBox comboAlimento;
     private javax.swing.JComboBox comboPicnic;

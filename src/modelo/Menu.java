@@ -106,7 +106,7 @@ public class Menu implements Serializable {
 
     @Override
     public String toString() {
-        return "Menu{" + "idMenu=" + idMenu + ", descripcion=" + descripcion + ", precio=" + precio + '}';
+        return   descripcion + ", $ " + precio ;
     }
 
     

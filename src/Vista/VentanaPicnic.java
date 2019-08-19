@@ -533,7 +533,7 @@ public class VentanaPicnic extends javax.swing.JFrame {
         if (p != null) {
             int i = this.controlador.eliminarPicnic(p);
             if (i != 0) {
-                JOptionPane.showMessageDialog(null, "No es posible eliminar el Picnic", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No es posible eliminar el Picnic,existen elementos asociados", "Error", JOptionPane.ERROR_MESSAGE);
             }
             limpiar();
         }
@@ -547,7 +547,7 @@ public class VentanaPicnic extends javax.swing.JFrame {
         char letra = evt.getKeyChar();
         if (!Character.isDigit(letra)){
                 evt.consume();
-                JOptionPane.showMessageDialog(rootPane, "Ingrese cantidad de Persona");
+               // JOptionPane.showMessageDialog(rootPane, "Ingrese cantidad de Persona");
         
         }
     }//GEN-LAST:event_cantidadPersonaKeyTyped
@@ -556,7 +556,7 @@ public class VentanaPicnic extends javax.swing.JFrame {
         char letra = evt.getKeyChar();
         if (!Character.isDigit(letra)){
                 evt.consume();
-                JOptionPane.showMessageDialog(rootPane, "Ingrese  Precio");
+               // JOptionPane.showMessageDialog(rootPane, "Ingrese  Precio");
         
         }
     }//GEN-LAST:event_precioKeyTyped

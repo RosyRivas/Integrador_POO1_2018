@@ -239,8 +239,8 @@ public class VentanaSuministro extends javax.swing.JFrame {
         if (s != null) {
             int i = this.controlador.eliminarSuministro(s);
             if (i != 0) {
-                JOptionPane.showMessageDialog(null, "No es posible eliminar el ", "Error", JOptionPane.ERROR_MESSAGE);
-
+                JOptionPane.showMessageDialog(null, "No es posible eliminar el Suministro,existen elementos asociados", "Error", JOptionPane.ERROR_MESSAGE);
+ 
             }
             limpiar();
         }

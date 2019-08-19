@@ -475,7 +475,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         if (c != null) {
             int i = this.controlador.eliminarCliente(c);
             if (i != 0) {
-                JOptionPane.showMessageDialog(null, "No es posible eliminar el Cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No es posible eliminar el Cliente,existen elementos asociados", "Error", JOptionPane.ERROR_MESSAGE);
 
             }
             limpiar();
@@ -581,7 +581,7 @@ public class VentanaCliente extends javax.swing.JFrame {
       char letra = evt.getKeyChar();
         if (!Character.isDigit(letra)){
                 evt.consume();
-                JOptionPane.showMessageDialog(rootPane, "Ingrese DNI");
+                //JOptionPane.showMessageDialog(rootPane, "Ingrese DNI");
         
         }
     }//GEN-LAST:event_jTextFieldDNIKeyTyped
@@ -590,7 +590,7 @@ public class VentanaCliente extends javax.swing.JFrame {
        char letra = evt.getKeyChar();
         if (!Character.isDigit(letra)){
                 evt.consume();
-                JOptionPane.showMessageDialog(rootPane, "Ingrese Nro telefonico");
+                //JOptionPane.showMessageDialog(rootPane, "Ingrese Nro telefonico");
         
         }
     }//GEN-LAST:event_jTextFieldTelefKeyTyped
@@ -599,7 +599,7 @@ public class VentanaCliente extends javax.swing.JFrame {
        char letra = evt.getKeyChar();
         if (!Character.isDigit(letra)){
                 evt.consume();
-                JOptionPane.showMessageDialog(rootPane, "Ingrese Nro de Calle");
+                //JOptionPane.showMessageDialog(rootPane, "Ingrese Nro de Calle");
         
         }
     }//GEN-LAST:event_jTextFieldNroCalleKeyTyped
@@ -608,7 +608,7 @@ public class VentanaCliente extends javax.swing.JFrame {
        char letra = evt.getKeyChar();
         if (Character.isDigit(letra)){
                 evt.consume();
-                JOptionPane.showMessageDialog(rootPane, "Ingrese Localidad");
+                //JOptionPane.showMessageDialog(rootPane, "Ingrese Localidad");
         
         }
     }//GEN-LAST:event_jTextFielLocalidadKeyTyped
@@ -617,7 +617,7 @@ public class VentanaCliente extends javax.swing.JFrame {
        char letra = evt.getKeyChar();
         if (Character.isDigit(letra)){
                 evt.consume();
-                JOptionPane.showMessageDialog(rootPane, "Ingrese Apellido");
+                //JOptionPane.showMessageDialog(rootPane, "Ingrese Apellido");
         
         }
     }//GEN-LAST:event_jTextFieldApellidoKeyTyped
@@ -626,7 +626,7 @@ public class VentanaCliente extends javax.swing.JFrame {
        char letra = evt.getKeyChar();
         if (Character.isDigit(letra)){
                 evt.consume();
-                JOptionPane.showMessageDialog(rootPane, "Ingrese  Nombre");
+                //JOptionPane.showMessageDialog(rootPane, "Ingrese  Nombre");
         
         }
     }//GEN-LAST:event_jTextNombreKeyTyped

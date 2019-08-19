@@ -109,7 +109,7 @@ public class Deposito implements Serializable {
 
     @Override
     public String toString() {
-        return "Deposito{" + "fechaDep=" + fechaDep + ", monto=" + monto + ", tipoDeposito=" + tipoDeposito + '}';
+        return   fechaDep.toString() + ",$ " + monto + "," + tipoDeposito + '}';
     }
 
    

@@ -160,7 +160,7 @@ public class Picnic implements Serializable {
 
     @Override
     public String toString() {
-        return "Picnic{" + "lugar=" + lugar + ", fecha=" + fecha + ", hora=" + hora + ", precio=" + precio + '}';
+        return lugar + ", " + fecha + ", hora=" + hora + ", $" + precio ;
     }
 
    
@@ -172,9 +172,7 @@ public void agregarDeposito(Deposito d ){
     }
 
   
-   public void eliminarMenu(Deposito d){
-       this.dep.remove(d);
-   }
+
    
    public void eliminarDep(Deposito d){
        this.dep.remove(d);

@@ -66,6 +66,7 @@ public class Controlador {
             this.persistencia.confirmarTransaccion();
             return 0;
         } else {
+           
             return 1;
         }
 
@@ -198,12 +199,13 @@ public class Controlador {
 //eliminar suministro
 
     public int eliminarSuministro(Suministro s) {
-        if (s.getcSuministro().isEmpty()) {
+        if (s.getMenu().isEmpty()) {
             this.persistencia.iniciarTransaccion();
             this.persistencia.eliminar(s);
             this.persistencia.confirmarTransaccion();
             return 0;
         } else {
+          
             return 1;
         }
 
@@ -217,6 +219,14 @@ public class Controlador {
         this.persistencia.modificar(sm);
         this.persistencia.confirmarTransaccion();
 
+    }
+    
+    public void quitarPicnicMenu(Menu m, Picnic p){
+     this.persistencia.iniciarTransaccion();
+     m.quitarPicnicMenu(p);
+     this.persistencia.modificar(p);
+     this.persistencia.modificar(m);
+    this.persistencia.confirmarTransaccion();
     }
 //editar suministro
 
@@ -277,7 +287,7 @@ public class Controlador {
 
 //eliminar picnic
     public int eliminarPicnic(Picnic p) {
-        if (p.getDep().isEmpty()) {
+        if ((p.getDep().isEmpty()))  {
             this.persistencia.iniciarTransaccion();
             this.persistencia.eliminar(p);
             this.persistencia.confirmarTransaccion();
@@ -352,7 +362,7 @@ public class Controlador {
 //                      ELIMINAR MENU del pic
 
     public int eliminarMenu(Menu m) {
-        if (m.getPic().isEmpty()) {
+        if (m.getPic().isEmpty()  && m.getSuministro().isEmpty() && m.getaMenu().isEmpty()  ) {
             this.persistencia.iniciarTransaccion();
             this.persistencia.eliminar(m);
             this.persistencia.confirmarTransaccion();
@@ -361,6 +371,7 @@ public class Controlador {
         return 1;
 
     }
+  
 //          AGREGAR MENU
 
     public void agregarMenu(String descripcion, String precio, Picnic pic, Suministro sumi, Alimento alim) {
